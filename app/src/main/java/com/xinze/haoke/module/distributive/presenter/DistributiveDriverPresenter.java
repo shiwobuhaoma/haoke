@@ -1,0 +1,73 @@
+package com.xinze.haoke.module.distributive.presenter;
+
+import android.content.Context;
+
+import com.xinze.haoke.http.RetrofitFactory;
+import com.xinze.haoke.http.config.HeaderConfig;
+import com.xinze.haoke.http.entity.BaseEntity;
+import com.xinze.haoke.http.observer.BaseObserver;
+import com.xinze.haoke.module.distributive.view.DistributiveDriverActivity;
+import com.xinze.haoke.module.distributive.view.IDistributiveDriverView;
+import com.xinze.haoke.module.invite.model.TruckownerDriverVO;
+import com.xinze.haoke.mvpbase.BasePresenterImpl;
+
+import java.util.HashMap;
+import java.util.List;
+
+public class DistributiveDriverPresenter extends BasePresenterImpl<IDistributiveDriverView> implements IDistributiveDriverPresenter {
+
+    private DistributiveDriverActivity distributiveDriverActivity;
+
+    public DistributiveDriverPresenter(IDistributiveDriverView mPresenterView, Context mContext) {
+        super(mPresenterView, mContext);
+        distributiveDriverActivity = (DistributiveDriverActivity) mPresenterView;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void appointDriver4Truck(String truckId, String driverId, String rightFlag, String id) {
+        HashMap<String, String> headers = HeaderConfig.getHeaders();
+        RetrofitFactory.getInstence().Api().appointDriver4Truck(headers, truckId, driverId, rightFlag, id).compose(this.<BaseEntity>setThread()).subscribe(new BaseObserver() {
+            @Override
+            protected void onSuccees(BaseEntity t) throws Exception {
+                if (t != null) {
+                    if (t.isSuccess()) {
+                        distributiveDriverActivity.appointDriver4TruckSuccess(t.getMsg());
+                    } else {
+                        distributiveDriverActivity.appointDriver4TruckFailed(t.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            protected void onFailure(String msg) throws Exception {
+                distributiveDriverActivity.appointDriver4TruckFailed(msg);
+            }
+        });
+    }
+
+    @Override
+    public void getMyTruckDrivers(int pageNum, int pageSize, String inviteFlag) {
+        HashMap<String, String> headers = HeaderConfig.getHeaders();
+        RetrofitFactory.getInstence().Api().getMyTruckDrivers(headers, pageNum, pageSize, inviteFlag).compose(this.<BaseEntity<List<TruckownerDriverVO>>>setThread()).subscribe(new BaseObserver<List<TruckownerDriverVO>>() {
+            @Override
+            protected void onSuccees(BaseEntity<List<TruckownerDriverVO>> t) throws Exception {
+                if (t != null) {
+                    if (t.isSuccess()) {
+                        distributiveDriverActivity.setData(t.getData());
+                        distributiveDriverActivity.getMyTruckDriversSuccess(t.getMsg());
+                    } else {
+                        distributiveDriverActivity.getMyTruckDriversFailed(t.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            protected void onFailure(String msg) throws Exception {
+                distributiveDriverActivity.getMyTruckDriversFailed(msg);
+            }
+        });
+    }
+
+
+}

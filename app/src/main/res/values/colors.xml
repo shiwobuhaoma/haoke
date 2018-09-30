@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#333333</color>
+    <color name="colorPrimaryDark">#333333</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="themeBlue">#3498db</color>
+    <color name="themeBlack">#333333</color>
+    <color name="themeOrange">#FB9251</color>
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="hint_color">#cccccc</color>
+    <color name="gray_line">#587c7c7c</color>
+    <color name="gray_text">#999999</color>
+    <color name="tab_background">#ff2c9195</color>
+    <color name="main_ic_orange">#FB9251</color>
+    <color name="order_item_text">#808080</color>
+
+    <color name="my_item_space">#F5F5F5</color>
+    <color name="line">#E9E9E9</color>
+    <color name="my_item_line">#dadddddd</color>
+    <color name="half_white">#7fffffff</color>
+    <color name="divider">#E6E6E6</color>
+    <color name="certification_line">#E2E2E2</color>
+    <color name="default_text">#909090</color>
+    <color name="white_press">#f1f1f3</color>
+    <color name="half_black">#44000000</color>
+
+    <color name="service_color">#52affc</color>
+    <color name="gray_background">#f5f5f5</color>
+    <color name="item_whiteground">#ffffff</color>
+    <color name="hint_text_color">#aaaaaa</color>
+    <color name="backOrange">#ae6539</color>
+    <color name="white_transparent">#33ffffff</color>
+    <color name="search_activity_bg_color">#aa000000</color>
+    <color name="themeGray" >#909090</color>
+</resources>

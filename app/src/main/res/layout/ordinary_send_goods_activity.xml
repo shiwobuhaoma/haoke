@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.xinze.haoke.widget.SimpleToolbar
+        android:id="@+id/ordinary_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/ordinary_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ordinary_toolbar">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="@string/shipper"
+                    android:textColor="@color/themeBlack"
+                    android:textSize="14sp"
+                    tools:text="托运人" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1px"
+                    android:background="@color/gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_from"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/from"
+                        tools:text="              从：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_from_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_from"
+                        android:background="@color/line"
+                        android:drawableEnd="@mipmap/my_ic_arrow"
+                        android:focusable="false"
+                        android:hint="@string/input_address"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_from_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/detail_address_"
+                        tools:text="详细地址：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_from_address_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_from_address"
+                        android:background="@color/line"
+                        android:hint="@string/input_detail_address"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_from_contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/contact"
+                        tools:text="     联系人：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_from_contact_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_from_contact"
+                        android:background="@color/line"
+                        android:hint="@string/input_contact"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_from_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/phone"
+                        tools:text="          电话：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_from_phone_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_from_phone"
+                        android:background="@color/line"
+                        android:hint="@string/input_contact_phone"
+                        android:inputType="phone"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="@color/line" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="@string/recipient"
+                    android:textColor="@color/themeBlack"
+                    android:textSize="14sp"
+                    tools:text="接收人" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1px"
+                    android:background="@color/gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_to"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/to"
+                        tools:text="              到：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_to_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_to"
+                        android:background="@color/line"
+                        android:drawableEnd="@mipmap/my_ic_arrow"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:hint="@string/input_address"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_to_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/detail_address_"
+                        tools:text="详细地址：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_to_address_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_to_address"
+                        android:background="@color/line"
+                        android:hint="@string/input_detail_address"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_to_contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/contact"
+                        tools:text="     联系人：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_to_contact_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_to_contact"
+                        android:background="@color/line"
+                        android:hint="@string/input_contact"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_to_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/phone"
+                        tools:text="          电话：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_to_phone_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_to_phone"
+                        android:background="@color/line"
+                        android:hint="@string/input_contact_phone"
+                        android:inputType="phone"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="@color/line" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_info_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/info_pay"
+                        tools:text="       信息费：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_info_pay_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_info_pay"
+                        android:background="@color/line"
+                        android:hint="@string/input_info_pay"
+                        android:inputType="numberDecimal"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_load_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/load_pay"
+                        tools:text="       装车费：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_load_pay_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_load_pay"
+                        android:background="@color/line"
+                        android:hint="@string/input_load_pay"
+                        android:inputType="numberDecimal"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_unload_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/unload_pay"
+                        tools:text="       卸车费：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_unload_pay_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_unload_pay"
+                        android:background="@color/line"
+                        android:hint="@string/input_unload_pay"
+                        android:inputType="numberDecimal"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_goods"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/goods"
+                        tools:text="           货品：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_goods_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_goods"
+                        android:background="@color/line"
+                        android:drawableEnd="@mipmap/my_ic_arrow"
+                        android:hint="@string/choose_goods"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/distances"
+                        tools:text="           运距：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_distance_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_distance"
+                        android:background="@color/line"
+                        android:hint="@string/input_distance"
+                        android:inputType="numberDecimal"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_freight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/freight"
+                        tools:text="           运费：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_freight_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_freight"
+                        android:background="@color/line"
+                        android:hint="@string/input_freight"
+                        android:inputType="numberDecimal"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_delivery_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/deliver_date"
+                        tools:text="  发货日期：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_delivery_from_date_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_delivery_date"
+                        android:background="@color/line"
+                        android:drawableEnd="@mipmap/date"
+                        android:focusable="false"
+                        android:hint="@string/select_date"
+                        android:inputType="date"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:id="@+id/ordinary_delivery_line"
+                        android:layout_width="10dp"
+                        android:layout_height="1px"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_delivery_from_date_et"
+                        android:background="@color/black" />
+
+                    <EditText
+                        android:id="@+id/ordinary_delivery_to_date_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_delivery_line"
+                        android:background="@color/line"
+                        android:drawableEnd="@mipmap/date"
+                        android:focusable="false"
+                        android:hint="@string/select_date"
+                        android:inputType="date"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_car_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/car_num"
+                        tools:text="           车数：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_car_number_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_car_number"
+                        android:background="@color/line"
+                        android:hint="@string/input_car_num"
+                        android:inputType="phone"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_car_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/car_type_"
+                        tools:text="           车型：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_car_type_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:inputType="text"
+                        android:layout_toEndOf="@id/ordinary_car_type"
+                        android:background="@color/line"
+                        android:drawableEnd="@mipmap/my_ic_arrow"
+                        android:focusable="false"
+                        android:hint="@string/input_car_type"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_car_long"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/car_long"
+                        tools:text="           车长：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_car_long_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_car_long"
+                        android:background="@color/line"
+                        android:hint="@string/input_car_long"
+                        android:inputType="numberDecimal"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_road_loss"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/road_loss"
+                        tools:text="           路损：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_road_loss_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_road_loss"
+                        android:background="@color/line"
+                        android:hint="@string/input_road_loss"
+                        android:inputType="numberDecimal"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/ordinary_remark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="end"
+                        android:padding="5dp"
+                        android:text="@string/remark"
+                        tools:text="           备注：" />
+
+                    <EditText
+                        android:id="@+id/ordinary_remark_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toEndOf="@id/ordinary_remark"
+                        android:background="@color/line"
+                        android:hint="@string/input_remark"
+                        android:inputType="numberDecimal"
+                        android:maxLines="3"
+                        android:minLines="2"
+                        android:padding="10dp"
+                        android:textColorHint="@color/gray_line"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ordinaryProtocolLL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/line"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        android:background="@color/line" />
+
+                    <TextView
+                        android:id="@+id/ordinary_wait_confirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:drawablePadding="15dp"
+                        android:drawableStart="@mipmap/select_choice"
+                        android:padding="15dp"
+                        android:text="@string/confirm_bill"
+                        android:textColor="@color/themeOrange"
+                        tools:text="对方抢单成功，需要我确认后对方才可以接单" />
+
+                    <RelativeLayout
+                        android:id="@+id/ordinary_protocol_rl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/ordinary_protocol_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/img"
+                            android:layout_centerVertical="true"
+                            android:background="@mipmap/select_choice" />
+
+                        <TextView
+                            android:id="@+id/ordinary_protocol"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/ordinary_protocol_iv"
+                            android:background="@color/line"
+                            android:gravity="center"
+                            android:padding="15dp"
+                            android:textColor="@color/themeBlack"
+                            android:textSize="14sp"
+                            tools:text="我已仔细阅读并同意《委托运输服务合同》" />
+
+                    </RelativeLayout>
+
+
+                    <Button
+                        android:id="@+id/ordinary_release"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="15dp"
+                        android:background="@drawable/circle_orange_button"
+                        android:text="@string/release_the_bill_of_goods"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <com.xinze.haoke.widget.SelectAddressView2
+            android:id="@+id/ordinary_select_address"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/ordinary_half"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ordinary_select_address"
+            android:background="@color/half_black"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/imcv_tem_mater_calendar_week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:mcv_dateTextAppearance="@style/MaterialCalendarTextStyelNormal"
+        app:mcv_showOtherDates="all"
+        app:mcv_weekDayLabels="@array/custom_myweekdays"
+        app:mcv_weekDayTextAppearance="@style/MaterialCalendarWeekTextStyel">
+
+    </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
+</RelativeLayout>

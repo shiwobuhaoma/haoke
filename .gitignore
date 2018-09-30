@@ -1,0 +1,11 @@
+*.iml
+.gradle
+/local.properties
+.idea
+/app/build
+/gradle.properties
+/gradlew
+/gradlew.bat
+/app/src/androidTest
+/app/src/test/
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_line">
+
+    <com.xinze.haoke.widget.SimpleToolbar
+        android:id="@+id/invite_driver_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/invite_driver_tool_bar"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/invite_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@mipmap/line"
+            android:drawablePadding="15dp"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@string/phone_number"
+            android:textColor="@color/themeOrange"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/invite_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/invite_phone"
+            android:background="@null"
+            android:hint="@string/input_certification_driver_phone"
+            android:padding="15dp"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/invite_driver_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:background="@drawable/circle_orange_button"
+        android:text="@string/commit"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</RelativeLayout>

@@ -1,0 +1,260 @@
+<resources>
+    <string name="app_name">浩克物流货主端</string>
+
+    <string name="client_app_name">应用市场</string>
+    <string name="home_general_shipper">普通发货</string>
+    <string name="home_find_goods">找货</string>
+
+    <string name="pwd">密码</string>
+    <string name="uname">用户名</string>
+    <string name="forget_pwd">忘记密码</string>
+    <string name="register">注&#160;&#160;&#160;&#160;册</string>
+    <string name="login">登&#160;&#160;&#160;&#160;录</string>
+    <string name="phone_number">手机号</string>
+    <string name="input_phone_number">请输入您的手机号</string>
+    <string name="get_verification_code">获取验证码</string>
+    <string name="verification_code">验证码</string>
+    <string name="input_verification_code">请输入验证码</string>
+    <string name="input_pass_word">请输入密码</string>
+    <string name="pass_word">密&#160;&#160;&#160;&#160;码</string>
+    <string name="unLogin">未登录</string>
+    <string name="driver_certification">司机认证</string>
+    <string name="my_cars">我的车辆</string>
+    <string name="my_routes">常跑路线</string>
+    <string name="my_system_message">系统消息</string>
+    <string name="my_about_us">关于我们</string>
+    <string name="my_help">帮助</string>
+    <string name="my">我的</string>
+    <string name="exit">退出登录</string>
+    <string name="home_service_hotline">服务热线：400&#8211;1245&#8211;566</string>
+    <string name="home_directional_shipper">定向发货</string>
+    <string name="home_about_us">关于我们</string>
+    <string name="home_page">首页</string>
+    <string name="my_login_out">退出登录</string>
+    <string name="my_drivers">我的司机</string>
+    <string name="my_invitation">我的邀请</string>
+    <string name="my_change_pwd">修改密码</string>
+    <string name="about_us">关于我们</string>
+
+    <string name="home_regular_route">常跑路线</string>
+
+    <string name="goLogin">去登录</string>
+    <string name="unIdentification">未认证</string>
+    <string name="goIdentification">去认证</string>
+    <string name="companyCertification">公司认证</string>
+    <string name="informationDepartmentCertification">信息部认证</string>
+    <string name="certification_commit">提交认证</string>
+    <string name="name">姓名</string>
+    <string name="isGoIdentification">是否去认证</string>
+    <string name="isGoLogin">是否去登录</string>
+    <string name="hint_search">搜索</string>
+
+    <string name="orderList">订单列表</string>
+    <string name="order_id">订单号：%1$s</string>
+    <string name="order_freight">运费：%1$s元</string>
+    <string name="order_truck_type">车型：%1$s</string>
+    <string name="order_product_name">货物：%1$s</string>
+    <string name="order_distance">运距：%1$sKM</string>
+    <string name="order_shipper">托运人</string>
+    <string name="order_contacts">联系人：%1$s</string>
+    <string name="order_freight_details">货运详情</string>
+    <string name="order_item_date">发货日期：%1$s</string>
+    <string name="order_consignor_and_address">发货人：%1$s\n发货地址：%2$s</string>
+    <string name="order_consignee_and_address">收货人：%1$s\n收货地址：%2$s</string>
+    <string name="order_car_count"><Data><![CDATA[总车数：<font color="#fb9251">%1$d</font>车]]></Data></string>
+    <string name="order_goods_details"><Data><![CDATA[信息费：<font color="#fb9251">%1$s</font>元<br>装车费：<font color="#fb9251">%2$s</font>元/吨<br>卸车费：<font color="#fb9251">%3$s</font>元/吨<br>运费：<font color="#fb9251">%4$s</font>元/吨<br>货品：<font color="#fb9251">%5$s</font><br>路损：<font color="#fb9251">%6$s</font><br>车型：<font color="#fb9251">%7$s</font><br>备注：<font color="#fb9251">%8$s</font><br>]]></Data></string>
+
+    <string name="order_wait_confirm">等待确认中&#8230;</string>
+    <string name="order_revoke">撤销订单</string>
+    <string name="order_detail">订单详情</string>
+    <string name="order_next">取&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;货</string>
+    <string name="order_pick_up_goods">取货中</string>
+    <string name="order_send_goods">送货</string>
+    <string name="order_freight_goods">发货</string>
+    <string name="order_overdue">已过期</string>
+    <string name="order_deliver_goods">确认送达</string>
+    <string name="order_confirm_arrive">确认签收</string>
+    <string name="order_upload">上传凭证（选填）</string>
+    <string name="cancel">取消</string>
+
+
+    <string name="bill_ordinary">普通货单</string>
+    <string name="bill_directional">定向货单</string>
+
+    <string name="send_search_regular">搜常跑</string>
+    <string name="send_goods_to">到：</string>
+    <string name="send_goods_all">全国</string>
+    <string name="send_goods_date">发货日期：%1$s-%2$s</string>
+    <string name="send_goods_distance">运距：%1$s公里</string>
+    <string name="directional_robbing_bill">抢单\n(%1$d车)</string>
+    <string name="directional_receipt_bill">接单\n(%1$d车)</string>
+    <string name="bill_robbing">抢单</string>
+    <string name="receipt_bill">接单</string>
+    <string name="bill_car_count">共%1$s车</string>
+    <string name="bill_car_freight">运费：%1$s元</string>
+    <string name="regular_all_lines">全部</string>
+    <string name="transport_refuse">退单</string><!--（%1$d车）-->
+    <string name="transport_confirming">确定抢单（%1$d车）</string>
+    <string name="transport_receipt">确定接单（%1$d车）</string>
+
+
+    <string name="register_read_service"><Data><![CDATA[我已仔细阅读并同意《<font color="#52affc">服务协议</font>》]]></Data></string>
+    <string name="next_step">下一步</string>
+    <string name="select_read_service"><Data><![CDATA[我已仔细阅读并同意《<font color="#52affc">运输服务合同</font>》]]></Data></string>
+    <string name="select_confirm_bill">确定接单</string>
+    <string name="select_receipt_bill">确定抢单</string>
+    <string name="select_please_choice">请选择承运车辆</string>
+    <string name="select_all_choice">全选</string>
+    <string name="select_item_relation"><Data><![CDATA[<font color="#808080" size="28">%1$s</font><font color="#fb9251">>%2$s</font>]]></Data></string>
+    <string name="select_item_own"><Data><![CDATA[<font color="#808080" size="28">%1$s</font><font color="#fb9251">%2$s</font>]]></Data></string>
+    <string name="select_item_audited"><Data><![CDATA[<font color="#fb9251" size = "28">%1$s</font>]]></Data></string>
+    <string name="select_item_audited_and_no_relation"><Data><![CDATA[<font color="#fb9251 size="28">%1$s</font><br/><font color="#52affc" size="24">%2$s</font>]]></Data></string>
+    <string name="select_item_audit"><Data><![CDATA[<font color="#16d069 size="28"">%1$s</font>]]></Data></string>
+    <string name="select_item_audited_failed"><Data><![CDATA[<font color="#fb9251" size = "28">%1$s</font>]]></Data></string>
+    <string name="select_car_not_relation">车辆未关联司机</string>
+    <string name="select_go_relation">去关联</string>
+
+    <string name="invite_driver_invite">车主邀请</string>
+    <string name="invite_owner_invite">货主邀请</string>
+    <string name="invite_detail_refuse">拒绝</string>
+    <string name="invite_detail_accept">接受</string>
+    <string name="invite_detail_title">邀请详情</string>
+    <string name="invite_detail_confirm_content">确定要接受邀请吗?</string>
+    <string name="invite_detail_refuse_hint">拒绝理由</string>
+    <string name="my_driver_exlpain">1、可以给车辆分配所添加的司机\n2、可以设置是否允许司机用车辆接单\n3、车辆所接订单关联司机跟车主均可见\n4、订单的运费最终结算给车主</string>
+    <string name="my_driver_add">添加司机</string>
+    <string name="my_driver_explain_top">说明：</string>
+    <string name="my_driver_pic_bottom">暂无可分配司机</string>
+    <string name="pic_desc">pic</string>
+    <string name="my_driver_title">我的司机</string>
+    <string name="cooperated_drivers">常用司机</string>
+    <string name="frequently_transported_goods">常拉货品</string>
+    <string name="my_driver_del_bt">删除</string>
+    <string name="my_driver_add_title">添加司机</string>
+    <string name="driver_add_commit">提交</string>
+    <string name="my_driver_add_hint">请输入平台已认证的司机手机号</string>
+    <string name="driver_add_phone_tv">手机号</string>
+
+
+    <string name="driver_submit_success">
+        <Data>
+            <![CDATA[<font color="#333333" size = "30">审核资料提交成功，</font> <br/><font color="#808080" size = "28"> 客服电话：400-4568-8956</font> ]]>
+        </Data>
+    </string>
+
+    <string name="driver_name">姓&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名</string>
+    <string name="driver_id_card">身份证号</string>
+    <string name="input_number_of_card">请输入身份证号</string>
+
+    <string name="driver_address">现居住地</string>
+    <string name="input_address">请选择所在地区</string>
+    <string name="detail_address">详细地址</string>
+    <string name="input_detail_address">请输入详细地址（不包含省市）</string>
+
+    <string name="facadeOfIDCard">身份证正面照</string>
+    <string name="legalPersonFacadeOfIDCard">法人身份证正面照</string>
+    <string name="legalPersonOppositeOfIDCard">法人身份证反面照</string>
+    <string name="facadeOfDriverCard">驾驶证正面照</string>
+    <string name="input_name">请输入真实姓名</string>
+    <string name="driver_qualifications_upload">资质上传</string>
+    <string name="line_edit_from">请选择始发地</string>
+    <string name="line_edit_to">请选择目的地</string>
+    <string name="confirm">确定</string>
+    <string name="address_from">出&#160;&#160;发&#160;&#160;地</string>
+    <string name="address_to">目&#160;&#160;的&#160;&#160;地</string>
+    <string name="line_add">添加线路</string>
+
+
+    <string name="my_truck_titile">我的车辆</string>
+    <string name="my_truck_add">添加车辆</string>
+    <string name="my_truck_pic_bottom">暂无车辆</string>
+    <string name="my_truck_exlpain">关联司机:15123654789,可接单\n半挂车/25吨\n审核信息:请选择无车承运证\n2018&#8211;05&#8211;24 10:50</string>
+    <string name="my_truck_trucknum">蒙H4562D</string>
+    <string name="my_truck_driver_info"><Data><![CDATA[<font color="#52affc">关联司机:%1$s , %2$s</font><br>]]></Data></string>
+    <string name="select_driver">
+        <Data>
+            <![CDATA[<font color="#333333" size = "30">%1$s</font> <br/><font color="#333333" size = "28">%2$s</font> ]]>
+        </Data>
+    </string>
+
+    <string name="allot_driver_title">分配司机</string>
+    <string name="allow">允许</string>
+    <string name="car_number">车牌号码</string>
+    <string name="input_car_number">请输入车牌号</string>
+    <string name="car_type">车辆类型</string>
+    <string name="input_car_type">请选择车辆类型</string>
+    <string name="car_load">车辆载重</string>
+    <string name="input_car_load">请输入载重</string>
+    <string name="driving_license">行&#160;&#160;驶&#160;&#160;证</string>
+    <string name="submit_verify">提交审核</string>
+    <string name="add_car">添加车辆</string>
+    <string name="take_up">收起</string>
+    <string name="submit_success">审核资料提交成功，请耐心等待！</string>
+    <string name="service_hotline">服务热线：400&#8211;4568&#8211;8956</string>
+    <string name="allow_robbing">允许抢单</string>
+    <string name="old_pass_word">旧密码</string>
+    <string name="input_old_pass_word">请输入旧密码</string>
+    <string name="new_pass_word">新密码</string>
+    <string name="input_new_pass_word">请输入新密码</string>
+    <string name="search_order_hint">请输入订单号、发货地址、到货地址等</string>
+    <string name="input_telephone_number">请输入手机号</string>
+    <string name="company_name">公司名称</string>
+    <string name="input_company_name">请输入企业名称</string>
+    <string name="business_license">营业执照</string>
+    <string name="input_business_license_number">请输入营业执照号</string>
+    <string name="company_address">公司地址</string>
+    <string name="legal_person_handheld_identity_card">法人手持身份证照片</string>
+    <string name="input_contact">请输入联系人</string>
+    <string name="input_contact_phone">请输入联系人电话</string>
+    <string name="input_info_pay">请输入信息费用(单位：元)</string>
+    <string name="input_load_pay">请输入装车费用(单位：吨/元)</string>
+    <string name="input_unload_pay">请输入卸车费用(单位：吨/元)</string>
+    <string name="choose_goods">请选择货品</string>
+    <string name="input_distance">请输入运距(单位：公里)</string>
+    <string name="input_freight">请输入运费(单位：元)</string>
+    <string name="input_car_num">请输入车数</string>
+    <string name="input_car_long">请输入车长</string>
+    <string name="input_road_loss">请输入路损(例：10%)</string>
+    <string name="input_remark">请输入备注信息(可选)</string>
+    <string name="select_date">请选择日期</string>
+    <string name="release_the_bill_of_goods">发布货单</string>
+    <string name="ordinary_protocol"><Data><![CDATA[我已仔细阅读并同意<font color=\"#52affc\">《委托运输服务合同》</font><br>]]></Data></string>
+    <string name="ordinary_send_goods">普通发货</string>
+    <string name="shipper">托运人</string>
+    <string name="recipient">接收人</string>
+    <string name="from">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;从：</string>
+    <string name="contact">&#160;&#160;&#160;&#160;联系人：</string>
+    <string name="phone">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;电话：</string>
+    <string name="to">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;到：</string>
+    <string name="info_pay">&#160;&#160;&#160;&#160;信息费：</string>
+    <string name="load_pay">&#160;&#160;&#160;&#160;装车费：</string>
+    <string name="unload_pay">&#160;&#160;&#160;&#160;卸车费：</string>
+    <string name="goods">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;货品：</string>
+    <string name="distances">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;运距：</string>
+    <string name="freight">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;运费：</string>
+    <string name="deliver_date">发货日期：</string>
+    <string name="car_long">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;车长：</string>
+    <string name="road_loss">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;路损：</string>
+    <string name="remark">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;备注：</string>
+    <string name="confirm_bill">对方抢单成功，需要我确认后对方才可以接单</string>
+    <string name="car_num">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;车数：</string>
+    <string name="detail_address_">详细地址：</string>
+    <string name="car_type_">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;车型：</string>
+    <string name="door_head_photo">门头照</string>
+    <string name="add_goods">添加货品</string>
+    <string name="my_invite">我的邀请</string>
+    <string name="invite_driver">邀请司机</string>
+    <string name="input_certification_driver_phone">请输入平台已认证的司机手机号</string>
+    <string name="commit">提交</string>
+    <string name="img">图片</string>
+    <string-array name="custom_myweekdays">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+
+</resources>
