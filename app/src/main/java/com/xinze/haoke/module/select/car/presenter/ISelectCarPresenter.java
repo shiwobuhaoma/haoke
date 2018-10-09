@@ -1,6 +1,6 @@
-package com.xinze.haoke.module.select.presenter;
+package com.xinze.haoke.module.select.car.presenter;
 
-import com.xinze.haoke.module.select.view.ISelectCarView;
+import com.xinze.haoke.module.select.car.view.ISelectCarView;
 import com.xinze.haoke.module.transport.module.Car;
 import com.xinze.haoke.mvpbase.BasePresenter;
 

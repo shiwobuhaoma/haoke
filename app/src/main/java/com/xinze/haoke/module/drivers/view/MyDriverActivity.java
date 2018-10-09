@@ -54,7 +54,9 @@ public class MyDriverActivity extends BaseActivity {
     protected LinearLayoutManager llm;
     protected int mPosition = 0;
     protected String inviteFlag = null;
-    // onResume是否刷新标志
+    /**
+     * onResume是否刷新标志
+      */
     public static Boolean isRefresh = false;
 
 

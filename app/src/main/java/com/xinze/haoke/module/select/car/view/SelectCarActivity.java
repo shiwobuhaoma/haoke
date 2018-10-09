@@ -1,4 +1,4 @@
-package com.xinze.haoke.module.select.view;
+package com.xinze.haoke.module.select.car.view;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -20,9 +20,9 @@ import com.xinze.haoke.config.ProtocolConfig;
 import com.xinze.haoke.module.about.view.AboutUsActivity;
 import com.xinze.haoke.module.allot.view.AllotDriverActivity;
 import com.xinze.haoke.module.main.activity.MainActivity;
-import com.xinze.haoke.module.select.adapter.SelectCarAdapter;
+import com.xinze.haoke.module.select.car.adapter.SelectCarAdapter;
 import com.xinze.haoke.module.select.module.Protocol;
-import com.xinze.haoke.module.select.presenter.SelectCarPresenterImp;
+import com.xinze.haoke.module.select.car.presenter.SelectCarPresenterImp;
 import com.xinze.haoke.module.transport.module.Car;
 import com.xinze.haoke.utils.DialogUtil;
 import com.xinze.haoke.utils.DividerItemDecoration;

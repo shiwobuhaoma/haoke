@@ -1,6 +1,5 @@
 package com.xinze.haoke.module.ordinary.view;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.text.Html;
@@ -19,12 +18,14 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.xinze.haoke.App;
 import com.xinze.haoke.R;
 import com.xinze.haoke.base.BaseActivity;
-import com.xinze.haoke.config.AppConfig;
-import com.xinze.haoke.module.carType.modle.CarType;
-import com.xinze.haoke.module.carType.view.SelectCarTypeActivity;
+import com.xinze.haoke.config.ProtocolConfig;
+import com.xinze.haoke.module.about.view.AboutUsActivity;
+import com.xinze.haoke.module.select.carType.modle.CarType;
+import com.xinze.haoke.module.select.carType.view.SelectCarTypeActivity;
+import com.xinze.haoke.module.select.driver.view.SelectDriverActivity;
 import com.xinze.haoke.module.ordinary.modle.Bill;
 import com.xinze.haoke.module.ordinary.presenter.OrdinarySendGoodsPresenterImp;
-import com.xinze.haoke.utils.MessageEvent;
+import com.xinze.haoke.widget.FromDetailsInfoView;
 import com.xinze.haoke.widget.SelectAddressView2;
 import com.xinze.haoke.widget.SimpleToolbar;
 
@@ -50,22 +51,11 @@ import cn.qqtheme.framework.picker.AddressPicker;
 public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinarySendGoodsView, AddressPicker.OnAddressPickListener {
     @BindView(R.id.ordinary_toolbar)
     SimpleToolbar ordinaryToolbar;
-    @BindView(R.id.ordinary_from_et)
-    EditText ordinaryFromEt;
-    @BindView(R.id.ordinary_from_address_et)
-    EditText ordinaryFromAddressEt;
-    @BindView(R.id.ordinary_from_contact_et)
-    EditText ordinaryFromContactEt;
-    @BindView(R.id.ordinary_from_phone_et)
-    EditText ordinaryFromPhoneEt;
-    @BindView(R.id.ordinary_to_et)
-    EditText ordinaryToEt;
-    @BindView(R.id.ordinary_to_address_et)
-    EditText ordinaryToAddressEt;
-    @BindView(R.id.ordinary_to_contact_et)
-    EditText ordinaryToContactEt;
-    @BindView(R.id.ordinary_to_phone_et)
-    EditText ordinaryToPhoneEt;
+    @BindView(R.id.from)
+    FromDetailsInfoView fromWhere;
+    @BindView(R.id.to)
+    FromDetailsInfoView toWhere;
+
     @BindView(R.id.ordinary_info_pay_et)
     EditText ordinaryInfoPayEt;
     @BindView(R.id.ordinary_load_pay_et)
@@ -113,15 +103,44 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
     @BindView(R.id.ordinary_select_address)
     SelectAddressView2 ordinarySelectAddress;
 
+    @BindView(R.id.ordinary_unload_pay)
+    TextView ordinaryUnloadPay;
+    @BindView(R.id.ordinary_goods)
+    TextView ordinaryGoods;
+    @BindView(R.id.ordinary_distance)
+    TextView ordinaryDistance;
+    @BindView(R.id.ordinary_freight)
+    TextView ordinaryFreight;
+    @BindView(R.id.ordinary_delivery_date)
+    TextView ordinaryDeliveryDate;
+    @BindView(R.id.ordinary_delivery_line)
+    View ordinaryDeliveryLine;
+    @BindView(R.id.ordinary_car_number)
+    TextView ordinaryCarNumber;
+    @BindView(R.id.ordinary_car_type)
+    TextView ordinaryCarType;
+    @BindView(R.id.ordinary_car_long)
+    TextView ordinaryCarLong;
+    @BindView(R.id.ordinary_road_loss)
+    TextView ordinaryRoadLoss;
+    @BindView(R.id.ordinary_remark)
+    TextView ordinaryRemark;
+    @BindView(R.id.ordinary_rl)
+    RelativeLayout ordinaryRl;
+
     private ArrayList<Province> provinces;
 
 
     private boolean isSelectedProtocol;
     private boolean needMeComfirm;
-    private static final String PROTOCOL ="我已仔细阅读并同意<font color=\"#52affc\">《委托运输服务合同》</font>";
+    private static final String PROTOCOL = "我已仔细阅读并同意<font color=\"#52affc\">《委托运输服务合同》</font>";
+    private static final String SEND = "托运人";
+    private static final String RECEIVE = "接收人";
+    private static final String DRIVER = "司机选择";
+    private static final String RELEASE = "发布货单";
+    private static final String DIRECTIONA = "定向";
 
 
-    private int mCurrentView;
     private String fromID;
     private String toID = "0";
     private int who;
@@ -129,6 +148,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
     private OrdinarySendGoodsPresenterImp mPresenter;
     private String from;
     private CarType carType;
+    private String value =SEND ;
 
     @Override
     protected int initLayout() {
@@ -140,29 +160,39 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         EventBus.getDefault().register(this);
         from = getIntent().getStringExtra("from");
         initTitleBar();
+        fromWhere.setTitle(SEND);
+        fromWhere.setShowAddressDialog(new FromDetailsInfoView.ShowAddressDialog() {
+            @Override
+            public void showAddressDialog() {
+                value = SEND;
+                ordinarySelectAddress.setViewVisible();
+                half.setVisibility(View.VISIBLE);
+            }
+        });
+        toWhere.setTitle(RECEIVE);
+        toWhere.setShowAddressDialog(new FromDetailsInfoView.ShowAddressDialog() {
 
+            @Override
+            public void showAddressDialog() {
+                value = RECEIVE;
+                ordinarySelectAddress.setViewVisible();
+                half.setVisibility(View.VISIBLE);
+            }
+        });
         ordinarySelectAddress.setmOnSelectAddressListener(new SelectAddressView2.OnSelectAddressListener2() {
             @Override
             public void selectAddress(String name, String id) {
                 half.setVisibility(View.GONE);
-                switch (mCurrentView) {
-                    case R.id.ordinary_from_et:
-
-                        fromID = id;
-                        ordinaryFromEt.setText(name);
-
-                        break;
-                    case R.id.ordinary_to_et:
-
-                        toID = id;
-                        ordinaryToEt.setText(name);
-
-                        break;
-                    default:
-                        break;
+                fromID = id;
+                if (value.equals(SEND)) {
+                    fromWhere.setFrom(name);
+                } else if(value.equals(RECEIVE)){
+                    toWhere.setFrom(name);
                 }
+
             }
         });
+
         //隐藏标题栏和两边的箭头
         imcvTemMaterCalendarWeek.setTopbarVisible(true);
         //编辑日历属性
@@ -202,10 +232,11 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
 
     private void initTitleBar() {
         ordinaryToolbar.setLeftTitleVisible();
-        if ("定向".equals(from)) {
+        if (DIRECTIONA.equals(from)) {
             ordinaryToolbar.setMainTitle(R.string.home_directional_shipper);
             ordinaryProtocolRL.setVisibility(View.GONE);
             ordinaryWaitConfirm.setVisibility(View.GONE);
+            ordinaryRelease.setText("下一步");
         } else {
             ordinaryToolbar.setMainTitle(R.string.ordinary_send_goods);
             ordinaryProtocol.setText(Html.fromHtml(PROTOCOL));
@@ -226,19 +257,11 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         mPresenter.getAreaList("0");
     }
 
-    @OnClick({R.id.ordinary_from_et, R.id.ordinary_to_et, R.id.ordinary_wait_confirm, R.id.ordinary_protocol,
+    @OnClick({R.id.ordinary_wait_confirm, R.id.ordinary_protocol,
             R.id.ordinary_release, R.id.ordinary_delivery_from_date_et, R.id.ordinary_delivery_to_date_et,
             R.id.ordinary_car_type_et, R.id.ordinary_protocol_iv})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ordinary_from_et:
-                mCurrentView = R.id.ordinary_from_et;
-                showAddressDialog();
-                break;
-            case R.id.ordinary_to_et:
-                mCurrentView = R.id.ordinary_to_et;
-                showAddressDialog();
-                break;
             case R.id.ordinary_wait_confirm:
                 needMeComfirm = !needMeComfirm;
 
@@ -253,7 +276,12 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
                 }
                 break;
             case R.id.ordinary_release:
-                release();
+                if (RELEASE.equals(ordinaryRelease.getText().toString())){
+                    release();
+                }else{
+                    Bill bill = createBill();
+                    openActivity(SelectDriverActivity.class,"bill",bill);
+                }
                 break;
             case R.id.ordinary_delivery_from_date_et:
                 who = R.id.ordinary_delivery_from_date_et;
@@ -268,6 +296,8 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
                 break;
 
             case R.id.ordinary_protocol:
+                openActivity(AboutUsActivity.class,"type", ProtocolConfig.TRANSPORT_SERVICE_PROTOCOL);
+                break;
             case R.id.ordinary_protocol_iv:
                 isSelectedProtocol = !isSelectedProtocol;
                 if (isSelectedProtocol) {
@@ -284,16 +314,26 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
     }
 
     private void release() {
+        Bill bill = createBill();
+
+        mPresenter.releaseTheBillOfGoods(bill);
+    }
+
+    @NonNull
+    private Bill createBill() {
         Bill bill = new Bill();
         bill.setUserId(App.mUser.getId());
         bill.setFromAreaId(fromID);
-        bill.setFromDetailAdress(ordinaryFromAddressEt.getText().toString());
-        bill.setFromName(ordinaryFromContactEt.getText().toString());
-        bill.setFromPhone(ordinaryFromPhoneEt.getText().toString());
+        if (SEND.equals(fromWhere.getFromText())) {
+            bill.setFromDetailAdress(fromWhere.getFromText());
+            bill.setFromName(fromWhere.getContact());
+            bill.setFromPhone(fromWhere.getPhone());
+        } else {
+            bill.setFromDetailAdress(toWhere.getFromText());
+            bill.setFromName(toWhere.getContact());
+            bill.setFromPhone(toWhere.getPhone());
+        }
         bill.setToAreaId(toID);
-        bill.setToDetailAdress(ordinaryToAddressEt.getText().toString());
-        bill.setToName(ordinaryToContactEt.getText().toString());
-        bill.setToPhone(ordinaryToPhoneEt.getText().toString());
         bill.setPrice(ordinaryInfoPayEt.getText().toString());
         bill.setDistance(ordinaryDistanceEt.getText().toString());
         bill.setPrice(ordinaryFreightEt.getText().toString());
@@ -320,14 +360,9 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         bill.setMsgPrice(ordinaryInfoPayEt.getText().toString());
         bill.setLoadPrice(ordinaryLoadPayEt.getText().toString());
         bill.setUnloadPrice(ordinaryUnloadPayEt.getText().toString());
-
-        mPresenter.releaseTheBillOfGoods(bill);
+        return bill;
     }
 
-    private void showAddressDialog() {
-        ordinarySelectAddress.setViewVisible();
-        half.setVisibility(View.VISIBLE);
-    }
 
     @Override
     public void onAddressPicked(Province province, City city, County county) {
@@ -360,10 +395,10 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void receive(Object messageEvent) {
-        if (messageEvent instanceof CarType){
+        if (messageEvent instanceof CarType) {
             carType = (CarType) messageEvent;
             ordinaryCarTypeEt.setText(carType.getTruckname());
-        }else{
+        } else {
             ordinaryCarTypeEt.setText("");
         }
     }

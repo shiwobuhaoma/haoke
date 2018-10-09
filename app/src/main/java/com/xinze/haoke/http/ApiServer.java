@@ -5,7 +5,7 @@ import com.xinze.haoke.http.config.UrlConfig;
 import com.xinze.haoke.http.entity.BaseEntity;
 import com.xinze.haoke.module.about.modle.AboutUs;
 import com.xinze.haoke.module.add.modle.AddCarRespones;
-import com.xinze.haoke.module.carType.modle.CarType;
+import com.xinze.haoke.module.select.carType.modle.CarType;
 import com.xinze.haoke.module.certification.modle.CertificationRespones;
 import com.xinze.haoke.module.goods.bean.Goods;
 import com.xinze.haoke.module.invite.model.OwnerDriverVO;
@@ -36,7 +36,6 @@ import cn.qqtheme.framework.entity.Province;
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -48,8 +47,6 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
-import retrofit2.http.Streaming;
-import retrofit2.http.Url;
 
 /**
  * @author lxf
@@ -595,7 +592,13 @@ public interface ApiServer {
 
 
 
-
+    /**
+     * 获取常用司机列表
+     * @param headers 请求头
+     * @return 返回常用司机列表
+     */
+    @GET(UrlConfig.GET_COOPERATED_DRIVERS)
+    Observable<BaseEntity<List<OwnerDriverVO>>>  myCooperatedDrivers(@HeaderMap HashMap<String, String> headers);
 
 
 

@@ -59,9 +59,9 @@ public class GoodsRecycleViewAdapter extends RecyclerView.Adapter<GoodsRecycleVi
         } else {
             holder.goodsSelect.setChecked(false);
         }
-        if (mBS.get(position).isVisiable()){
+        if (mBS.get(position).isVisiable()) {
             holder.goodsSelect.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             holder.goodsSelect.setVisibility(View.GONE);
         }
         holder.itemView.setTag(position);
@@ -76,29 +76,30 @@ public class GoodsRecycleViewAdapter extends RecyclerView.Adapter<GoodsRecycleVi
         this.mBS = data;
         notifyDataSetChanged();
     }
+
     public void visiableAll() {
-        for (Goods good :mBS) {
+        for (Goods good : mBS) {
             good.setVisiable(true);
         }
         notifyDataSetChanged();
     }
 
     public void unvisiableAll() {
-        for (Goods good :mBS) {
+        for (Goods good : mBS) {
             good.setVisiable(false);
         }
         notifyDataSetChanged();
     }
 
     public void selectAll() {
-        for (Goods good :mBS) {
+        for (Goods good : mBS) {
             good.setTag(true);
         }
         notifyDataSetChanged();
     }
 
     public void unSelectAll() {
-        for (Goods good :mBS) {
+        for (Goods good : mBS) {
             good.setTag(false);
         }
         notifyDataSetChanged();
@@ -109,7 +110,7 @@ public class GoodsRecycleViewAdapter extends RecyclerView.Adapter<GoodsRecycleVi
         notifyItemChanged(mPosition);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.goods_name)
         TextView goodsName;
@@ -124,18 +125,19 @@ public class GoodsRecycleViewAdapter extends RecyclerView.Adapter<GoodsRecycleVi
 
         }
 
-         @Override
-         public void onClick(View v) {
-             mOnItemViewClick.itemClick((int)itemView.getTag());
-         }
-     }
+        @Override
+        public void onClick(View v) {
+            mOnItemViewClick.itemClick((int) itemView.getTag());
+        }
+    }
 
-  public   interface OnItemViewClick{
+    public interface OnItemViewClick {
         void itemClick(int position);
     }
 
-    public void setOnItemViewClick(OnItemViewClick onItemViewClick){
+    public void setOnItemViewClick(OnItemViewClick onItemViewClick) {
         this.mOnItemViewClick = onItemViewClick;
     }
+
     private OnItemViewClick mOnItemViewClick;
 }

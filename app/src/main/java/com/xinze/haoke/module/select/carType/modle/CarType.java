@@ -1,4 +1,4 @@
-package com.xinze.haoke.module.carType.modle;
+package com.xinze.haoke.module.select.carType.modle;
 
 public class CarType {
 

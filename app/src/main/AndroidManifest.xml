@@ -74,7 +74,7 @@
         <activity android:name=".module.regular.view.RegularRunActivity" />
         <activity android:name=".module.order.view.OrderDetailActivity" />
         <activity android:name=".module.transport.view.TransportDetailsActivity" />
-        <activity android:name=".module.select.view.SelectCarActivity" />
+        <activity android:name=".module.select.car.view.SelectCarActivity" />
         <activity android:name=".module.add.view.AddMyCarActivity" />
         <activity
             android:name=".module.drivers.view.MyDriverActivity"
@@ -121,7 +121,9 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".module.carType.view.SelectCarTypeActivity"></activity>
+        <activity android:name=".module.select.carType.view.SelectCarTypeActivity"></activity>
+        <activity android:name=".module.select.driver.view.SelectDriverActivity" />
+        <activity android:name=".module.select.goodsType.view.SelectGoodsTypeActivity" />
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".module.carType.view.SelectCarTypeActivity">
+    tools:context=".module.select.carType.view.SelectCarTypeActivity">
 
     <com.xinze.haoke.widget.SimpleToolbar
         android:id="@+id/car_type_toolbar"

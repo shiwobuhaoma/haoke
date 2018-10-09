@@ -1,4 +1,4 @@
-package com.xinze.haoke.module.select.presenter;
+package com.xinze.haoke.module.select.car.presenter;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -11,15 +11,14 @@ import com.xinze.haoke.http.entity.BaseEntity;
 import com.xinze.haoke.http.observer.BaseObserver;
 import com.xinze.haoke.module.select.module.BillOrder;
 import com.xinze.haoke.module.select.module.Protocol;
-import com.xinze.haoke.module.select.view.ISelectCarView;
-import com.xinze.haoke.module.select.view.SelectCarActivity;
+import com.xinze.haoke.module.select.car.view.ISelectCarView;
+import com.xinze.haoke.module.select.car.view.SelectCarActivity;
 import com.xinze.haoke.module.transport.module.Car;
 import com.xinze.haoke.mvpbase.BasePresenterImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;

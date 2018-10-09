@@ -1,4 +1,4 @@
-package com.xinze.haoke.module.carType.view;
+package com.xinze.haoke.module.select.carType.view;
 
 import com.xinze.haoke.mvpbase.BaseView;
 

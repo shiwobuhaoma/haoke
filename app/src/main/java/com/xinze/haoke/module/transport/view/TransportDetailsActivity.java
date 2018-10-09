@@ -8,11 +8,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.vondear.rxtools.view.RxToast;
 import com.xinze.haoke.App;
 import com.xinze.haoke.R;
 import com.xinze.haoke.base.BaseActivity;
-import com.xinze.haoke.module.select.view.SelectCarActivity;
+import com.xinze.haoke.module.select.car.view.SelectCarActivity;
 import com.xinze.haoke.module.transport.module.TransportDetails;
 import com.xinze.haoke.module.transport.presenter.TransportDetailsPresenterImp;
 import com.xinze.haoke.widget.BottomPopupMenu;

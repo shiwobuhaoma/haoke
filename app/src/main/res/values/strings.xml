@@ -247,6 +247,12 @@
     <string name="input_certification_driver_phone">请输入平台已认证的司机手机号</string>
     <string name="commit">提交</string>
     <string name="img">图片</string>
+    <string name="please_select_driver">请选择常用司机</string>
+    <string name="select_always_driver">选择常用司机</string>
+    <string name="always_goods_type">常拉货品</string>
+    <string name="please_input_goods_type_name">请输入货品名称</string>
+    <string name="select_tip">请从“常拉货品”选择或者在下方输入后确认</string>
+    <string name="select_goods">选择货品</string>
     <string-array name="custom_myweekdays">
         <item>日</item>
         <item>一</item>

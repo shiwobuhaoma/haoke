@@ -21,6 +21,7 @@ import com.xinze.haoke.mvpbase.BaseView;
 import com.xinze.haoke.utils.ActivityStackManager;
 import com.xinze.haoke.utils.ToastUtils;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
@@ -175,6 +176,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     protected void openActivity(Class clazz, String key, String value) {
+        Intent intent = new Intent(this, clazz);
+        intent.putExtra(key, value);
+        startActivity(intent);
+    }
+    protected void openActivity(Class clazz, String key, Serializable value) {
         Intent intent = new Intent(this, clazz);
         intent.putExtra(key, value);
         startActivity(intent);

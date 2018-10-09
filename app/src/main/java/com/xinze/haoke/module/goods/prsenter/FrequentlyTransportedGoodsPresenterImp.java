@@ -26,7 +26,9 @@ public class FrequentlyTransportedGoodsPresenterImp extends BasePresenterImpl<IF
     @Override
     public void getMyUsualCargo(int pageSize, int pageNum) {
         HashMap<String, String> headers = HeaderConfig.getHeaders();
-        RetrofitFactory.getInstence().Api().getMyUsualCargo(headers,pageSize,pageNum).compose(this.<BaseEntity<List<Goods>>>setThread()).subscribe(new BaseObserver<List<Goods>>(mContext) {
+        RetrofitFactory.getInstence().Api().getMyUsualCargo(headers,pageSize,pageNum)
+                .compose(this.<BaseEntity<List<Goods>>>setThread())
+                .subscribe(new BaseObserver<List<Goods>>(mContext) {
             @Override
             protected void onSuccees(BaseEntity<List<Goods>> t) throws Exception {
                 if (t != null){

@@ -1,6 +1,12 @@
 package com.xinze.haoke.module.ordinary.modle;
 
-public class Bill {
+import java.io.Serializable;
+
+/**
+ * 货单
+ * @author lxf
+ */
+public class Bill implements Serializable{
 
 
     /**

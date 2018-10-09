@@ -1,5 +1,9 @@
 package com.xinze.haoke.config;
 
+/**
+ * 协议类型
+ * @author lxf
+ */
 public class ProtocolConfig {
     /**
      * 协议类型：

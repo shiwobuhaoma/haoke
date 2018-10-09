@@ -1,8 +1,7 @@
 package com.xinze.haoke.module.invite.model;
 
 /**
- * 
- * @功能 我(货主)的司机VO,关联了一些司机/货主信息
+ * @功能 我(货主)的司机VO, 关联了一些司机/货主信息
  * @作者 jinlizhi
  * @时间 2018年4月25日下午9:04:17
  */
@@ -30,9 +29,8 @@ public class OwnerDriverVO extends OwnerDriver {
      * 关联车辆
      */
     private String appointTruckCount;
-    
-    
-    
+
+
     /**
      * 货主姓名
      */
@@ -49,7 +47,12 @@ public class OwnerDriverVO extends OwnerDriver {
      * 货主类型说明
      */
     private String ownerTypeDesc;
-    
+
+    /**
+     * 是否选中
+     */
+    private Boolean mChecked;
+
 
     public String getDriverPhoto() {
         return driverPhoto;
@@ -121,6 +124,14 @@ public class OwnerDriverVO extends OwnerDriver {
 
     public void setOwnerType(String ownerType) {
         this.ownerType = ownerType;
+    }
+
+    public Boolean isChecked() {
+        return mChecked;
+    }
+
+    public void setChecked(Boolean checked) {
+        mChecked = checked;
     }
 
 }

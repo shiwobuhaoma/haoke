@@ -1,4 +1,4 @@
-package com.xinze.haoke.module.select.adapter;
+package com.xinze.haoke.module.select.car.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

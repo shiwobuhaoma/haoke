@@ -5,7 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xinze.haoke.base.BaseFragment;
 import com.xinze.haoke.module.main.modle.OrderItem;
-import com.xinze.haoke.module.select.view.SelectCarActivity;
+import com.xinze.haoke.module.select.car.view.SelectCarActivity;
 import com.xinze.haoke.module.send.adapter.BillRecycleViewAdapter;
 import com.xinze.haoke.module.send.presenter.BillPresenterImp;
 import com.xinze.haoke.module.send.view.IBillView;

@@ -1,4 +1,4 @@
-package com.xinze.haoke.module.carType.presenter;
+package com.xinze.haoke.module.select.carType.presenter;
 
 import android.content.Context;
 
@@ -6,9 +6,9 @@ import com.xinze.haoke.http.RetrofitFactory;
 import com.xinze.haoke.http.config.HeaderConfig;
 import com.xinze.haoke.http.entity.BaseEntity;
 import com.xinze.haoke.http.observer.BaseObserver;
-import com.xinze.haoke.module.carType.modle.CarType;
-import com.xinze.haoke.module.carType.view.ISelectCarTypeView;
-import com.xinze.haoke.module.carType.view.SelectCarTypeActivity;
+import com.xinze.haoke.module.select.carType.modle.CarType;
+import com.xinze.haoke.module.select.carType.view.ISelectCarTypeView;
+import com.xinze.haoke.module.select.carType.view.SelectCarTypeActivity;
 import com.xinze.haoke.mvpbase.BasePresenterImpl;
 
 import java.util.HashMap;
@@ -28,7 +28,9 @@ public class SelectCarTypePresenterImp extends BasePresenterImpl<ISelectCarTypeV
     public void getCarType() {
 
         HashMap<String, String> headers = HeaderConfig.getHeaders();
-        RetrofitFactory.getInstence().Api().getCarType(headers).compose(this.setThread()).subscribe(new BaseObserver<List<CarType>>(mContext) {
+        RetrofitFactory.getInstence().Api().getCarType(headers)
+                .compose(this.setThread())
+                .subscribe(new BaseObserver<List<CarType>>(mContext) {
             @Override
             protected void onSuccees(BaseEntity<List<CarType>> t) throws Exception {
                 if (t != null){

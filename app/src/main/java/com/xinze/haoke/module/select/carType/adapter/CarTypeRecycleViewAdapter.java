@@ -1,4 +1,4 @@
-package com.xinze.haoke.module.carType.adapter;
+package com.xinze.haoke.module.select.carType.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.xinze.haoke.R;
-import com.xinze.haoke.module.carType.modle.CarType;
+import com.xinze.haoke.module.select.carType.modle.CarType;
 
 import java.util.List;
 
