@@ -1,6 +1,8 @@
 package com.xinze.haoke.module.goods.bean;
 
-public class Goods {
+import java.io.Serializable;
+
+public class Goods implements Serializable{
     private String cargoName;
     private String id;
     private String userId;

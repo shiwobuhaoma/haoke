@@ -37,7 +37,7 @@ public class OrdinarySendGoodsPresenterImp extends BasePresenterImpl<IOrdinarySe
                 .subscribe(new BaseObserver<List<Province>>(){
 
             @Override
-            protected void onSuccees(BaseEntity<List<Province>> t) throws Exception {
+            protected void onSuccess(BaseEntity<List<Province>> t) throws Exception {
                 if (t != null){
                     if (t.isSuccess()){
                         ArrayList<Province> data = (ArrayList<Province>) t.getData();
@@ -70,7 +70,7 @@ public class OrdinarySendGoodsPresenterImp extends BasePresenterImpl<IOrdinarySe
                 .subscribe(new BaseObserver(){
 
             @Override
-            protected void onSuccees(BaseEntity t) throws Exception {
+            protected void onSuccess(BaseEntity t) throws Exception {
                 if (t != null){
                     if (t.isSuccess()){
                         mActivity.releaseTheBillOfGoodsSuccess(t.getMsg());

@@ -111,7 +111,7 @@ public class SelectAddressView2 extends LinearLayout implements AddressAdapter.O
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<List<Address>>(mContext) {
                     @Override
-                    protected void onSuccees(BaseEntity<List<Address>> t) throws Exception {
+                    protected void onSuccess(BaseEntity<List<Address>> t) throws Exception {
                         if (t != null) {
                             if (t.isSuccess()) {
                                 if (PROVINCE == giveWhereData) {

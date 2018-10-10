@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/select_goods_type_name"
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_gray_button"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_number"
+        android:padding="15dp" />
+</FrameLayout>

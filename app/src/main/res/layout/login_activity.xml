@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
+                android:text="13111111111"
                 android:drawableStart="@mipmap/login_phone_pic"
                 android:hint="@string/input_telephone_number" />
         </android.support.design.widget.TextInputLayout>
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@mipmap/login_pwd_pic"
                 android:hint="@string/input_pass_word"
+                android:text="123456"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 

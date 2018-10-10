@@ -5,7 +5,7 @@ import com.xinze.haoke.http.config.UrlConfig;
 import com.xinze.haoke.http.entity.BaseEntity;
 import com.xinze.haoke.module.about.modle.AboutUs;
 import com.xinze.haoke.module.add.modle.AddCarRespones;
-import com.xinze.haoke.module.select.carType.modle.CarType;
+import com.xinze.haoke.module.select.cartype.modle.CarType;
 import com.xinze.haoke.module.certification.modle.CertificationRespones;
 import com.xinze.haoke.module.goods.bean.Goods;
 import com.xinze.haoke.module.invite.model.OwnerDriverVO;

@@ -1,7 +1,9 @@
 package com.xinze.haoke.module.select.car.view;
 
 import com.xinze.haoke.mvpbase.BaseView;
-
+/**
+ * @author lxf
+ */
 public interface ISelectCarView extends BaseView {
     void getCarryTruckListSuccess(String msg);
     void getCarryTruckListFailed(String msg);

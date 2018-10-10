@@ -5,7 +5,9 @@ import com.xinze.haoke.module.transport.module.Car;
 import com.xinze.haoke.mvpbase.BasePresenter;
 
 import java.util.List;
-
+/**
+ * @author lxf
+ */
 public interface ISelectCarPresenter extends BasePresenter<ISelectCarView> {
     void getCarryTruckList(String id);
     void getProtocolByType(String protocolType);

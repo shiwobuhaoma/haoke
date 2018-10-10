@@ -28,7 +28,7 @@ public class MyInvitePresenterImp extends BasePresenterImpl<IMyInviteView> imple
         HashMap<String, String> headers = HeaderConfig.getHeaders();
         RetrofitFactory.getInstence().Api().getMyInviteDriver(headers,pageNum, pageSize, inviteFlag).compose(this.<BaseEntity<List<OwnerDriverVO>>>setThread()).subscribe(new BaseObserver<List<OwnerDriverVO>>(mContext) {
             @Override
-            protected void onSuccees(BaseEntity<List<OwnerDriverVO>> t) throws Exception {
+            protected void onSuccess(BaseEntity<List<OwnerDriverVO>> t) throws Exception {
                 if (t != null) {
                     if (t.isSuccess()) {
                         mMyInviteActivity.setData(t.getData());
@@ -51,7 +51,7 @@ public class MyInvitePresenterImp extends BasePresenterImpl<IMyInviteView> imple
         RetrofitFactory.getInstence().Api().inviteDriver(headers,mobile).
                 compose(this.<BaseEntity>setThread()).subscribe(new BaseObserver(mContext) {
             @Override
-            protected void onSuccees(BaseEntity t) throws Exception {
+            protected void onSuccess(BaseEntity t) throws Exception {
                 if (t != null) {
                     if (t.isSuccess()) {
                         mMyInviteActivity.myCooperatedDriversSuccess(t.getMsg());

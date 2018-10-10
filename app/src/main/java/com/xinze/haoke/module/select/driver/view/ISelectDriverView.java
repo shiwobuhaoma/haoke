@@ -1,7 +1,9 @@
 package com.xinze.haoke.module.select.driver.view;
 
 import com.xinze.haoke.mvpbase.BaseView;
-
+/**
+ * @author lxf
+ */
 public interface ISelectDriverView extends BaseView {
 
     void releaseTheBillOfGoodsSuccess(String msg);

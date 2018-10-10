@@ -22,7 +22,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+/**
+ * @author lxf
+ */
 public class SelectCarAdapter extends RecyclerView.Adapter<SelectCarAdapter.ViewHolder> implements View.OnClickListener {
     private Context mContext;
     private List<Car> mCarList;

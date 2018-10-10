@@ -121,9 +121,9 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".module.select.carType.view.SelectCarTypeActivity"></activity>
+        <activity android:name=".module.select.cartype.view.SelectCarTypeActivity"></activity>
         <activity android:name=".module.select.driver.view.SelectDriverActivity" />
-        <activity android:name=".module.select.goodsType.view.SelectGoodsTypeActivity" />
+        <activity android:name=".module.select.goodstype.view.SelectGoodsTypeActivity" />
     </application>
 
 </manifest>

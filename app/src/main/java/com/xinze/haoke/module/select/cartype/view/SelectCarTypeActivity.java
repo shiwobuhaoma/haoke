@@ -1,4 +1,4 @@
-package com.xinze.haoke.module.select.carType.view;
+package com.xinze.haoke.module.select.cartype.view;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import com.xinze.haoke.R;
 import com.xinze.haoke.base.BaseActivity;
-import com.xinze.haoke.module.select.carType.adapter.CarTypeRecycleViewAdapter;
-import com.xinze.haoke.module.select.carType.modle.CarType;
-import com.xinze.haoke.module.select.carType.presenter.SelectCarTypePresenterImp;
+import com.xinze.haoke.module.select.cartype.adapter.CarTypeRecycleViewAdapter;
+import com.xinze.haoke.module.select.cartype.modle.CarType;
+import com.xinze.haoke.module.select.cartype.presenter.SelectCarTypePresenterImp;
 import com.xinze.haoke.widget.SimpleToolbar;
 
 import org.greenrobot.eventbus.EventBus;

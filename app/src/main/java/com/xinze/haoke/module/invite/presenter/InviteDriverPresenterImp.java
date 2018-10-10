@@ -25,7 +25,7 @@ public class InviteDriverPresenterImp extends BasePresenterImpl<IInviteDriverVie
         HashMap<String, String> headers = HeaderConfig.getHeaders();
         RetrofitFactory.getInstence().Api().inviteDriver(headers,phone).compose(this.<BaseEntity>setThread()).subscribe(new BaseObserver(mContext) {
             @Override
-            protected void onSuccees(BaseEntity t) throws Exception {
+            protected void onSuccess(BaseEntity t) throws Exception {
                 if (t != null) {
                     if (t.isSuccess()) {
                         activity.inviteDriversSuccess(t.getMsg());

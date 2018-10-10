@@ -30,7 +30,7 @@ public class FrequentlyTransportedGoodsPresenterImp extends BasePresenterImpl<IF
                 .compose(this.<BaseEntity<List<Goods>>>setThread())
                 .subscribe(new BaseObserver<List<Goods>>(mContext) {
             @Override
-            protected void onSuccees(BaseEntity<List<Goods>> t) throws Exception {
+            protected void onSuccess(BaseEntity<List<Goods>> t) throws Exception {
                 if (t != null){
                     if (t.isSuccess()){
                         mFrequentlyTransportedGoodsActivity.setData(t.getData());
@@ -54,7 +54,7 @@ public class FrequentlyTransportedGoodsPresenterImp extends BasePresenterImpl<IF
 
         RetrofitFactory.getInstence().Api().getMyUsualCargoAdd(headers,str).compose(this.<BaseEntity>setThread()).subscribe(new BaseObserver(mContext) {
             @Override
-            protected void onSuccees(BaseEntity t) throws Exception {
+            protected void onSuccess(BaseEntity t) throws Exception {
                 if (t != null){
                     if (t.isSuccess()){
                         mFrequentlyTransportedGoodsActivity.myUsualCargoAddSuccess(t.getMsg());
@@ -78,7 +78,7 @@ public class FrequentlyTransportedGoodsPresenterImp extends BasePresenterImpl<IF
 
         RetrofitFactory.getInstence().Api().getMyUsualCargoDel(headers,str).compose(this.<BaseEntity>setThread()).subscribe(new BaseObserver(mContext) {
             @Override
-            protected void onSuccees(BaseEntity t) throws Exception {
+            protected void onSuccess(BaseEntity t) throws Exception {
                 if (t != null){
                     if (t.isSuccess()){
                         mFrequentlyTransportedGoodsActivity.myUsualCargoDelSuccess(t.getMsg());

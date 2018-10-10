@@ -20,7 +20,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+/**
+ * @author lxf
+ */
 public class SelectDriverRecycleAdapter extends RecyclerView.Adapter<SelectDriverRecycleAdapter.ViewHolder> {
 
     private Context mContext;

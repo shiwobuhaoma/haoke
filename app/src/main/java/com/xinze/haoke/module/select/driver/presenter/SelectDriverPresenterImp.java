@@ -18,8 +18,9 @@ import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-
-
+/**
+ * @author lxf
+ */
 public class SelectDriverPresenterImp extends BasePresenterImpl<ISelectDriverView> implements ISelectDriverPresenter {
 
     private SelectDriverActivity mActivity;
@@ -39,7 +40,7 @@ public class SelectDriverPresenterImp extends BasePresenterImpl<ISelectDriverVie
                 .subscribe(new BaseObserver(mActivity){
 
                     @Override
-                    protected void onSuccees(BaseEntity t) throws Exception {
+                    protected void onSuccess(BaseEntity t) throws Exception {
                         if (t != null){
                             if (t.isSuccess()){
                                 mActivity.releaseTheBillOfGoodsSuccess(t.getMsg());
@@ -63,7 +64,7 @@ public class SelectDriverPresenterImp extends BasePresenterImpl<ISelectDriverVie
                 .compose(this.setThread())
                 .subscribe(new BaseObserver<List<OwnerDriverVO>>(mContext) {
                     @Override
-                    protected void onSuccees(BaseEntity<List<OwnerDriverVO>> t) throws Exception {
+                    protected void onSuccess(BaseEntity<List<OwnerDriverVO>> t) throws Exception {
                         if (t != null){
                             if (t.isSuccess()){
                                 mActivity.setData(t.getData());

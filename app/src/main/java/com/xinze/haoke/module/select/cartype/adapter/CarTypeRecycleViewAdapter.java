@@ -1,4 +1,4 @@
-package com.xinze.haoke.module.select.carType.adapter;
+package com.xinze.haoke.module.select.cartype.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.xinze.haoke.R;
-import com.xinze.haoke.module.select.carType.modle.CarType;
+import com.xinze.haoke.module.select.cartype.modle.CarType;
 
 import java.util.List;
 
@@ -95,6 +95,10 @@ public class CarTypeRecycleViewAdapter extends RecyclerView.Adapter<CarTypeRecyc
     }
 
     public interface OnItemViewClick {
+        /**
+         * 条目点击事件
+         * @param position 点击的位置
+         */
         void itemClick(int position);
     }
 

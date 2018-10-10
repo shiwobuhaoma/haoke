@@ -20,11 +20,13 @@ import com.xinze.haoke.R;
 import com.xinze.haoke.base.BaseActivity;
 import com.xinze.haoke.config.ProtocolConfig;
 import com.xinze.haoke.module.about.view.AboutUsActivity;
-import com.xinze.haoke.module.select.carType.modle.CarType;
-import com.xinze.haoke.module.select.carType.view.SelectCarTypeActivity;
+import com.xinze.haoke.module.goods.bean.Goods;
+import com.xinze.haoke.module.select.cartype.modle.CarType;
+import com.xinze.haoke.module.select.cartype.view.SelectCarTypeActivity;
 import com.xinze.haoke.module.select.driver.view.SelectDriverActivity;
 import com.xinze.haoke.module.ordinary.modle.Bill;
 import com.xinze.haoke.module.ordinary.presenter.OrdinarySendGoodsPresenterImp;
+import com.xinze.haoke.module.select.goodstype.view.SelectGoodsTypeActivity;
 import com.xinze.haoke.widget.FromDetailsInfoView;
 import com.xinze.haoke.widget.SelectAddressView2;
 import com.xinze.haoke.widget.SimpleToolbar;
@@ -148,6 +150,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
     private OrdinarySendGoodsPresenterImp mPresenter;
     private String from;
     private CarType carType;
+    private Goods goods;
     private String value =SEND ;
 
     @Override
@@ -257,7 +260,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         mPresenter.getAreaList("0");
     }
 
-    @OnClick({R.id.ordinary_wait_confirm, R.id.ordinary_protocol,
+    @OnClick({R.id.ordinary_wait_confirm, R.id.ordinary_protocol,R.id.ordinary_goods_et,
             R.id.ordinary_release, R.id.ordinary_delivery_from_date_et, R.id.ordinary_delivery_to_date_et,
             R.id.ordinary_car_type_et, R.id.ordinary_protocol_iv})
     public void onClick(View view) {
@@ -294,6 +297,9 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
             case R.id.ordinary_car_type_et:
                 openActivity(SelectCarTypeActivity.class);
                 break;
+            case R.id.ordinary_goods_et:
+                openActivity(SelectGoodsTypeActivity.class);
+                break;
 
             case R.id.ordinary_protocol:
                 openActivity(AboutUsActivity.class,"type", ProtocolConfig.TRANSPORT_SERVICE_PROTOCOL);
@@ -315,11 +321,12 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
 
     private void release() {
         Bill bill = createBill();
-
+        if (bill == null){
+            return;
+        }
         mPresenter.releaseTheBillOfGoods(bill);
     }
 
-    @NonNull
     private Bill createBill() {
         Bill bill = new Bill();
         bill.setUserId(App.mUser.getId());
@@ -340,6 +347,9 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         bill.setDateFrom(ordinaryDeliveryFromDateEt.getText().toString());
         bill.setDateTo(ordinaryDeliveryToDateEt.getText().toString());
         bill.setTruckNumber(ordinaryCarNumberEt.getText().toString());
+        if (carType == null){
+            return null;
+        }
         bill.setTruckCode(carType.getTruckcode());
         bill.setTruckLong(ordinaryCarLongEt.getText().toString());
         bill.setJourneyLoss(ordinaryRoadLossEt.getText().toString());
@@ -398,6 +408,9 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         if (messageEvent instanceof CarType) {
             carType = (CarType) messageEvent;
             ordinaryCarTypeEt.setText(carType.getTruckname());
+        } else if(messageEvent instanceof Goods){
+            goods = (Goods) messageEvent;
+            ordinaryGoodsEt.setText(goods.getCargoName());
         } else {
             ordinaryCarTypeEt.setText("");
         }

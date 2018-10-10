@@ -1,5 +1,7 @@
-package com.xinze.haoke.module.select.carType.modle;
-
+package com.xinze.haoke.module.select.cartype.modle;
+/**
+ * @author lxf
+ */
 public class CarType {
 
 
