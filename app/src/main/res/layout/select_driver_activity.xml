@@ -17,7 +17,7 @@
         android:layout_below="@id/select_driver_toolbar"
         android:background="@color/line"
         android:padding="15dp"
-        tool:text="@string/please_select_driver" />
+        android:text="@string/please_select_driver"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/select_driver_rv"
@@ -38,6 +38,7 @@
             android:id="@+id/ordinary_protocol_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:layout_centerVertical="true"
             android:background="@mipmap/select_choice"
             android:contentDescription="@string/img" />

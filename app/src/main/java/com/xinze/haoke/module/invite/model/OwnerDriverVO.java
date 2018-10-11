@@ -51,7 +51,7 @@ public class OwnerDriverVO extends OwnerDriver {
     /**
      * 是否选中
      */
-    private Boolean mChecked;
+    private boolean mChecked ;
 
 
     public String getDriverPhoto() {
@@ -126,11 +126,11 @@ public class OwnerDriverVO extends OwnerDriver {
         this.ownerType = ownerType;
     }
 
-    public Boolean isChecked() {
+    public boolean isChecked() {
         return mChecked;
     }
 
-    public void setChecked(Boolean checked) {
+    public void setChecked(boolean checked) {
         mChecked = checked;
     }
 

@@ -3,6 +3,8 @@ package com.xinze.haoke.module.select.driver.view;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,7 +16,7 @@ import com.xinze.haoke.base.BaseActivity;
 import com.xinze.haoke.bean.SpaceItemDecoration;
 import com.xinze.haoke.config.ProtocolConfig;
 import com.xinze.haoke.module.about.view.AboutUsActivity;
-import com.xinze.haoke.module.select.car.adapter.SelectDriverRecycleAdapter;
+import com.xinze.haoke.module.select.driver.adapter.SelectDriverRecycleAdapter;
 import com.xinze.haoke.module.select.driver.presenter.SelectDriverPresenterImp;
 import com.xinze.haoke.module.invite.model.OwnerDriverVO;
 import com.xinze.haoke.module.ordinary.modle.Bill;
@@ -49,7 +51,7 @@ public class SelectDriverActivity extends BaseActivity implements ISelectDriverV
     private String mId;
     private Bill bill;
     private String ownerTruckCount;
-
+    private static final String PROTOCOL = "我已仔细阅读并同意<font color=\"#52affc\">《委托运输服务合同》</font>";
     @Override
     protected int initLayout() {
         return R.layout.select_driver_activity;
@@ -62,6 +64,7 @@ public class SelectDriverActivity extends BaseActivity implements ISelectDriverV
         initTitleBar();
         // 初始化RecyclerView
         initRecyclerView();
+        ordinaryProtocol.setText(Html.fromHtml(PROTOCOL));
     }
 
     @Override
@@ -73,6 +76,12 @@ public class SelectDriverActivity extends BaseActivity implements ISelectDriverV
     private void initTitleBar() {
         mToolbar.setLeftTitleVisible();
         mToolbar.setMainTitle(R.string.select_always_driver);
+        mToolbar.setLeftTitleClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initRecyclerView() {
@@ -85,7 +94,11 @@ public class SelectDriverActivity extends BaseActivity implements ISelectDriverV
                 OwnerDriverVO ownerDriverVO = mData.get(position);
                 ownerTruckCount = ownerDriverVO.getOwnerTruckCount();
                 mId = ownerDriverVO.getId();
-                bill.setDriverId(mId);
+                if (ownerDriverVO.isChecked()){
+                    bill.setDriverId(mId);
+                }else{
+                    bill.setDriverId("");
+                }
                 mAdapter.selectOne(position);
             }
         });
@@ -126,7 +139,12 @@ public class SelectDriverActivity extends BaseActivity implements ISelectDriverV
                     });
                     rxDialogSureCancel.show();
                 }else{
-                    release();
+                    if (TextUtils.isEmpty(bill.getDriverId())){
+                        release();
+                    }else{
+                        shotToast("请选择一位司机");
+                    }
+
                 }
 
                 break;

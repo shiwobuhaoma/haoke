@@ -134,7 +134,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
 
 
     private boolean isSelectedProtocol;
-    private boolean needMeComfirm;
+    private boolean needMeConfirm;
     private static final String PROTOCOL = "我已仔细阅读并同意<font color=\"#52affc\">《委托运输服务合同》</font>";
     private static final String SEND = "托运人";
     private static final String RECEIVE = "接收人";
@@ -151,7 +151,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
     private String from;
     private CarType carType;
     private Goods goods;
-    private String value =SEND ;
+    private String value = SEND;
 
     @Override
     protected int initLayout() {
@@ -189,7 +189,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
                 fromID = id;
                 if (value.equals(SEND)) {
                     fromWhere.setFrom(name);
-                } else if(value.equals(RECEIVE)){
+                } else if (value.equals(RECEIVE)) {
                     toWhere.setFrom(name);
                 }
 
@@ -260,15 +260,15 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         mPresenter.getAreaList("0");
     }
 
-    @OnClick({R.id.ordinary_wait_confirm, R.id.ordinary_protocol,R.id.ordinary_goods_et,
+    @OnClick({R.id.ordinary_wait_confirm, R.id.ordinary_protocol, R.id.ordinary_goods_et,
             R.id.ordinary_release, R.id.ordinary_delivery_from_date_et, R.id.ordinary_delivery_to_date_et,
             R.id.ordinary_car_type_et, R.id.ordinary_protocol_iv})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ordinary_wait_confirm:
-                needMeComfirm = !needMeComfirm;
+                needMeConfirm = !needMeConfirm;
 
-                if (needMeComfirm) {
+                if (needMeConfirm) {
                     Drawable drawable = getApplicationContext().getResources().getDrawable(R.mipmap.select_choicd);
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                     ordinaryWaitConfirm.setCompoundDrawables(drawable, null, null, null);
@@ -279,11 +279,13 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
                 }
                 break;
             case R.id.ordinary_release:
-                if (RELEASE.equals(ordinaryRelease.getText().toString())){
+                if (RELEASE.equals(ordinaryRelease.getText().toString())) {
                     release();
-                }else{
+                } else {
                     Bill bill = createBill();
-                    openActivity(SelectDriverActivity.class,"bill",bill);
+                    if (bill != null) {
+                        openActivity(SelectDriverActivity.class, "bill", bill);
+                    }
                 }
                 break;
             case R.id.ordinary_delivery_from_date_et:
@@ -302,7 +304,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
                 break;
 
             case R.id.ordinary_protocol:
-                openActivity(AboutUsActivity.class,"type", ProtocolConfig.TRANSPORT_SERVICE_PROTOCOL);
+                openActivity(AboutUsActivity.class, "type", ProtocolConfig.TRANSPORT_SERVICE_PROTOCOL);
                 break;
             case R.id.ordinary_protocol_iv:
                 isSelectedProtocol = !isSelectedProtocol;
@@ -321,7 +323,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
 
     private void release() {
         Bill bill = createBill();
-        if (bill == null){
+        if (bill == null) {
             return;
         }
         mPresenter.releaseTheBillOfGoods(bill);
@@ -347,7 +349,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         bill.setDateFrom(ordinaryDeliveryFromDateEt.getText().toString());
         bill.setDateTo(ordinaryDeliveryToDateEt.getText().toString());
         bill.setTruckNumber(ordinaryCarNumberEt.getText().toString());
-        if (carType == null){
+        if (carType == null) {
             return null;
         }
         bill.setTruckCode(carType.getTruckcode());
@@ -355,11 +357,10 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         bill.setJourneyLoss(ordinaryRoadLossEt.getText().toString());
         bill.setRemarks(ordinaryRemarkEt.getText().toString());
         if ("定向".equals(from)) {
-            if (isSelectedProtocol) {
-                bill.setWlBilltype("1");
-            }
+             bill.setWlBilltype("1");
+             bill.setConfirmFlag("0");
         } else {
-            if (needMeComfirm) {
+            if (needMeConfirm) {
                 bill.setConfirmFlag("1");
             } else {
                 bill.setConfirmFlag("0");
@@ -408,9 +409,10 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         if (messageEvent instanceof CarType) {
             carType = (CarType) messageEvent;
             ordinaryCarTypeEt.setText(carType.getTruckname());
-        } else if(messageEvent instanceof Goods){
+        } else if (messageEvent instanceof Goods) {
             goods = (Goods) messageEvent;
             ordinaryGoodsEt.setText(goods.getCargoName());
+            ordinaryGoodsEt.setSelection(goods.getCargoName().length());
         } else {
             ordinaryCarTypeEt.setText("");
         }

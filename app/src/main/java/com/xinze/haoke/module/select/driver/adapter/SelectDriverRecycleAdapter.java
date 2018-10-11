@@ -1,4 +1,4 @@
-package com.xinze.haoke.module.select.car.adapter;
+package com.xinze.haoke.module.select.driver.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -81,7 +81,7 @@ public class SelectDriverRecycleAdapter extends RecyclerView.Adapter<SelectDrive
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder  {
         @BindView(R.id.select_driver_cb)
         CheckBox selectDriverCb;
         @BindView(R.id.select_driver_avatar_iv)
@@ -96,21 +96,22 @@ public class SelectDriverRecycleAdapter extends RecyclerView.Adapter<SelectDrive
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
-            itemView.setOnClickListener(this);
-            int position = (int) itemView.getTag();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemViewClick.itemClick((int) itemView.getTag());
+                }
+            });
+
             selectDriverCallIv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String driverMobile = mData.get(position).getDriverMobile();
+                    String driverMobile = mData.get((int) itemView.getTag()).getDriverMobile();
                     mContext.startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + driverMobile)));
                 }
             });
         }
 
-        @Override
-        public void onClick(View v) {
-            mOnItemViewClick.itemClick((int) itemView.getTag());
-        }
     }
 
     public interface OnItemViewClick {
