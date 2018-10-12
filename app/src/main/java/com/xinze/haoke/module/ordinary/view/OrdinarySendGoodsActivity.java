@@ -225,9 +225,9 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
                 //在这个方法中处理选中事件。
                 imcvTemMaterCalendarWeek.setVisibility(View.GONE);
                 if (who == R.id.ordinary_delivery_from_date_et) {
-                    ordinaryDeliveryFromDateEt.setText(date.getYear() + "/" + date.getMonth() + "/" + date.getDay());
+                    ordinaryDeliveryFromDateEt.setText(date.getYear() + ":" + date.getMonth() + ":" + date.getDay()+" 00:00:00");
                 } else {
-                    ordinaryDeliveryToDateEt.setText(date.getYear() + "/" + date.getMonth() + "/" + date.getDay());
+                    ordinaryDeliveryToDateEt.setText(date.getYear() + ":" + date.getMonth() + ":" + date.getDay()+" 00:00:00");
                 }
             }
         });

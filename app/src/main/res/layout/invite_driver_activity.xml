@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_line">
+    android:background="@color/half_line">
 
     <com.xinze.haoke.widget.SimpleToolbar
         android:id="@+id/invite_driver_tool_bar"
