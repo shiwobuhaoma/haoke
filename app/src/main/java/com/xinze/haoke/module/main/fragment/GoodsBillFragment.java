@@ -25,7 +25,7 @@ import butterknife.BindView;
  * @author lxf
  * 普通货单和定向货单
  */
-public class SendGoodsFragment extends BaseFragment {
+public class GoodsBillFragment extends BaseFragment {
     @BindView(R.id.send_goods_toolbar)
     SimpleToolbar sendGoodsToolbar;
 
@@ -134,8 +134,8 @@ public class SendGoodsFragment extends BaseFragment {
         });
     }
 
-    public static SendGoodsFragment newInstance() {
-        return new SendGoodsFragment();
+    public static GoodsBillFragment newInstance() {
+        return new GoodsBillFragment();
     }
 
     public void refresh() {

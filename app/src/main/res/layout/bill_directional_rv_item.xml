@@ -1,150 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:orientation="horizontal"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
-    android:layout_height="wrap_content">
+    android:orientation="horizontal">
 
+    <TextView
+        android:id="@+id/bill_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="@string/bill_number" />
+
+    <View
+        android:id="@+id/bill_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/bill_number"
+        android:background="@color/my_item_line" />
 
     <RelativeLayout
         android:id="@+id/directional_item_rl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bill_view">
+
         <TextView
             android:id="@+id/directional_tv_right_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="100dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@mipmap/order_start"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
             android:padding="@dimen/res_textSize_10dp"
             android:textColor="@color/themeBlack"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:layout_marginEnd="100dp"
-            android:drawableStart="@mipmap/order_start"
-            android:drawablePadding="10dp"
-            android:layout_width="wrap_content"
-            android:gravity="center_vertical"
-            android:textSize="14sp"
-            android:layout_height="wrap_content" />
+            android:textSize="14sp" />
+
         <TextView
             android:id="@+id/directional_tv_right_end"
-            android:paddingStart="@dimen/res_textSize_10dp"
-            android:paddingBottom="10dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:paddingEnd="@dimen/res_textSize_10dp"
-            android:layout_marginEnd="100dp"
-            android:textColor="@color/themeBlack"
-            android:layout_below="@id/directional_tv_right_start"
-            android:drawableStart="@mipmap/order_end"
-            android:drawablePadding="10dp"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/directional_tv_right_start"
+            android:layout_marginEnd="100dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@mipmap/order_end"
+            android:ellipsize="end"
             android:gravity="center_vertical"
-            android:textSize="14sp"
-            android:layout_height="wrap_content" />
+            android:maxLines="1"
+            android:paddingBottom="10dp"
+            android:paddingEnd="@dimen/res_textSize_10dp"
+            android:paddingStart="@dimen/res_textSize_10dp"
+            android:textColor="@color/themeBlack"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/directional_iv_state"
-            android:background="@drawable/circle_orange_button"
             android:layout_width="wrap_content"
-            android:minWidth="75dp"
-            android:minHeight="40dp"
-            android:maxLines="2"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
-            android:text="@string/directional_robbing_bill"
+            android:background="@drawable/circle_orange_button"
             android:gravity="center"
-            android:textColor="@color/white"
-            android:layout_alignParentEnd="true"
-            android:layout_height="wrap_content" />
+            android:maxLines="2"
+            android:minHeight="40dp"
+            android:minWidth="75dp"
+            android:text="@string/remain_cars"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
     <View
         android:id="@+id/directional_item_v_line"
         android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:layout_below="@id/directional_item_rl"
-        android:background="@color/my_item_line"
-        android:layout_height="1dp"/>
+        android:background="@color/my_item_line" />
+
     <LinearLayout
         android:id="@+id/directional_item_ll"
-        android:layout_below="@id/directional_item_v_line"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:padding="10dp"
-            android:maxLines="1"
-            android:id="@+id/directional_tv_car_count"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:textColor="@color/order_item_text"
-            android:text="@string/bill_car_count"
-            android:textSize="12sp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:padding="10dp"
-            android:maxLines="1"
-            android:gravity="start"
-            android:textSize="12sp"
-            android:id="@+id/directional_tv_freight"
-            android:textColor="@color/order_item_text"
-            android:text="@string/bill_car_freight"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:padding="10dp"
-            android:maxLines="1"
-            android:gravity="center"
-            android:textSize="12sp"
-            android:id="@+id/directional_tv_car_type"
-            android:textColor="@color/order_item_text"
-            android:text="@string/order_truck_type"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/directional_item_v_line"
+        android:orientation="horizontal">
 
         <TextView
-            android:padding="10dp"
-            android:maxLines="1"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:ellipsize="end"
-            android:textColor="@color/order_item_text"
-            android:id="@+id/directional_tv_productName"
-            android:text="@string/order_product_name"
+            android:id="@+id/directional_tv_car_count"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:text="@string/bill_car_count"
+            android:textColor="@color/order_item_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/directional_tv_freight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:text="@string/bill_car_freight"
+            android:textColor="@color/order_item_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/directional_tv_productName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:text="@string/order_product_name"
+            android:textColor="@color/order_item_text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/directional_distance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:text="@string/order_distance"
+            android:textColor="@color/order_item_text"
+            android:textSize="12sp" />
+
+
     </LinearLayout>
 
 
     <View
         android:id="@+id/directional_line"
         android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:layout_below="@id/directional_item_ll"
-        android:background="@color/my_item_line"
-        android:layout_height="1dp"/>
+        android:background="@color/my_item_line" />
+
+
     <TextView
-        android:id="@+id/directional_time"
-        android:layout_below="@id/directional_line"
+        android:id="@+id/relay"
         android:layout_width="wrap_content"
-        android:text="@string/send_goods_date"
-        android:padding="10dp"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/directional_distance"
-        android:layout_below="@id/directional_line"
-        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="@string/send_goods_distance"
-        android:padding="10dp"
-        android:layout_height="wrap_content" />
+        android:layout_below="@id/directional_line"
+        android:padding="8dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_orange_button"
+        android:text="@string/relay"
+        android:textColor="@color/themeOrange"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/receive_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/directional_line"
+        android:layout_marginEnd="25dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_orange_button"
+        android:layout_toStartOf="@id/relay"
+        android:padding="8dp"
+        android:text="@string/receive_details"
+        android:textColor="@color/themeOrange"
+        android:textSize="14sp" />
+
     <View
         android:id="@+id/directional_item_space"
         android:layout_width="match_parent"
-        android:layout_below="@id/directional_time"
-        android:background="@drawable/space"
-        android:layout_height="@dimen/res_textSize_15dp"/>
+        android:layout_height="@dimen/res_textSize_15dp"
+        android:layout_below="@id/receive_details"
+        android:background="@drawable/space" />
 </RelativeLayout>

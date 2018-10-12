@@ -14,6 +14,8 @@ import com.xinze.haoke.App;
 import com.xinze.haoke.R;
 import com.xinze.haoke.config.OrderConfig;
 import com.xinze.haoke.module.main.modle.OrderItem;
+import com.xinze.haoke.module.receive.ReceiverBillDetailsActivity;
+import com.xinze.haoke.module.relay.RelayActivity;
 import com.xinze.haoke.module.send.adapter.BillRecycleViewAdapter;
 import com.xinze.haoke.module.send.view.IBillView;
 import com.xinze.haoke.utils.DialogUtil;
@@ -56,7 +58,7 @@ public class OrdinaryBillFragment extends AbstractBillFragment implements IBillV
     protected void initView() {
         llm = new LinearLayoutManager(mActivity);
         ordinaryBillRv.setLayoutManager(llm);
-        billRecycleViewAdapter = new BillRecycleViewAdapter(mActivity,"OrdinaryBillFragment");
+        billRecycleViewAdapter = new BillRecycleViewAdapter(mActivity, "OrdinaryBillFragment");
         ordinaryBillRv.setAdapter(billRecycleViewAdapter);
         layout = ordinaryBillSrl;
         ordinaryBillSrl.setOnRefreshListener(new OnRefreshListener() {
@@ -78,9 +80,9 @@ public class OrdinaryBillFragment extends AbstractBillFragment implements IBillV
             @Override
             public void jumpSelectCar(int position) {
                 if (App.mUser.isLogin()) {
-                    if ("1".equals(App.mUser.getVertifyFlag())){
-                        jumpToSelectActivity(position,"OrdinaryBillFragment");
-                    }else{
+                    if ("1".equals(App.mUser.getVertifyFlag())) {
+                        jumpToSelectActivity(position, "OrdinaryBillFragment");
+                    } else {
                         DialogUtil.showUnIdentificationDialog(mActivity);
                     }
 
@@ -91,8 +93,18 @@ public class OrdinaryBillFragment extends AbstractBillFragment implements IBillV
             }
 
             @Override
+            public void jumpReceiveBillDetails(int position) {
+                openActivity(ReceiverBillDetailsActivity.class);
+            }
+
+            @Override
+            public void jumpRelay(int position) {
+                openActivity(RelayActivity.class);
+            }
+
+            @Override
             public void jumpDetails(int position) {
-                    jumpToOrderDetailActivity(position,"OrdinaryBillFragment");
+                jumpToOrderDetailActivity(position, "OrdinaryBillFragment");
             }
         });
         sendGoodsSelectFrom.setmOnSelectAddressListener(new SelectAddressView.OnSelectAddressListener() {
@@ -129,7 +141,7 @@ public class OrdinaryBillFragment extends AbstractBillFragment implements IBillV
 
                 if (sendGoodsSelectFrom.getVisibility() == View.GONE) {
                     sendGoodsSelectFrom.setViewVisible();
-                }else {
+                } else {
                     billRecycleViewAdapter.setData(data);
                     sendGoodsSelectFrom.setViewGone();
                 }
@@ -139,9 +151,9 @@ public class OrdinaryBillFragment extends AbstractBillFragment implements IBillV
 
                 mCurrentView = R.id.send_goods_to;
                 sendGoodsSelectFrom.clearState();
-                if ( sendGoodsSelectFrom.getVisibility() == View.GONE) {
+                if (sendGoodsSelectFrom.getVisibility() == View.GONE) {
                     sendGoodsSelectFrom.setViewVisible();
-                }  else {
+                } else {
                     sendGoodsSelectFrom.setViewGone();
                 }
 

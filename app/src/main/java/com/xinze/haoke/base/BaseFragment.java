@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.xinze.haoke.utils.ToastUtils;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -120,6 +121,11 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected void openActivity(Class clazz, String key, String value) {
+        Intent intent = new Intent(mActivity, clazz);
+        intent.putExtra(key, value);
+        startActivity(intent);
+    }
+    protected void openActivity(Class clazz, String key, Serializable value) {
         Intent intent = new Intent(mActivity, clazz);
         intent.putExtra(key, value);
         startActivity(intent);

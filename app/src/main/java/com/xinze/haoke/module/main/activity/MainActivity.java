@@ -9,7 +9,6 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -33,8 +32,7 @@ import com.xinze.haoke.http.listener.DownloadListener;
 import com.xinze.haoke.module.main.adapter.SelectPageAdapter;
 import com.xinze.haoke.module.main.fragment.HomeFragment;
 import com.xinze.haoke.module.main.fragment.MyFragment;
-import com.xinze.haoke.module.main.fragment.OrderFragment;
-import com.xinze.haoke.module.main.fragment.SendGoodsFragment;
+import com.xinze.haoke.module.main.fragment.GoodsBillFragment;
 import com.xinze.haoke.module.main.presenter.MainPresenterImp;
 import com.xinze.haoke.module.main.view.IMainView;
 import com.xinze.haoke.utils.DialogUtil;
@@ -65,7 +63,7 @@ public class MainActivity extends BaseActivity implements IMainView, DownloadLis
     private HomeFragment home;
     private ArrayList<Fragment> fragments;
     private MyFragment my;
-    private SendGoodsFragment sendOrder;
+    private GoodsBillFragment sendOrder;
     private SelectPageAdapter spa;
     public static Integer currentFragment = MainConfig.HOME_FRAGMENT;
 
@@ -185,7 +183,7 @@ public class MainActivity extends BaseActivity implements IMainView, DownloadLis
     private ArrayList<Fragment> getFragments() {
         ArrayList<Fragment> fragments = new ArrayList<>();
         home = HomeFragment.newInstance();
-        sendOrder = SendGoodsFragment.newInstance();
+        sendOrder = GoodsBillFragment.newInstance();
         my = MyFragment.newInstance();
         fragments.add(home);
         fragments.add(sendOrder);
