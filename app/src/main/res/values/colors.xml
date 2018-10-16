@@ -14,7 +14,7 @@
     <color name="tab_background">#ff2c9195</color>
     <color name="main_ic_orange">#FB9251</color>
     <color name="order_item_text">#808080</color>
-
+    <color name="bg_page">#ffebebeb</color>
     <color name="my_item_space">#F5F5F5</color>
     <color name="line">#E9E9E9</color>
     <color name="half_line">#EEE9E9E9</color>
@@ -34,4 +34,5 @@
     <color name="white_transparent">#33ffffff</color>
     <color name="search_activity_bg_color">#aa000000</color>
     <color name="themeGray" >#909090</color>
+    <color name="blue_text_007dff">#ff007dff</color>
 </resources>

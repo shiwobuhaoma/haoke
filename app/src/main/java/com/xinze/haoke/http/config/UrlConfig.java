@@ -66,5 +66,6 @@ public interface UrlConfig {
 
     String GET_CAR_TYPE = "transport/app/truck/getTruckCodeList";
     String GET_COOPERATED_DRIVERS = "transport/app/user/myCooperatedDrivers";
+    String GET_BILL_ORDER_LIST_FOR_OWNER = "transport/app/billorder/getBillOrderListForOwner";
 }
 

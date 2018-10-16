@@ -86,9 +86,10 @@
     <string name="send_goods_all">全国</string>
     <string name="send_goods_date">发货日期：%1$s-%2$s</string>
     <string name="send_goods_distance">运距：%1$s公里</string>
-    <string name="remain_cars">余(%1$d车)</string>
+    <string name="remain_cars">余(%1$s车)</string>
 
-    <string name="bill_number">发货单号：%1$d</string>
+    <string name="bill_number">发货单号：%1$s</string>
+    <string name="order_number">定单号：%1$s</string>
     <string name="directional_robbing_bill">抢单\n(%1$d车)</string>
     <string name="directional_receipt_bill">接单\n(%1$d车)</string>
     <string name="bill_robbing">抢单</string>
@@ -258,6 +259,12 @@
     <string name="select_goods">选择货品</string>
     <string name="receive_details">接单详情</string>
     <string name="relay">一键转发</string>
+    <string name="str_loading">正在加载，请稍候…</string>
+    <string name="no_available_network">网络未连接，请点击重试</string>
+    <string name="setting_network">设置网络</string>
+    <string name="driver_receive_bill_list">司机接单列表</string>
+    <string name="receiver_people">接收人：%1$s</string>
+    <string name="carNumber">车牌号：%1$s</string>
     <string-array name="custom_myweekdays">
         <item>日</item>
         <item>一</item>

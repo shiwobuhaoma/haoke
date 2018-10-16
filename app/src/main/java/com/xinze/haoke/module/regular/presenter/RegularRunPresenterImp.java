@@ -27,7 +27,9 @@ public class RegularRunPresenterImp extends BasePresenterImpl<IRegularRouteView>
     @Override
     public void getRegularRouteList() {
         HashMap<String, String> headers = HeaderConfig.getHeaders();
-        RetrofitFactory.getInstence().Api().getRegularRouteList(headers).compose(this.<BaseEntity<List<Route>>>setThread()).subscribe(new BaseObserver<List<Route>>() {
+        RetrofitFactory.getInstence().Api().getRegularRouteList(headers)
+                .compose(this.<BaseEntity<List<Route>>>setThread())
+                .subscribe(new BaseObserver<List<Route>>() {
             @Override
             protected void onSuccess(BaseEntity<List<Route>> t) throws Exception {
                 if (t != null){

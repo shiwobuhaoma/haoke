@@ -21,13 +21,6 @@
     <dimen name="no_wifi_top">100dp</dimen>
 
 
-
-
-
-
-
-
-
     <dimen name="alertDialog_width_emui">324.0dp</dimen>
     <dimen name="appzone_nodata_margintop">60.0dp</dimen>
     <dimen name="enter_item_height">90.0dp</dimen>
@@ -421,4 +414,30 @@
     <dimen name="ui_8_dp">8.0dp</dimen>
     <dimen name="app_bar_height">45dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="res_textsize_16sp">16sp</dimen>
+
+
+    <dimen name="res_textsize_10dp">10.0dp</dimen>
+    <dimen name="res_textsize_10sp">10.0sp</dimen>
+    <dimen name="res_textsize_11dp">11.0dp</dimen>
+    <dimen name="res_textsize_11sp">11.0sp</dimen>
+    <dimen name="res_textsize_12dp">12.0dp</dimen>
+    <dimen name="res_textsize_12sp">12.0sp</dimen>
+    <dimen name="res_textsize_13dp">13.0dp</dimen>
+    <dimen name="res_textsize_14dp">14.0dp</dimen>
+    <dimen name="res_textsize_14sp">14.0sp</dimen>
+    <dimen name="res_textsize_15dp">15.0dp</dimen>
+    <dimen name="res_textsize_15sp">15.0sp</dimen>
+    <dimen name="res_textsize_16dp">16.0dp</dimen>
+    <dimen name="res_textsize_17sp">17.0sp</dimen>
+    <dimen name="res_textsize_18dp">18.0dp</dimen>
+    <dimen name="res_textsize_18sp">18.0sp</dimen>
+    <dimen name="res_textsize_21dp">21.0dp</dimen>
+    <dimen name="res_textsize_21sp">21.0sp</dimen>
+    <dimen name="zjbb_appname_textsize_13dp">13.0dp</dimen>
+    <dimen name="zjbb_card_layout_margin_lr_space">24.0dp</dimen>
+    <dimen name="zjbb_card_row_bottom_space">16.0dp</dimen>
+    <dimen name="zjbb_icon_width">64.0dp</dimen>
 </resources>

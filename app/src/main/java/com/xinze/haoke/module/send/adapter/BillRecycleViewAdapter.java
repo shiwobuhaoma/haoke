@@ -1,6 +1,7 @@
 package com.xinze.haoke.module.send.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import com.xinze.haoke.R;
 import com.xinze.haoke.module.main.modle.OrderItem;
+import com.xinze.haoke.module.receive.view.ReceiverBillDetailsActivity;
+import com.xinze.haoke.module.relay.RelayActivity;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -22,7 +25,7 @@ import butterknife.ButterKnife;
  * @author lxf
  * 订单界面适配器
  */
-public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleViewAdapter.ViewHolder> implements View.OnClickListener {
+public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleViewAdapter.ViewHolder>{
 
     private List<OrderItem> mBS;
     private Context mContext;
@@ -40,12 +43,7 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         view = LayoutInflater.from(mContext).inflate(R.layout.bill_directional_rv_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
-
-        //给布局设置点击和长点击监听
-        view.setOnClickListener(this);
-
-        return holder;
+        return  new ViewHolder(view);
     }
 
     @Override
@@ -89,11 +87,9 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
         viewHolder.directionalTvProductName.setText(product);
         viewHolder.directionalDistance.setText(distances);
 
-        viewHolder.receiveDetails.setOnClickListener(this);
-        viewHolder.relay.setOnClickListener(this);
 
-        viewHolder.directionalIvState.setOnClickListener(this);
         viewHolder.directionalIvState.setTag(position);
+        viewHolder.receiveDetails.setTag(position);
 
 
         if (position == mBS.size() - 1) {
@@ -126,30 +122,7 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
     }
 
 
-    /**
-     *点击事件回调
-     */
-    @Override
-    public void onClick(View v) {
-        if (mOnItemClickListener != null) {
-            switch (v.getId()) {
-                case R.id.directional_iv_state:
-                    mOnItemClickListener.jumpSelectCar((int) v.getTag());
-                    break;
-                case R.id.receive_details:
-                    mOnItemClickListener.jumpReceiveBillDetails((int) v.getTag());
 
-                    break;
-                case R.id.relay:
-                    mOnItemClickListener.jumpRelay((int) v.getTag());
-                    break;
-                default:
-                    mOnItemClickListener.jumpDetails((int) v.getTag());
-                    break;
-            }
-
-        }
-    }
 
     public void setData(List<OrderItem> data) {
         this.mBS = data;
@@ -171,20 +144,6 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
          * @param position 点击的位置
          */
         void jumpSelectCar(int position);
-
-        /**
-         * 跳转到接单详情界面
-         *
-         * @param position 点击的位置
-         */
-        void jumpReceiveBillDetails(int position);
-
-        /**
-         * 跳转到一键转发界面
-         *
-         * @param position 点击的位置
-         */
-        void jumpRelay(int position);
     }
 
     private OnRecyclerViewItemClickListener mOnItemClickListener;
@@ -193,7 +152,7 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
         mOnItemClickListener = listener;
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+     class ViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
 
         @BindView(R.id.bill_number)
         TextView billNumber;
@@ -221,6 +180,46 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            receiveDetails.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = (int) v.getTag();
+                    OrderItem orderItem = mBS.get(position);
+                    String orderId = orderItem.getOrderid();
+                    Intent intent = new Intent(mContext,ReceiverBillDetailsActivity.class);
+                    intent.putExtra("wayBillId",orderId);
+                    mContext.startActivity(intent);
+                }
+            });
+            relay.setOnClickListener(this);
+            directionalIvState.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    int position = (int) v.getTag();
+//                    OrderItem orderItem = mBS.get(position);
+//                    String orderId = orderItem.getOrderid();
+                    mContext.startActivity(new Intent(mContext,RelayActivity.class));
+                }
+            });
+            itemView.setOnClickListener(this);
+        }
+
+        /**
+         *点击事件回调
+         */
+        @Override
+        public void onClick(View v) {
+            if (mOnItemClickListener != null) {
+                switch (v.getId()) {
+                    case R.id.directional_iv_state:
+                        mOnItemClickListener.jumpSelectCar((int) v.getTag());
+                        break;
+                    default:
+                        mOnItemClickListener.jumpDetails((int) v.getTag());
+                        break;
+                }
+
+            }
         }
     }
 

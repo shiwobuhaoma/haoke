@@ -24,8 +24,8 @@ import butterknife.ButterKnife;
 
 /**
  * @author lxf
- *         系统消息的适配器
- *         Created by LF on 2018/4/24.
+ * 系统消息的适配器
+ * Created by LF on 2018/4/24.
  */
 
 public class SystemMessageAdapter extends RecyclerView.Adapter<SystemMessageAdapter.ViewHolder> {
@@ -53,19 +53,21 @@ public class SystemMessageAdapter extends RecyclerView.Adapter<SystemMessageAdap
         NotifyEntity notifyEntity = mBS.get(position);
         String title = notifyEntity.getTitle();
         String type = "";
-        String typeStr=notifyEntity.getType()==null?"":notifyEntity.getType();
+        String typeStr = notifyEntity.getType() == null ? "" : notifyEntity.getType();
         switch (typeStr) {
             case AppConfig.NOTIFY_TYPE_SYSTEM:
-                type="["+AppConfig.NOTIFY_TYPE_MAP.get(typeStr)+"]";
+                type = "[" + AppConfig.NOTIFY_TYPE_MAP.get(typeStr) + "]";
                 break;
             case AppConfig.NOTIFY_TYPE_INVITE:
-                type="["+AppConfig.NOTIFY_TYPE_MAP.get(typeStr)+"]";
+                type = "[" + AppConfig.NOTIFY_TYPE_MAP.get(typeStr) + "]";
                 break;
             case AppConfig.NOTIFY_TYPE_WAYBILL:
-                type="["+AppConfig.NOTIFY_TYPE_MAP.get(typeStr)+"]";
+                type = "[" + AppConfig.NOTIFY_TYPE_MAP.get(typeStr) + "]";
                 break;
             case AppConfig.NOTIFY_TYPE_ORDER:
-                type="["+AppConfig.NOTIFY_TYPE_MAP.get(typeStr)+"]";
+                type = "[" + AppConfig.NOTIFY_TYPE_MAP.get(typeStr) + "]";
+                break;
+            default:
                 break;
         }
         final String content = notifyEntity.getContent();
@@ -75,12 +77,12 @@ public class SystemMessageAdapter extends RecyclerView.Adapter<SystemMessageAdap
                 ? AppConfig.SYSTEM_MSG_UNREAD : notifyEntity.getReadFlag().equals(AppConfig.YES)
                 ? AppConfig.SYSTEM_MSG_READ : AppConfig.SYSTEM_MSG_UNREAD;
         holder.tvSuccessReadStatus.setText(readStatus);
-        if (readStatus.equals(AppConfig.SYSTEM_MSG_UNREAD)){
+        if (readStatus.equals(AppConfig.SYSTEM_MSG_UNREAD)) {
             holder.tvSuccessReadStatus.setTextColor(android.graphics.Color.RED);
-        }else{
+        } else {
             holder.tvSuccessReadStatus.setTextColor(Color.BLACK);
         }
-        holder.tvSuccessMsg.setText(type+title);
+        holder.tvSuccessMsg.setText(type + title);
         holder.tvSuccessContent.setText(content);
         holder.tvSuccessTime.setText(createDate);
         holder.itemView.setTag(position);
@@ -90,7 +92,7 @@ public class SystemMessageAdapter extends RecyclerView.Adapter<SystemMessageAdap
                 // 如果未读需要请求标记已读
                 if (readStatus.equals(AppConfig.SYSTEM_MSG_UNREAD)) {
                     opi.markReaded(id, holder);
-                }else{
+                } else {
                     holder.tvSuccessReadStatus.setTextColor(Color.BLACK);
                 }
 

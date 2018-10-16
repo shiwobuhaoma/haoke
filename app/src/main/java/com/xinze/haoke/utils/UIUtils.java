@@ -75,4 +75,34 @@ public class UIUtils {
 
         return getContext().getResources().getDisplayMetrics().widthPixels;
     }
+
+    /**
+     * 在主线程中执行代码
+     *
+     * @param runnable
+     */
+    public static void runOnUiThread(Runnable runnable) {
+        if (isRunOnMainThread()) {
+            // 执行代码
+            runnable.run();
+        } else {
+            post(runnable);
+        }
+    }
+
+    public static void post(Runnable runnable) {
+        Handler handler = getHandler();
+        handler.post(runnable);
+    }
+
+    private static Handler getHandler() {
+        return App.getHandler();
+    }
+
+    public static boolean isRunOnMainThread() {
+        return android.os.Process.myTid() == getMainThreadTid();
+    }
+    private static int getMainThreadTid() {
+        return App.getMainThreadId();
+    }
 }

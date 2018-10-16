@@ -1,6 +1,7 @@
 package com.xinze.haoke;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDexApplication;
 
@@ -25,6 +26,8 @@ import com.xinze.haoke.utils.ACache;
 public class App extends MultiDexApplication {
     private static App context ;
     public static UserEntity mUser;
+    private static int mMainThreadId;
+    private static Handler mHandler;
     //static 代码段可以防止内存泄露
     static {
         //设置全局的Header构建器
@@ -53,7 +56,8 @@ public class App extends MultiDexApplication {
         super.onCreate();
         context = this ;
 //        LeakCanary.install(this);
-
+        mHandler=new Handler();
+        mMainThreadId = android.os.Process.myTid();
         UserEntity user = (UserEntity)ACache.get(this).getAsObject("user");
         if (user != null){
             mUser = user;
@@ -65,5 +69,20 @@ public class App extends MultiDexApplication {
 
     public static App getContext(){
         return context;
+    }
+
+    /**
+     * 返回主线程的pid
+     * @return
+     */
+    public static int getMainThreadId() {
+        return mMainThreadId;
+    }
+    /**
+     * 返回Handler
+     * @return
+     */
+    public static Handler getHandler() {
+        return mHandler;
     }
 }

@@ -14,7 +14,7 @@ import com.xinze.haoke.App;
 import com.xinze.haoke.R;
 import com.xinze.haoke.config.OrderConfig;
 import com.xinze.haoke.module.main.modle.OrderItem;
-import com.xinze.haoke.module.receive.ReceiverBillDetailsActivity;
+import com.xinze.haoke.module.receive.view.ReceiverBillDetailsActivity;
 import com.xinze.haoke.module.relay.RelayActivity;
 import com.xinze.haoke.module.send.adapter.BillRecycleViewAdapter;
 import com.xinze.haoke.module.send.view.IBillView;
@@ -90,16 +90,6 @@ public class OrdinaryBillFragment extends AbstractBillFragment implements IBillV
                     DialogUtil.showUnloginDialog(mActivity);
                 }
 
-            }
-
-            @Override
-            public void jumpReceiveBillDetails(int position) {
-                openActivity(ReceiverBillDetailsActivity.class);
-            }
-
-            @Override
-            public void jumpRelay(int position) {
-                openActivity(RelayActivity.class);
             }
 
             @Override

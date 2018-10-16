@@ -5,6 +5,7 @@ import com.xinze.haoke.http.config.UrlConfig;
 import com.xinze.haoke.http.entity.BaseEntity;
 import com.xinze.haoke.module.about.modle.AboutUs;
 import com.xinze.haoke.module.add.modle.AddCarRespones;
+import com.xinze.haoke.module.receive.ReceiverBill;
 import com.xinze.haoke.module.select.cartype.modle.CarType;
 import com.xinze.haoke.module.certification.modle.CertificationRespones;
 import com.xinze.haoke.module.goods.bean.Goods;
@@ -604,6 +605,13 @@ public interface ApiServer {
 
 
 
+    /**
+     * 获取司机接单列表
+     * @param headers 请求头
+     * @return 返回常用司机列表
+     */
+    @GET(UrlConfig.GET_BILL_ORDER_LIST_FOR_OWNER)
+    Observable<BaseEntity<List<ReceiverBill>>>  getBillOrderListForOwner(@HeaderMap HashMap<String, String> headers, @Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("waybillId")String waybillId);
 
 
 ////  -----------------feibai

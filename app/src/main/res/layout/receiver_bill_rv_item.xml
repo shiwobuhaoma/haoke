@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/receiver_bill_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:textColor="@color/themeGray"
+            android:textSize="16sp"
+            android:text="@string/bill_number" />
+
+        <TextView
+            android:id="@+id/receiver_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/receiver_bill_number"
+            android:padding="15dp"
+            android:textColor="@color/themeBlack"
+            android:textSize="14sp"
+            android:text="@string/receiver_people" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:id="@+id/car_number"
+            android:textColor="@color/themeBlack"
+            android:textSize="14sp"
+            android:layout_below="@id/receiver_bill_number"
+            android:text="@string/carNumber"
+            android:layout_toEndOf="@id/receiver_people"
+            android:padding="15dp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/receive_bill_state2"
+        android:layout_width="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="15dp"
+        android:background="@mipmap/goods_pick_up"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/img" />
+</RelativeLayout>
