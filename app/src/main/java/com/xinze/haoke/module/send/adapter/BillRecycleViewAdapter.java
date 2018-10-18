@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.xinze.haoke.R;
 import com.xinze.haoke.module.main.modle.OrderItem;
 import com.xinze.haoke.module.receive.view.ReceiverBillDetailsActivity;
-import com.xinze.haoke.module.relay.RelayActivity;
+import com.xinze.haoke.module.relay.view.RelayActivity;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -90,6 +90,7 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
 
         viewHolder.directionalIvState.setTag(position);
         viewHolder.receiveDetails.setTag(position);
+        viewHolder.relay.setTag(position);
 
 
         if (position == mBS.size() - 1) {
@@ -185,22 +186,23 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
                 public void onClick(View v) {
                     int position = (int) v.getTag();
                     OrderItem orderItem = mBS.get(position);
-                    String orderId = orderItem.getOrderid();
+                    String id = orderItem.getId();
                     Intent intent = new Intent(mContext,ReceiverBillDetailsActivity.class);
-                    intent.putExtra("wayBillId",orderId);
+                    intent.putExtra("wayBillId",id);
                     mContext.startActivity(intent);
                 }
             });
-            relay.setOnClickListener(this);
-            directionalIvState.setOnClickListener(new View.OnClickListener() {
+            relay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    int position = (int) v.getTag();
-//                    OrderItem orderItem = mBS.get(position);
-//                    String orderId = orderItem.getOrderid();
-                    mContext.startActivity(new Intent(mContext,RelayActivity.class));
+                    int position = (int) v.getTag();
+                    OrderItem orderItem = mBS.get(position);
+                    Intent intent = new Intent(mContext,RelayActivity.class);
+                    intent.putExtra("bill",orderItem);
+                    mContext.startActivity(intent);
                 }
             });
+            directionalIvState.setOnClickListener(this);
             itemView.setOnClickListener(this);
         }
 

@@ -21,6 +21,7 @@ import com.xinze.haoke.base.BaseActivity;
 import com.xinze.haoke.config.ProtocolConfig;
 import com.xinze.haoke.module.about.view.AboutUsActivity;
 import com.xinze.haoke.module.goods.bean.Goods;
+import com.xinze.haoke.module.main.modle.OrderItem;
 import com.xinze.haoke.module.select.cartype.modle.CarType;
 import com.xinze.haoke.module.select.cartype.view.SelectCarTypeActivity;
 import com.xinze.haoke.module.select.driver.view.SelectDriverActivity;
@@ -162,6 +163,34 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
     protected void initView() {
         EventBus.getDefault().register(this);
         from = getIntent().getStringExtra("from");
+        Bill bill = (Bill) getIntent().getSerializableExtra("bill");
+        OrderItem bill2 = (OrderItem) getIntent().getSerializableExtra("bill");
+        bill2.
+        if (bill !=  null){
+            fromWhere.setFrom(bill.getFromAreaId());
+            fromWhere.setDetailsAddress(bill.getFromDetailAdress());
+            fromWhere.setContact(bill.getFromName());
+            fromWhere.setPhone(bill.getFromPhone());
+
+            toWhere.setFrom(bill.getToAreaId());
+            toWhere.setDetailsAddress(bill.getToDetailAdress());
+            toWhere.setContact(bill.getToName());
+            fromWhere.setPhone(bill.getToPhone());
+
+            ordinaryInfoPayEt.setText(bill.getMsgPrice());
+            ordinaryLoadPayEt.setText(bill.getLoadPrice());
+            ordinaryUnloadPayEt.setText(bill.getUnloadPrice());
+            ordinaryGoodsEt.setText(bill.getProductName());
+            ordinaryDistanceEt.setText(bill.getDistance());
+            ordinaryFreightEt.setText(bill.getPrice());
+            ordinaryDeliveryFromDateEt.setText(bill.getDateFrom());
+            ordinaryDeliveryToDateEt.setText(bill.getDateTo());
+            ordinaryCarNumberEt.setText(bill.getTruckNumber());
+            ordinaryCarTypeEt.setText(bill.getTruckCode());
+            ordinaryCarLongEt.setText(bill.getTruckLong());
+            ordinaryRoadLossEt.setText(bill.getJourneyLoss());
+            ordinaryRemarkEt.setText(bill.getRemarks());
+        }
         initTitleBar();
         fromWhere.setTitle(SEND);
         fromWhere.setShowAddressDialog(new FromDetailsInfoView.ShowAddressDialog() {

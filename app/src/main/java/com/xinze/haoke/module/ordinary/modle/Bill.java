@@ -1,6 +1,7 @@
 package com.xinze.haoke.module.ordinary.modle;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * 货单
@@ -63,6 +64,12 @@ public class Bill implements Serializable{
     private String unloadPrice;
     private String confirmFlag;
 
+
+    private String id;
+    private String orderid;
+    private String orderstatus;
+    private String orderstatus_desc;
+    private int left_number;
     public String getUserId() {
         return userId;
     }

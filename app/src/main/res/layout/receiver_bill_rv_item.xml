@@ -4,6 +4,7 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:id="@+id/receive_bill_rl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -12,40 +13,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
+            android:text="@string/bill_number"
             android:textColor="@color/themeGray"
-            android:textSize="16sp"
-            android:text="@string/bill_number" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/receiver_people"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/receiver_bill_number"
-            android:padding="15dp"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:text="@string/receiver_people"
             android:textColor="@color/themeBlack"
-            android:textSize="14sp"
-            android:text="@string/receiver_people" />
+            android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/car_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:id="@+id/car_number"
-            android:textColor="@color/themeBlack"
-            android:textSize="14sp"
             android:layout_below="@id/receiver_bill_number"
-            android:text="@string/carNumber"
+            android:layout_marginStart="15dp"
             android:layout_toEndOf="@id/receiver_people"
-            android:padding="15dp" />
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:text="@string/carNumber"
+            android:textColor="@color/themeBlack"
+            android:textSize="14sp" />
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/receive_bill_state2"
         android:layout_width="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="15dp"
-        android:background="@mipmap/goods_pick_up"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@mipmap/goods_pick_up"
         android:contentDescription="@string/img" />
+    <View
+        android:layout_below="@id/receive_bill_rl"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:background="@color/gray_line"
+        android:layout_height="1dp"/>
 </RelativeLayout>

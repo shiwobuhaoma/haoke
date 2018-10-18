@@ -1,8 +1,9 @@
 package com.xinze.haoke.module.main.modle;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class OrderItem {
+public class OrderItem implements Serializable{
 
     /**
      * id : 36ca3aa5455a4f8ba765d674a18cfdbb

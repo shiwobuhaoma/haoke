@@ -6,7 +6,7 @@ import com.xinze.haoke.http.RetrofitFactory;
 import com.xinze.haoke.http.config.HeaderConfig;
 import com.xinze.haoke.http.entity.BaseEntity;
 import com.xinze.haoke.http.observer.BaseObserver;
-import com.xinze.haoke.module.receive.ReceiverBill;
+import com.xinze.haoke.module.receive.modle.ReceiverBill;
 import com.xinze.haoke.module.receive.view.IReceiverBillDetailsView;
 import com.xinze.haoke.module.receive.view.ReceiverBillDetailsActivity;
 import com.xinze.haoke.mvpbase.BasePresenterImpl;
@@ -27,14 +27,16 @@ public class ReceiverBillDetailsPresenterImp extends BasePresenterImpl<IReceiver
     public void getBillOrderListForOwner(int pageNo, int pageSize, String waybillId) {
         HashMap<String, String> headers = HeaderConfig.getHeaders();
         RetrofitFactory.getInstence().Api().getBillOrderListForOwner(headers,pageNo,pageSize,waybillId)
-                .compose(this.<BaseEntity<List<ReceiverBill>>>setThread())
-                .subscribe(new BaseObserver<List<ReceiverBill>>() {
+                .compose(this.<BaseEntity<ReceiverBill>>setThread())
+                .subscribe(new BaseObserver<ReceiverBill>() {
                     @Override
-                    protected void onSuccess(BaseEntity<List<ReceiverBill>> t) throws Exception {
+                    protected void onSuccess(BaseEntity<ReceiverBill> t) throws Exception {
                         if (t != null){
                             if (t.isSuccess()){
-                                List<ReceiverBill> data = t.getData();
-                                mActivity.setData(data);
+                                ReceiverBill rb = t.getData();
+                                List<ReceiverBill.WaybillOrderEntitiesBean> waybillOrderEntities = rb.getWaybillOrderEntities();
+
+                                mActivity.setData(waybillOrderEntities);
                             }else {
                                 mActivity.getBillOrderListForOwnerFailed(t.getMsg());
                             }

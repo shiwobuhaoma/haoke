@@ -14,8 +14,6 @@ import com.xinze.haoke.App;
 import com.xinze.haoke.R;
 import com.xinze.haoke.config.OrderConfig;
 import com.xinze.haoke.module.main.modle.OrderItem;
-import com.xinze.haoke.module.receive.view.ReceiverBillDetailsActivity;
-import com.xinze.haoke.module.relay.RelayActivity;
 import com.xinze.haoke.module.send.adapter.BillRecycleViewAdapter;
 import com.xinze.haoke.module.send.view.IBillView;
 import com.xinze.haoke.utils.DialogUtil;

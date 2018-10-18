@@ -1,5 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <com.xinze.haoke.widget.SimpleToolbar
+        android:id="@+id/relay_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relay_tool_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@mipmap/relay"
+        android:contentDescription="@string/img" />
+
+    <TextView
+        android:id="@+id/relay_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerInParent="true"
+        android:padding="15dp"
+        android:text="@string/relay_des"
+        android:textColor="@color/gray_text"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/relay_ordinary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relay_des"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/circle_orange_button"
+        android:paddingEnd="50dp"
+        android:paddingStart="50dp"
+        android:text="@string/home_general_shipper"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/relay_dx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relay_ordinary"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_orange_button"
+        android:paddingEnd="50dp"
+        android:paddingStart="50dp"
+        android:text="@string/home_directional_shipper"
+        android:textColor="@color/themeOrange"
+        android:textSize="16sp" />
 </RelativeLayout>

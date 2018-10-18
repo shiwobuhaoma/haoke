@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+    <com.xinze.haoke.widget.SimpleToolbar
+        android:id="@+id/receive_bill_details_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/send_number"
         android:layout_width="match_parent"

@@ -265,6 +265,7 @@
     <string name="driver_receive_bill_list">司机接单列表</string>
     <string name="receiver_people">接收人：%1$s</string>
     <string name="carNumber">车牌号：%1$s</string>
+    <string name="relay_des">您周围有%1$s司机等待您发货</string>
     <string-array name="custom_myweekdays">
         <item>日</item>
         <item>一</item>
