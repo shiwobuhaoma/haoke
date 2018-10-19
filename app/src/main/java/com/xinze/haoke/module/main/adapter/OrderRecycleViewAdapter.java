@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xinze.haoke.R;
-import com.xinze.haoke.module.main.modle.OrderItem;
+import com.xinze.haoke.module.ordinary.modle.Bill;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -61,11 +61,11 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
      * 已确定
      */
     private final String GOODS_CONFIRM = "Count";
-    private List<OrderItem> mBS;
+    private List<Bill> mBS;
     private Context mContext;
     private View view;
 
-    public OrderRecycleViewAdapter(Context context, List<OrderItem> mbs) {
+    public OrderRecycleViewAdapter(Context context, List<Bill> mbs) {
         this.mContext = context;
         this.mBS = mbs;
     }
@@ -91,15 +91,15 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int position) {
-        OrderItem orderRecycleViewItem = mBS.get(position);
+        Bill orderRecycleViewItem = mBS.get(position);
 
         String startText = orderRecycleViewItem.getFromDetailAdress();
         String endText = orderRecycleViewItem.getToDetailAdress();
         String id = orderRecycleViewItem.getOrderid();
         String productName = orderRecycleViewItem.getProductName();
         String truckCode = orderRecycleViewItem.getTruckCode();
-        BigDecimal distance = orderRecycleViewItem.getDistance();
-        BigDecimal freight = orderRecycleViewItem.getPrice();
+        String distance = orderRecycleViewItem.getDistance();
+        String freight = orderRecycleViewItem.getPrice();
 
         String orderId = mContext.getResources().getString(R.string.order_id);
         String money = mContext.getResources().getString(R.string.order_freight);
@@ -109,10 +109,10 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
 
 
         id = getString(id, orderId);
-        money = getString(String.valueOf(freight), money);
+        money = getString(freight, money);
         type = getString(truckCode, type);
         product = getString(productName, product);
-        distances = getString(String.valueOf(distance), distances);
+        distances = getString(distance, distances);
 
         viewHolder.orderItemTvId.setText(id);
         viewHolder.orderTvFreight.setText(money);
@@ -187,7 +187,7 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
         }
     }
 
-    public void setData(List<OrderItem> data) {
+    public void setData(List<Bill> data) {
         this.mBS = data;
         notifyDataSetChanged();
     }

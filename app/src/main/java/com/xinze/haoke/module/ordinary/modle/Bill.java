@@ -1,7 +1,6 @@
 package com.xinze.haoke.module.ordinary.modle;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * 货单
@@ -53,6 +52,7 @@ public class Bill implements Serializable{
     private String dateFrom;
     private String dateTo;
     private String truckNumber;
+    private String truckName;
     private String truckCode;
     private String truckLong;
     private String journeyLoss;
@@ -62,6 +62,8 @@ public class Bill implements Serializable{
     private String msgPrice;
     private String loadPrice;
     private String unloadPrice;
+
+
     private String confirmFlag;
 
 
@@ -70,6 +72,54 @@ public class Bill implements Serializable{
     private String orderstatus;
     private String orderstatus_desc;
     private int left_number;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getOrderid() {
+        return orderid;
+    }
+
+    public void setOrderid(String orderid) {
+        this.orderid = orderid;
+    }
+
+    public String getOrderstatus() {
+        return orderstatus;
+    }
+
+    public void setOrderstatus(String orderstatus) {
+        this.orderstatus = orderstatus;
+    }
+
+    public String getOrderstatus_desc() {
+        return orderstatus_desc;
+    }
+
+    public void setOrderstatus_desc(String orderstatus_desc) {
+        this.orderstatus_desc = orderstatus_desc;
+    }
+    public String getTruckName() {
+        return truckName;
+    }
+
+    public void setTruckName(String truckName) {
+        this.truckName = truckName;
+    }
+
+    public int getLeft_number() {
+        return left_number;
+    }
+
+    public void setLeft_number(int left_number) {
+        this.left_number = left_number;
+    }
+
     public String getUserId() {
         return userId;
     }

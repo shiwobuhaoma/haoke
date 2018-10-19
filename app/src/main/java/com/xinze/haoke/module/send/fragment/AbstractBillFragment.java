@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xinze.haoke.base.BaseFragment;
-import com.xinze.haoke.module.main.modle.OrderItem;
+import com.xinze.haoke.module.ordinary.modle.Bill;
 import com.xinze.haoke.module.select.car.view.SelectCarActivity;
 import com.xinze.haoke.module.send.adapter.BillRecycleViewAdapter;
 import com.xinze.haoke.module.send.presenter.BillPresenterImp;
@@ -22,7 +22,7 @@ public abstract class AbstractBillFragment extends BaseFragment implements IBill
     protected SmartRefreshLayout layout;
     protected int pageNo = 1;
     protected int pageSize = 10;
-    protected List<OrderItem> data;
+    protected List<Bill> data;
     protected BillRecycleViewAdapter billRecycleViewAdapter;
     protected BillPresenterImp bpi;
     protected LinearLayoutManager llm;
@@ -47,7 +47,7 @@ public abstract class AbstractBillFragment extends BaseFragment implements IBill
         bpi = new BillPresenterImp(this, mActivity);
         bpi.getBillList(billType, pageNo, pageSize,remarks);
     }
-    public void setData(final List<OrderItem> data) {
+    public void setData(final List<Bill> data) {
         if (data != null && data.size() > 0) {
             if (pageNo == 1) {
                 this.data = data;
@@ -74,7 +74,7 @@ public abstract class AbstractBillFragment extends BaseFragment implements IBill
 
     protected void jumpToOrderDetailActivity(int position,String from) {
         mPosition = position;
-        OrderItem orderItem = data.get(position);
+        Bill orderItem = data.get(position);
         String orderId = orderItem.getId();
         HashMap<String,String> map = new HashMap<>(2);
         map.put("orderId", orderId);
@@ -83,7 +83,7 @@ public abstract class AbstractBillFragment extends BaseFragment implements IBill
 
     }
     protected void jumpToSelectActivity(int position,String from) {
-        OrderItem orderItem = data.get(position);
+        Bill orderItem = data.get(position);
         String orderId = orderItem.getId();
         HashMap<String,String> map = new HashMap<>(2);
         map.put("orderId", orderId);
@@ -91,7 +91,7 @@ public abstract class AbstractBillFragment extends BaseFragment implements IBill
         openActivity(SelectCarActivity.class,map);
 
     }
-    public void setOrderItemData(List<OrderItem> data) {
+    public void setBillData(List<Bill> data) {
         billRecycleViewAdapter.setData(data);
     }
 

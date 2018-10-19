@@ -5,8 +5,6 @@ import com.xinze.haoke.http.config.UrlConfig;
 import com.xinze.haoke.http.entity.BaseEntity;
 import com.xinze.haoke.module.about.modle.AboutUs;
 import com.xinze.haoke.module.add.modle.AddCarRespones;
-import com.xinze.haoke.module.receive.modle.ReceiverBill;
-import com.xinze.haoke.module.select.cartype.modle.CarType;
 import com.xinze.haoke.module.certification.modle.CertificationRespones;
 import com.xinze.haoke.module.goods.bean.Goods;
 import com.xinze.haoke.module.invite.model.OwnerDriverVO;
@@ -16,11 +14,13 @@ import com.xinze.haoke.module.main.modle.AppUpdate;
 import com.xinze.haoke.module.main.modle.Banner;
 import com.xinze.haoke.module.main.modle.Count;
 import com.xinze.haoke.module.main.modle.CustomerPhoneEntity;
-import com.xinze.haoke.module.main.modle.OrderItem;
 import com.xinze.haoke.module.message.model.NotifyEntity;
 import com.xinze.haoke.module.order.modle.OrderDetail;
+import com.xinze.haoke.module.ordinary.modle.Bill;
+import com.xinze.haoke.module.receive.modle.ReceiverBill;
 import com.xinze.haoke.module.register.modle.RegisterResponse;
 import com.xinze.haoke.module.regular.modle.Route;
+import com.xinze.haoke.module.select.cartype.modle.CarType;
 import com.xinze.haoke.module.select.module.Protocol;
 import com.xinze.haoke.module.transport.module.Car;
 import com.xinze.haoke.module.transport.module.TransportDetails;
@@ -155,7 +155,7 @@ public interface ApiServer {
      * @return 返回状态
      */
     @GET(UrlConfig.GET_BILL_ORDER_LIST)
-    Observable<BaseEntity<List<OrderItem>>> getBillOrderList(@HeaderMap Map<String, String> headers, @Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("remark") String remark);
+    Observable<BaseEntity<List<Bill>>> getBillOrderList(@HeaderMap Map<String, String> headers, @Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("remark") String remark);
 
     /**
      * 获取订单详情信息
@@ -191,7 +191,7 @@ public interface ApiServer {
      * @return 返回订单列表
      */
     @GET(UrlConfig.GET_BILL_LIST)
-    Observable<BaseEntity<List<OrderItem>>> getBillList(@HeaderMap Map<String, String> headers, @Query("wlBilltype") int wlBilltype, @Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("remarks") String remarks);
+    Observable<BaseEntity<List<Bill>>> getBillList(@HeaderMap Map<String, String> headers, @Query("wlBilltype") int wlBilltype, @Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("remarks") String remarks);
 
 
     /**
@@ -260,7 +260,7 @@ public interface ApiServer {
      * @return 返回搜索路线集合
      */
     @GET(UrlConfig.SEARCH_ROUTE_LIST)
-    Observable<BaseEntity<List<OrderItem>>> searchRoute(@HeaderMap Map<String, String> headers, @Query("fromAreaId") String fromAreaId, @Query("toAreaId") String toAreaId, @Query("pageNo") int pageNo, @Query("pageSize") int pageSize);
+    Observable<BaseEntity<List<Bill>>> searchRoute(@HeaderMap Map<String, String> headers, @Query("fromAreaId") String fromAreaId, @Query("toAreaId") String toAreaId, @Query("pageNo") int pageNo, @Query("pageSize") int pageSize);
 
 
     /**
@@ -616,14 +616,23 @@ public interface ApiServer {
 
 
     /**
-     * 获取司机接单列表
+     * 获取一键转发的货单信息
      * @param headers 请求头
      * @param id 货单id
      * @return 返回常用司机列表
      */
     @GET(UrlConfig.GET_BILL_INFO_FOR_TRANS)
-    Observable<BaseEntity<ReceiverBill>> getBillInfoForTrans(@HeaderMap HashMap<String, String> headers,@Query("id") String id);
+    Observable<BaseEntity<Bill>> getBillInfoForTrans(@HeaderMap HashMap<String, String> headers,@Query("id") String id);
 
+
+
+    /**
+     * 获取司机总数量（包括非认证）
+     * @param headers 请求头
+     * @return 返回司机总数量
+     */
+    @GET(UrlConfig.GET_DRIVER_COUNTS)
+    Observable<BaseEntity> getDriverCounts(@HeaderMap  Map<String, String> headers);
 ////  -----------------feibai
 
     /**
@@ -770,6 +779,7 @@ public interface ApiServer {
      */
     @GET(UrlConfig.GET_MY_TRUCKS)
     Call<ReturnResult<List<MyTruckVO>>> myTrucks(@HeaderMap Map<String, String> headers, @Query("pageNo") int pageNo, @Query("pageSize") int pageSize, @Query("verifyFlag") String verifyFlag);
+
 
 
 }

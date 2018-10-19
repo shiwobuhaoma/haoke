@@ -20,10 +20,10 @@ import com.xinze.haoke.App;
 import com.xinze.haoke.R;
 import com.xinze.haoke.base.BaseActivity;
 import com.xinze.haoke.module.main.adapter.OrderRecycleViewAdapter;
-import com.xinze.haoke.module.main.modle.OrderItem;
 import com.xinze.haoke.module.main.presenter.OrderPresenterImp;
 import com.xinze.haoke.module.main.view.IOrderView;
 import com.xinze.haoke.module.order.view.OrderDetailActivity;
+import com.xinze.haoke.module.ordinary.modle.Bill;
 
 import java.util.List;
 
@@ -49,7 +49,7 @@ public class SearchOrderActivity extends BaseActivity implements IOrderView {
     @BindView(R.id.search_order_srl)
     SmartRefreshLayout searchOrderSrl;
 
-    private List<OrderItem> mData;
+    private List<Bill> mData;
     private OrderRecycleViewAdapter mAdapter;
     private OrderPresenterImp opi;
     private int pageNo = 1;
@@ -97,7 +97,7 @@ public class SearchOrderActivity extends BaseActivity implements IOrderView {
 
             @Override
             public void onItemClick(View view, int position) {
-                OrderItem orderItem = mData.get(position);
+                Bill orderItem = mData.get(position);
                 String orderId = orderItem.getOrderid();
                 openActivity(OrderDetailActivity.class, "orderId", orderId);
             }
@@ -171,7 +171,7 @@ public class SearchOrderActivity extends BaseActivity implements IOrderView {
     }
 
     @Override
-    public void upData(List<OrderItem> data) {
+    public void upData(List<Bill> data) {
         this.mData = data;
         if (mAdapter != null) {
             mAdapter.setData(data);

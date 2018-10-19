@@ -13,7 +13,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xinze.haoke.App;
 import com.xinze.haoke.R;
 import com.xinze.haoke.config.OrderConfig;
-import com.xinze.haoke.module.main.modle.OrderItem;
+import com.xinze.haoke.module.ordinary.modle.Bill;
 import com.xinze.haoke.module.send.adapter.BillRecycleViewAdapter;
 import com.xinze.haoke.module.send.view.IBillView;
 import com.xinze.haoke.utils.DialogUtil;
@@ -176,8 +176,8 @@ public class OrdinaryBillFragment extends AbstractBillFragment implements IBillV
     }
 
     @Override
-    public void setOrderItemData(List<OrderItem> data) {
-        super.setOrderItemData(data);
+    public void setBillData(List<Bill> data) {
+        super.setBillData(data);
         billRecycleViewAdapter.setData(data);
     }
 }

@@ -20,10 +20,10 @@ import com.xinze.haoke.base.BaseFragment;
 import com.xinze.haoke.config.AppConfig;
 import com.xinze.haoke.module.main.activity.SearchOrderActivity;
 import com.xinze.haoke.module.main.adapter.OrderRecycleViewAdapter;
-import com.xinze.haoke.module.main.modle.OrderItem;
 import com.xinze.haoke.module.main.presenter.OrderPresenterImp;
 import com.xinze.haoke.module.main.view.IOrderView;
 import com.xinze.haoke.module.order.view.OrderDetailActivity;
+import com.xinze.haoke.module.ordinary.modle.Bill;
 import com.xinze.haoke.utils.MessageEvent;
 import com.xinze.haoke.utils.UIUtils;
 import com.xinze.haoke.widget.SimpleToolbar;
@@ -57,7 +57,7 @@ public class OrderFragment extends BaseFragment implements IOrderView {
     private OrderPresenterImp opi;
     private int pageNo = 1;
     private OrderRecycleViewAdapter mAdapter;
-    private List<OrderItem> data;
+    private List<Bill> data;
 
     private ValueAnimator mUpAnim;
     private ValueAnimator mDownAnim;
@@ -109,7 +109,7 @@ public class OrderFragment extends BaseFragment implements IOrderView {
             @Override
             public void onItemClick(View view, int position) {
                 mPosition = position;
-                OrderItem orderItem = data.get(position);
+                Bill orderItem = data.get(position);
                 String orderId = orderItem.getOrderid();
                 openActivity(OrderDetailActivity.class, "orderId", orderId);
             }
@@ -230,7 +230,7 @@ public class OrderFragment extends BaseFragment implements IOrderView {
     }
 
     @Override
-    public void upData(List<OrderItem> data) {
+    public void upData(List<Bill> data) {
         this.data = data;
         if (mAdapter != null){
             mAdapter.setData(data);

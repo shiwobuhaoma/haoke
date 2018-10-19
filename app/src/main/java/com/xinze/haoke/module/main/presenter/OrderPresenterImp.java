@@ -2,20 +2,17 @@ package com.xinze.haoke.module.main.presenter;
 
 import android.content.Context;
 
-import com.xinze.haoke.App;
 import com.xinze.haoke.config.AppConfig;
 import com.xinze.haoke.http.RetrofitFactory;
 import com.xinze.haoke.http.config.HeaderConfig;
 import com.xinze.haoke.http.entity.BaseEntity;
 import com.xinze.haoke.http.observer.BaseObserver;
-import com.xinze.haoke.module.main.fragment.OrderFragment;
-import com.xinze.haoke.module.main.modle.OrderItem;
 import com.xinze.haoke.module.main.view.IOrderView;
+import com.xinze.haoke.module.ordinary.modle.Bill;
 import com.xinze.haoke.mvpbase.BasePresenterImpl;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 中介
@@ -24,7 +21,7 @@ import java.util.Map;
 public class OrderPresenterImp extends BasePresenterImpl<IOrderView> implements IOrderPresenter {
 
     private int pageNo;
-    private List<OrderItem> mData;
+    private List<Bill> mData;
 
     public OrderPresenterImp(IOrderView mPresenterView, Context mContext) {
         super(mPresenterView, mContext);
@@ -34,12 +31,12 @@ public class OrderPresenterImp extends BasePresenterImpl<IOrderView> implements 
     public void getOderList(int pageNo, int pageSize,String remark) {
         this.pageNo = pageNo;
         HashMap<String, String> headers = HeaderConfig.getHeaders();
-        RetrofitFactory.getInstence().Api().getBillOrderList(headers,pageNo,pageSize,remark).compose(this.<BaseEntity<List<OrderItem>>>setThread()).subscribe(new BaseObserver<List<OrderItem>>() {
+        RetrofitFactory.getInstence().Api().getBillOrderList(headers,pageNo,pageSize,remark).compose(this.<BaseEntity<List<Bill>>>setThread()).subscribe(new BaseObserver<List<Bill>>() {
             @Override
-            protected void onSuccess(BaseEntity<List<OrderItem>> t) throws Exception {
+            protected void onSuccess(BaseEntity<List<Bill>> t) throws Exception {
                 if (t != null){
                     if (t.isSuccess()){
-                        List<OrderItem> data = t.getData();
+                        List<Bill> data = t.getData();
                         setData(data);
                         mPresenterView.getOrderListSuccess();
                     }else{
@@ -57,7 +54,7 @@ public class OrderPresenterImp extends BasePresenterImpl<IOrderView> implements 
         });
     }
 
-    public void setData(final List<OrderItem> data) {
+    public void setData(final List<Bill> data) {
         if (pageNo == 1) {
             if (data != null && data.size() > 0) {
                 this.mData = data;

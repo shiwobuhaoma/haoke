@@ -4,14 +4,12 @@ import android.content.Context;
 
 import com.xinze.haoke.App;
 import com.xinze.haoke.config.AppConfig;
-import com.xinze.haoke.config.OrderConfig;
 import com.xinze.haoke.http.RetrofitFactory;
 import com.xinze.haoke.http.config.HeaderConfig;
 import com.xinze.haoke.http.entity.BaseEntity;
 import com.xinze.haoke.http.observer.BaseObserver;
-import com.xinze.haoke.module.main.modle.OrderItem;
+import com.xinze.haoke.module.ordinary.modle.Bill;
 import com.xinze.haoke.module.send.fragment.AbstractBillFragment;
-import com.xinze.haoke.module.send.fragment.DirectionalBillFragment;
 import com.xinze.haoke.module.send.view.IBillView;
 import com.xinze.haoke.mvpbase.BasePresenterImpl;
 
@@ -34,13 +32,13 @@ public class BillPresenterImp extends BasePresenterImpl<IBillView> implements IB
         headers.put("sessionid", App.mUser.getSessionid());
         headers.put("userid", App.mUser.getId());
 
-        RetrofitFactory.getInstence().Api().getBillList(headers, wlBilltype, pageNum, pageSize, remarks).compose(this.<BaseEntity<List<OrderItem>>>setThread()).subscribe(new BaseObserver<List<OrderItem>>() {
+        RetrofitFactory.getInstence().Api().getBillList(headers, wlBilltype, pageNum, pageSize, remarks).compose(this.<BaseEntity<List<Bill>>>setThread()).subscribe(new BaseObserver<List<Bill>>() {
 
             @Override
-            protected void onSuccess(BaseEntity<List<OrderItem>> t) throws Exception {
+            protected void onSuccess(BaseEntity<List<Bill>> t) throws Exception {
                 if (t != null) {
                     if (t.isSuccess()) {
-                        List<OrderItem> data = t.getData();
+                        List<Bill> data = t.getData();
                         if (data != null) {
                             mBillFragment.setData(data);
                             mBillFragment.getBillsSuccess(t.getMsg());
@@ -64,13 +62,13 @@ public class BillPresenterImp extends BasePresenterImpl<IBillView> implements IB
     @Override
     public void searchRouteList(String fromAreaId, String toAreaId, int pageNo, int pageSize) {
         HashMap<String, String> headers = HeaderConfig.getHeaders();
-        RetrofitFactory.getInstence().Api().searchRoute(headers, fromAreaId, toAreaId, pageNo, pageSize).compose(this.<BaseEntity<List<OrderItem>>>setThread()).subscribe(new BaseObserver<List<OrderItem>>() {
+        RetrofitFactory.getInstence().Api().searchRoute(headers, fromAreaId, toAreaId, pageNo, pageSize).compose(this.<BaseEntity<List<Bill>>>setThread()).subscribe(new BaseObserver<List<Bill>>() {
             @Override
-            protected void onSuccess(BaseEntity<List<OrderItem>> t) throws Exception {
+            protected void onSuccess(BaseEntity<List<Bill>> t) throws Exception {
                 if (t != null) {
                     if (t.isSuccess()) {
-                        List<OrderItem> data = t.getData();
-                        mBillFragment.setOrderItemData(data);
+                        List<Bill> data = t.getData();
+                        mBillFragment.setBillData(data);
                         mBillFragment.searchRouteListSuccess(t.getMsg());
                     } else {
                         mBillFragment.searchRouteListFailed(t.getMsg());

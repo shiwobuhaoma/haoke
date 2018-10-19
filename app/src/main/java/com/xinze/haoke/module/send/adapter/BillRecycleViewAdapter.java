@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.xinze.haoke.R;
-import com.xinze.haoke.module.main.modle.OrderItem;
+import com.xinze.haoke.module.ordinary.modle.Bill;
 import com.xinze.haoke.module.receive.view.ReceiverBillDetailsActivity;
 import com.xinze.haoke.module.relay.view.RelayActivity;
 
@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
  */
 public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleViewAdapter.ViewHolder>{
 
-    private List<OrderItem> mBS;
+    private List<Bill> mBS;
     private Context mContext;
     private View view;
     private String from;
@@ -48,14 +48,14 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int position) {
-        OrderItem orderRecycleViewItem = mBS.get(position);
+        Bill orderRecycleViewItem = mBS.get(position);
         String id = orderRecycleViewItem.getId();
         String startText = orderRecycleViewItem.getFromDetailAdress();
         String endText = orderRecycleViewItem.getToDetailAdress();
-        int carCount = orderRecycleViewItem.getTruckNumber();
+        String carCount = orderRecycleViewItem.getTruckNumber();
         String productName = orderRecycleViewItem.getProductName();
-        BigDecimal distance = orderRecycleViewItem.getDistance();
-        BigDecimal freight = orderRecycleViewItem.getPrice();
+        String distance = orderRecycleViewItem.getDistance();
+        String freight = orderRecycleViewItem.getPrice();
         int leftNumber = orderRecycleViewItem.getLeft_number();
 
         String billNumber = mContext.getResources().getString(R.string.bill_number);
@@ -68,8 +68,8 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
 
         billNumber = getString(id, billNumber);
         remainCars = getString(String.valueOf(leftNumber), remainCars);
-        count = getString(String.valueOf(carCount), count);
-        money = getString(String.valueOf(freight), money);
+        count = getString(carCount, count);
+        money = getString(freight, money);
         product = getString(productName, product);
         distances = getString(String.valueOf(distance), distances);
 
@@ -125,7 +125,7 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
 
 
 
-    public void setData(List<OrderItem> data) {
+    public void setData(List<Bill> data) {
         this.mBS = data;
         notifyDataSetChanged();
     }
@@ -185,7 +185,7 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
                 @Override
                 public void onClick(View v) {
                     int position = (int) v.getTag();
-                    OrderItem orderItem = mBS.get(position);
+                    Bill orderItem = mBS.get(position);
                     String id = orderItem.getId();
                     Intent intent = new Intent(mContext,ReceiverBillDetailsActivity.class);
                     intent.putExtra("wayBillId",id);
@@ -196,7 +196,7 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
                 @Override
                 public void onClick(View v) {
                     int position = (int) v.getTag();
-                    OrderItem orderItem = mBS.get(position);
+                    Bill orderItem = mBS.get(position);
                     Intent intent = new Intent(mContext,RelayActivity.class);
                     intent.putExtra("bill",orderItem);
                     mContext.startActivity(intent);

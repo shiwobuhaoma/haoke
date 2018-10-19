@@ -21,12 +21,11 @@ import com.xinze.haoke.base.BaseActivity;
 import com.xinze.haoke.config.ProtocolConfig;
 import com.xinze.haoke.module.about.view.AboutUsActivity;
 import com.xinze.haoke.module.goods.bean.Goods;
-import com.xinze.haoke.module.main.modle.OrderItem;
+import com.xinze.haoke.module.ordinary.modle.Bill;
+import com.xinze.haoke.module.ordinary.presenter.OrdinarySendGoodsPresenterImp;
 import com.xinze.haoke.module.select.cartype.modle.CarType;
 import com.xinze.haoke.module.select.cartype.view.SelectCarTypeActivity;
 import com.xinze.haoke.module.select.driver.view.SelectDriverActivity;
-import com.xinze.haoke.module.ordinary.modle.Bill;
-import com.xinze.haoke.module.ordinary.presenter.OrdinarySendGoodsPresenterImp;
 import com.xinze.haoke.module.select.goodstype.view.SelectGoodsTypeActivity;
 import com.xinze.haoke.widget.FromDetailsInfoView;
 import com.xinze.haoke.widget.SelectAddressView2;
@@ -153,6 +152,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
     private CarType carType;
     private Goods goods;
     private String value = SEND;
+    private Bill bill;
 
     @Override
     protected int initLayout() {
@@ -163,9 +163,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
     protected void initView() {
         EventBus.getDefault().register(this);
         from = getIntent().getStringExtra("from");
-        Bill bill = (Bill) getIntent().getSerializableExtra("bill");
-        OrderItem bill2 = (OrderItem) getIntent().getSerializableExtra("bill");
-        bill2.
+        bill = (Bill) getIntent().getSerializableExtra("bill");
         if (bill !=  null){
             fromWhere.setFrom(bill.getFromAreaId());
             fromWhere.setDetailsAddress(bill.getFromDetailAdress());
@@ -175,7 +173,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
             toWhere.setFrom(bill.getToAreaId());
             toWhere.setDetailsAddress(bill.getToDetailAdress());
             toWhere.setContact(bill.getToName());
-            fromWhere.setPhone(bill.getToPhone());
+            toWhere.setPhone(bill.getToPhone());
 
             ordinaryInfoPayEt.setText(bill.getMsgPrice());
             ordinaryLoadPayEt.setText(bill.getLoadPrice());
@@ -183,13 +181,20 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
             ordinaryGoodsEt.setText(bill.getProductName());
             ordinaryDistanceEt.setText(bill.getDistance());
             ordinaryFreightEt.setText(bill.getPrice());
-            ordinaryDeliveryFromDateEt.setText(bill.getDateFrom());
-            ordinaryDeliveryToDateEt.setText(bill.getDateTo());
+            ordinaryDeliveryFromDateEt.setText(bill.getDateFrom().substring(0,11));
+            ordinaryDeliveryToDateEt.setText(bill.getDateTo().substring(0,11));
             ordinaryCarNumberEt.setText(bill.getTruckNumber());
-            ordinaryCarTypeEt.setText(bill.getTruckCode());
+            ordinaryCarTypeEt.setText(bill.getTruckName());
             ordinaryCarLongEt.setText(bill.getTruckLong());
             ordinaryRoadLossEt.setText(bill.getJourneyLoss());
             ordinaryRemarkEt.setText(bill.getRemarks());
+            if ("0".equals(bill.getConfirmFlag())){
+                ordinaryWaitConfirm.setVisibility(View.GONE);
+            }else{
+                selectNeedMeConfirm();
+            }
+            isSelectedProtocol = true;
+            ordinaryProtocolIv.setBackgroundResource(R.mipmap.select_choicd);
         }
         initTitleBar();
         fromWhere.setTitle(SEND);
@@ -298,13 +303,9 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
                 needMeConfirm = !needMeConfirm;
 
                 if (needMeConfirm) {
-                    Drawable drawable = getApplicationContext().getResources().getDrawable(R.mipmap.select_choicd);
-                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    ordinaryWaitConfirm.setCompoundDrawables(drawable, null, null, null);
+                    selectNeedMeConfirm();
                 } else {
-                    Drawable drawable = getApplicationContext().getResources().getDrawable(R.mipmap.select_choice);
-                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    ordinaryWaitConfirm.setCompoundDrawables(drawable, null, null, null);
+                    unselectNeedMeConfirm();
                 }
                 break;
             case R.id.ordinary_release:
@@ -350,6 +351,18 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
         }
     }
 
+    private void unselectNeedMeConfirm() {
+        Drawable drawable = getApplicationContext().getResources().getDrawable(R.mipmap.select_choice);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        ordinaryWaitConfirm.setCompoundDrawables(drawable, null, null, null);
+    }
+
+    private void selectNeedMeConfirm() {
+        Drawable drawable = getApplicationContext().getResources().getDrawable(R.mipmap.select_choicd);
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        ordinaryWaitConfirm.setCompoundDrawables(drawable, null, null, null);
+    }
+
     private void release() {
         Bill bill = createBill();
         if (bill == null) {
@@ -359,47 +372,53 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
     }
 
     private Bill createBill() {
-        Bill bill = new Bill();
-        bill.setUserId(App.mUser.getId());
-        bill.setFromAreaId(fromID);
-        if (SEND.equals(fromWhere.getFromText())) {
-            bill.setFromDetailAdress(fromWhere.getFromText());
-            bill.setFromName(fromWhere.getContact());
-            bill.setFromPhone(fromWhere.getPhone());
-        } else {
-            bill.setFromDetailAdress(toWhere.getFromText());
-            bill.setFromName(toWhere.getContact());
-            bill.setFromPhone(toWhere.getPhone());
-        }
-        bill.setToAreaId(toID);
-        bill.setPrice(ordinaryInfoPayEt.getText().toString());
-        bill.setDistance(ordinaryDistanceEt.getText().toString());
-        bill.setPrice(ordinaryFreightEt.getText().toString());
-        bill.setDateFrom(ordinaryDeliveryFromDateEt.getText().toString());
-        bill.setDateTo(ordinaryDeliveryToDateEt.getText().toString());
-        bill.setTruckNumber(ordinaryCarNumberEt.getText().toString());
-        if (carType == null) {
-            return null;
-        }
-        bill.setTruckCode(carType.getTruckcode());
-        bill.setTruckLong(ordinaryCarLongEt.getText().toString());
-        bill.setJourneyLoss(ordinaryRoadLossEt.getText().toString());
-        bill.setRemarks(ordinaryRemarkEt.getText().toString());
-        if ("定向".equals(from)) {
-             bill.setWlBilltype("1");
-             bill.setConfirmFlag("0");
-        } else {
-            if (needMeConfirm) {
-                bill.setConfirmFlag("1");
+        if(bill == null){
+            Bill bill = new Bill();
+            bill.setUserId(App.mUser.getId());
+            bill.setFromAreaId(fromID);
+            if (SEND.equals(fromWhere.getFromText())) {
+                bill.setFromDetailAdress(fromWhere.getFromText());
+                bill.setFromName(fromWhere.getContact());
+                bill.setFromPhone(fromWhere.getPhone());
             } else {
-                bill.setConfirmFlag("0");
+                bill.setFromDetailAdress(toWhere.getFromText());
+                bill.setFromName(toWhere.getContact());
+                bill.setFromPhone(toWhere.getPhone());
             }
-            bill.setWlBilltype("0");
-            bill.setDriverId("");
+            bill.setToAreaId(toID);
+            bill.setPrice(ordinaryInfoPayEt.getText().toString());
+            bill.setDistance(ordinaryDistanceEt.getText().toString());
+            bill.setPrice(ordinaryFreightEt.getText().toString());
+            bill.setDateFrom(ordinaryDeliveryFromDateEt.getText().toString());
+            bill.setDateTo(ordinaryDeliveryToDateEt.getText().toString());
+            bill.setTruckNumber(ordinaryCarNumberEt.getText().toString());
+            if (carType == null) {
+                return null;
+            }
+            bill.setTruckCode(carType.getTruckcode());
+            bill.setTruckLong(ordinaryCarLongEt.getText().toString());
+            bill.setJourneyLoss(ordinaryRoadLossEt.getText().toString());
+            bill.setRemarks(ordinaryRemarkEt.getText().toString());
+            bill.setMsgPrice(ordinaryInfoPayEt.getText().toString());
+            bill.setLoadPrice(ordinaryLoadPayEt.getText().toString());
+            bill.setUnloadPrice(ordinaryUnloadPayEt.getText().toString());
+            if ("定向".equals(from)) {
+                bill.setWlBilltype("1");
+                bill.setConfirmFlag("0");
+            } else {
+                if (needMeConfirm) {
+                    bill.setConfirmFlag("1");
+                } else {
+                    bill.setConfirmFlag("0");
+                }
+                bill.setWlBilltype("0");
+                bill.setDriverId("");
+            }
         }
-        bill.setMsgPrice(ordinaryInfoPayEt.getText().toString());
-        bill.setLoadPrice(ordinaryLoadPayEt.getText().toString());
-        bill.setUnloadPrice(ordinaryUnloadPayEt.getText().toString());
+
+
+
+
         return bill;
     }
 
@@ -425,6 +444,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
 
     @Override
     public void releaseTheBillOfGoodsSuccess(String msg) {
+        finish();
         shotToast(msg);
     }
 

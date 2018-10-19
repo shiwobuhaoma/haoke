@@ -17,7 +17,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xinze.haoke.R;
 import com.xinze.haoke.base.BaseActivity;
-import com.xinze.haoke.module.main.modle.OrderItem;
+import com.xinze.haoke.module.ordinary.modle.Bill;
 import com.xinze.haoke.module.regular.adapter.MenuAdapter;
 import com.xinze.haoke.module.regular.modle.Route;
 import com.xinze.haoke.module.regular.presenter.RegularRunPresenterImp;
@@ -61,7 +61,7 @@ public class RegularRunActivity extends BaseActivity implements IRegularRouteVie
     private List<Route> routeData;
     private String fromAreaId;
     private String toAreaId;
-    private List<OrderItem> orderItemData;
+    private List<Bill> orderItemData;
     private String fromAreaName;
     private String toAreaName;
     private MenuAdapter mMenuAdapter;
@@ -165,7 +165,7 @@ public class RegularRunActivity extends BaseActivity implements IRegularRouteVie
     }
 
     private void jumpToSelectCarActivity(int position) {
-        OrderItem orderItem = orderItemData.get(position);
+        Bill orderItem = orderItemData.get(position);
         String orderId = orderItem.getId();
         openActivity(SelectCarActivity.class,"orderId", orderId);
     }
@@ -200,7 +200,7 @@ public class RegularRunActivity extends BaseActivity implements IRegularRouteVie
 
 
     private void jumpToOrderDetailActivity(int position) {
-        OrderItem orderItem = orderItemData.get(position);
+        Bill orderItem = orderItemData.get(position);
         String orderId = orderItem.getId();
         openActivity(TransportDetailsActivity.class, "orderId", orderId);
     }
@@ -249,7 +249,7 @@ public class RegularRunActivity extends BaseActivity implements IRegularRouteVie
         shotToast(msg);
     }
 
-    public void setOrderItemData(List<OrderItem> data) {
+    public void setBillData(List<Bill> data) {
         if (pageNo == 1) {
             this.orderItemData = data;
         } else {

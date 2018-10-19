@@ -20,7 +20,7 @@ import com.xinze.haoke.utils.UIUtils;
 public abstract class LoadingPager extends FrameLayout {
 
     /** 默认状态 */
-    public static final int STATE_UNKOWN = 0 ;
+    public static final int STATE_UNKNOWN = 0 ;
     /** 加载中 */
     public static final int STATE_LOADING = 1 ;
     /** 加载失败 */
@@ -31,12 +31,23 @@ public abstract class LoadingPager extends FrameLayout {
     public static final int STATE_SUCCESS = 4 ;
 
     /**  当前状态 */
-    protected int state = STATE_UNKOWN ;
-
-    private View loadingView ;//加载中界面
-    private View errorView ;//加载失败界面
-    private View emptyView ;//空界面
-    private View successView ;//加载成功界面
+    protected int state = STATE_UNKNOWN ;
+    /**
+     * //加载中界面
+     */
+    private View loadingView ;
+    /**
+     * //加载失败界面
+     */
+    private View errorView ;
+    /**
+     * //空界面
+     */
+    private View emptyView ;
+    /**
+     * //加载成功界面
+     */
+    private View successView ;
 
     public LoadingPager(@NonNull Context context) {
         this(context,null);
@@ -77,36 +88,27 @@ public abstract class LoadingPager extends FrameLayout {
     /** 根据状态显示界面 */
     private void showPager() {
         if(loadingView != null){
-            loadingView.setVisibility(state == STATE_LOADING || state == STATE_UNKOWN ? View.VISIBLE : View.GONE);
-
+            loadingView.setVisibility(state == STATE_LOADING || state == STATE_UNKNOWN ? View.VISIBLE : View.GONE);
         }
         if(errorView != null){
-
             errorView.setVisibility(state == STATE_ERROR ? View.VISIBLE : View.GONE);
-
         }
         if(emptyView != null){
-
             emptyView.setVisibility(state == STATE_EMPTY ? View.VISIBLE : View.GONE);
-
         }
         if(state == STATE_SUCCESS && successView == null){
-
             successView = createLoadedView();
             this.addView(successView,new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-
         }
     }
 
     /** 显示布局 */
     public void show() {
         if(state == STATE_EMPTY || state == STATE_ERROR){
-            state = STATE_UNKOWN ;
+            state = STATE_UNKNOWN ;
         }
-        if(state == STATE_UNKOWN){
+        if(state == STATE_UNKNOWN){
             state = STATE_LOADING ;
-
-//            ThreadManager.creatLongPool().execute(new LoadingTask());
             load();
         }
         showPager();
@@ -164,15 +166,6 @@ public abstract class LoadingPager extends FrameLayout {
         }
     }
 
-
-    /*private class LoadingTask implements Runnable {
-
-        @Override
-        public void run() {
-            load();
-
-        }
-    }*/
 
     public void setState(LoadResult result){
         state = result.getValue() ;
