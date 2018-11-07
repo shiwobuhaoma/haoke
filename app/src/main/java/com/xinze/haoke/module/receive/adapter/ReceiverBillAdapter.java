@@ -102,7 +102,7 @@ public class ReceiverBillAdapter extends RecyclerView.Adapter<ReceiverBillAdapte
             holder.receiveBillState.setBackground(drawable);
         }
 
-
+        holder.itemView.setTag(position);
 
     }
 
@@ -120,7 +120,7 @@ public class ReceiverBillAdapter extends RecyclerView.Adapter<ReceiverBillAdapte
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.receiver_bill_number)
         TextView receiverBillNumber;
         @BindView(R.id.receiver_people)
@@ -133,6 +133,28 @@ public class ReceiverBillAdapter extends RecyclerView.Adapter<ReceiverBillAdapte
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            if (itemOnClickListener != null){
+                int position = (int) v.getTag();
+                itemOnClickListener.itemOnClick(position);
+            }
+        }
+    }
+    private ItemOnClickListener itemOnClickListener;
+
+   public interface ItemOnClickListener{
+        /**
+         * 条目事件点击
+         * @param position 点击的哪个条目
+         */
+        void itemOnClick(int position);
+    }
+
+    public void setOnItemClickListener(ItemOnClickListener mItemOnClickListener){
+        itemOnClickListener = mItemOnClickListener;
     }
 }

@@ -12,10 +12,9 @@ import android.widget.TextView;
 
 import com.xinze.haoke.R;
 import com.xinze.haoke.module.ordinary.modle.Bill;
-import com.xinze.haoke.module.receive.view.ReceiverBillDetailsActivity;
+import com.xinze.haoke.module.receive.view.ReceiverBillDetailsListActivity;
 import com.xinze.haoke.module.relay.view.RelayActivity;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import butterknife.BindView;
@@ -187,7 +186,7 @@ public class BillRecycleViewAdapter extends RecyclerView.Adapter<BillRecycleView
                     int position = (int) v.getTag();
                     Bill orderItem = mBS.get(position);
                     String id = orderItem.getId();
-                    Intent intent = new Intent(mContext,ReceiverBillDetailsActivity.class);
+                    Intent intent = new Intent(mContext,ReceiverBillDetailsListActivity.class);
                     intent.putExtra("wayBillId",id);
                     mContext.startActivity(intent);
                 }

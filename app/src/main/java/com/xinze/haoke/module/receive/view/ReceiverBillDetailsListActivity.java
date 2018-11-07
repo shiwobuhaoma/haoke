@@ -1,5 +1,6 @@
 package com.xinze.haoke.module.receive.view;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,9 +9,10 @@ import android.widget.TextView;
 import com.xinze.haoke.R;
 import com.xinze.haoke.base.BaseActivity;
 import com.xinze.haoke.config.AppConfig;
+import com.xinze.haoke.module.order.view.OrderDetailActivity;
 import com.xinze.haoke.module.receive.modle.ReceiverBill;
 import com.xinze.haoke.module.receive.adapter.ReceiverBillAdapter;
-import com.xinze.haoke.module.receive.presenter.ReceiverBillDetailsPresenterImp;
+import com.xinze.haoke.module.receive.presenter.ReceiverBillDetailsListListPresenterImp;
 import com.xinze.haoke.widget.SimpleToolbar;
 
 import java.util.List;
@@ -21,7 +23,7 @@ import butterknife.BindView;
  * @author lxf
  * 接单详情
  */
-public class ReceiverBillDetailsActivity extends BaseActivity implements IReceiverBillDetailsView {
+public class ReceiverBillDetailsListActivity extends BaseActivity implements IReceiverBillDetailsListView {
     @BindView(R.id.receive_bill_details_tool_bar)
     SimpleToolbar mToolbar;
     @BindView(R.id.send_number)
@@ -36,6 +38,7 @@ public class ReceiverBillDetailsActivity extends BaseActivity implements IReceiv
     private int pageSize = AppConfig.PAGE_SIZE;
     private String wayBillId;
     private ReceiverBillAdapter adapter;
+    private List<ReceiverBill.WaybillOrderEntitiesBean> data;
 
 
     @Override
@@ -70,11 +73,23 @@ public class ReceiverBillDetailsActivity extends BaseActivity implements IReceiv
         mRecyclerView.setLayoutManager(llm);
         adapter = new ReceiverBillAdapter(this);
         mRecyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ReceiverBillAdapter.ItemOnClickListener() {
+            @Override
+            public void itemOnClick(int position) {
+                if (data != null){
+                    ReceiverBill.WaybillOrderEntitiesBean waybillOrderEntitiesBean = data.get(position);
+                    Intent intent = new Intent(ReceiverBillDetailsListActivity.this, OrderDetailActivity.class);
+
+                    intent.putExtra("orderId",waybillOrderEntitiesBean.getIdX());
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
     protected void initData() {
-        ReceiverBillDetailsPresenterImp  mPresenter = new ReceiverBillDetailsPresenterImp(this, this);
+        ReceiverBillDetailsListListPresenterImp mPresenter = new ReceiverBillDetailsListListPresenterImp(this, this);
         mPresenter.getBillOrderListForOwner(pageNo, pageSize, wayBillId);
     }
 
@@ -90,6 +105,7 @@ public class ReceiverBillDetailsActivity extends BaseActivity implements IReceiv
 
     public void setData(List<ReceiverBill.WaybillOrderEntitiesBean> data) {
         if (data != null) {
+            this.data = data;
             adapter.setData(data);
         }
     }

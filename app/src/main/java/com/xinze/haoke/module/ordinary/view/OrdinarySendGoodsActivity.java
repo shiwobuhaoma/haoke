@@ -334,7 +334,7 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
                 break;
 
             case R.id.ordinary_protocol:
-                openActivity(AboutUsActivity.class, "type", ProtocolConfig.TRANSPORT_SERVICE_PROTOCOL);
+                openActivity(AboutUsActivity.class, "type", ProtocolConfig.CARRIER_SERVICE_PROTOCOL);
                 break;
             case R.id.ordinary_protocol_iv:
                 isSelectedProtocol = !isSelectedProtocol;

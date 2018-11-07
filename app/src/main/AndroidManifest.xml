@@ -124,7 +124,7 @@
         <activity android:name=".module.select.cartype.view.SelectCarTypeActivity"></activity>
         <activity android:name=".module.select.driver.view.SelectDriverActivity" />
         <activity android:name=".module.select.goodstype.view.SelectGoodsTypeActivity" />
-        <activity android:name=".module.receive.view.ReceiverBillDetailsActivity" />
+        <activity android:name=".module.receive.view.ReceiverBillDetailsListActivity" />
         <activity android:name=".module.relay.view.RelayActivity" />
     </application>
 

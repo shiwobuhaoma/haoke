@@ -114,14 +114,12 @@ public class HomeFragment extends BaseFragment implements IHomeView {
         } else if (position == 2) {
 
             if (App.mUser.isLogin()) {
-                openActivity(RegularRunActivity.class);
+                openActivity(AboutUsActivity.class);
             } else {
                 DialogUtil.showUnloginDialog(mActivity);
             }
 
-        } else if (position == 3) {
-            openActivity(AboutUsActivity.class);
-        } else if (position == 4) {
+        }  else if (position == 3) {
 
             startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + hotLine)));
         }

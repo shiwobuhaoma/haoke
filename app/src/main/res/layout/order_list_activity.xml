@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <com.xinze.haoke.widget.SimpleToolbar
@@ -34,188 +35,73 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/background"
                 android:padding="15dp"
-                android:text="@string/order_shipper"
+                android:text="@string/receive_details"
                 android:textColor="@color/order_item_text"
                 android:textSize="14sp" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/find_goods_company"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@mipmap/goods_info_department"
-                    android:drawablePadding="15dp"
-                    android:gravity="center_vertical"
-                    android:padding="15dp"
 
-                    android:textColor="@color/themeBlack"
-                    android:textSize="14sp" />
+
 
                 <TextView
                     android:id="@+id/find_goods_contacts"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/find_goods_company"
                     android:drawablePadding="15dp"
                     android:gravity="center_vertical"
                     android:padding="15dp"
-                    android:text="@string/order_contacts"
+                    tools:text ="@string/receiver_order"
+                    android:drawableEnd="@mipmap/phone"
                     android:textColor="@color/themeBlack"
                     android:textSize="14sp" />
-
-                <ImageView
-                    android:id="@+id/find_goods_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
-                    android:background="@mipmap/phone"
-                    android:padding="15dp" />
-
-                <View
-                    android:layout_width="1px"
-                    android:layout_height="25dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
-                    android:layout_toStartOf="@id/find_goods_phone"
-                    android:background="@drawable/line" />
-            </RelativeLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/gray_line"
+                android:layout_height="1px"/>
             <TextView
+                android:id="@+id/goods_driver"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background"
-                android:padding="15dp"
-                android:text="@string/order_freight_details"
-                android:textColor="@color/order_item_text"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/find_goods_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:drawablePadding="15dp"
                 android:gravity="center_vertical"
                 android:padding="15dp"
-                android:text="@string/order_item_date"
+                tools:text ="@string/driver"
+                android:drawableEnd="@mipmap/phone"
                 android:textColor="@color/themeBlack"
                 android:textSize="14sp" />
-
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@drawable/line" />
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/find_goods_consignor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:lineSpacingExtra="10dp"
-                    android:padding="15dp"
-                    android:text="@string/order_consignor_and_address"
-                    android:textColor="@color/themeBlack"
-                    android:textSize="14sp" />
-
-                <ImageView
-                    android:id="@+id/from_goods_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
-                    android:background="@mipmap/phone"
-                    android:padding="15dp" />
-
-                <View
-                    android:id="@+id/from_left_goods_phone"
-                    android:layout_width="1px"
-                    android:layout_height="25dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
-                    android:layout_toStartOf="@id/from_goods_phone"
-                    android:background="@drawable/line" />
-            </RelativeLayout>
-
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@drawable/line" />
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/find_goods_consignee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:lineSpacingExtra="10dp"
-                    android:padding="15dp"
-                    android:text="@string/order_consignee_and_address"
-                    android:textColor="@color/themeBlack"
-                    android:textSize="14sp" />
-                <ImageView
-                    android:id="@+id/to_goods_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
-                    android:background="@mipmap/phone"
-                    android:padding="15dp" />
-
-                <View
-                    android:id="@+id/to_left_goods_phone"
-                    android:layout_width="1px"
-                    android:layout_height="25dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
-                    android:layout_toStartOf="@id/to_goods_phone"
-                    android:background="@drawable/line" />
-            </RelativeLayout>
-
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@drawable/line" />
-
+                android:background="@color/gray_line"
+                android:layout_height="1px"/>
             <TextView
-                android:id="@+id/find_goods_car_count"
+                android:id="@+id/car_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawablePadding="15dp"
                 android:gravity="center_vertical"
-                android:lineSpacingExtra="10dp"
                 android:padding="15dp"
-                android:text="@string/order_car_count"
+                tools:text ="@string/carNumber"
                 android:textColor="@color/themeBlack"
                 android:textSize="14sp" />
-
             <View
-
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@drawable/line" />
-
+                android:background="@color/gray_line"
+                android:layout_height="1px"/>
             <TextView
-                android:id="@+id/find_goods_details"
+                android:id="@+id/car_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawablePadding="15dp"
                 android:gravity="center_vertical"
-                android:lineSpacingExtra="10dp"
                 android:padding="15dp"
-                android:text="@string/order_goods_details"
+                android:text="@string/carType"
                 android:textColor="@color/themeBlack"
                 android:textSize="14sp" />
+            <View
+                android:layout_width="match_parent"
+                android:background="@color/gray_line"
+                android:layout_height="1px"/>
+
             <TextView
                 android:id="@+id/order_upload_evidence"
                 android:layout_width="match_parent"
@@ -230,21 +116,9 @@
                 android:layout_width="match_parent"
                 android:layout_margin="15dp"
                 android:layout_height="wrap_content"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/line"
-                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/order_wait_confirming"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_wait_confirm"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="15dp"
-                    android:textColor="@color/themeOrange"
-                    android:textSize="14sp" />
+
+
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -253,29 +127,28 @@
 
 
                     <Button
-                        android:id="@+id/order_revoke"
+                        android:id="@+id/reject_order"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
-                        android:background="@drawable/circle_orange_button"
-                        android:text="@string/order_revoke"
-                        android:textColor="@color/white"
+                        android:background="@drawable/bg_orange_button"
+                        android:text="@string/reject_order"
+                        android:textColor="@color/themeOrange"
                         android:textSize="18sp" />
 
                     <Button
-                        android:id="@+id/order_next"
+                        android:id="@+id/agree_order"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
                         android:background="@drawable/circle_orange_button"
-                        android:text="@string/order_next"
+                        android:text="@string/agree_order"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
 
-            </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

@@ -167,7 +167,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                 break;
             case R.id.tv_register_read:
-                openActivity(AboutUsActivity.class, "type", ProtocolConfig.DRIVER_SERVICE_PROTOCOL);
+                openActivity(AboutUsActivity.class, "type", ProtocolConfig.GOODS_OWNER_SERVICE_PROTOCOL);
                 break;
             default:
                 break;

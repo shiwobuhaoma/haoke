@@ -59,6 +59,7 @@ public class OrderDetail {
     private String dateTo;
     private int truckNumber;
     private String truckCode;
+    private String truckName;
     private BigDecimal journeyLoss;
     private int wlBilltype;
     private BigDecimal msgPrice;
@@ -78,8 +79,56 @@ public class OrderDetail {
     private String backflag_desc;
     private String confirmflag_desc;
     private int left_number;
+
+
+    /**
+     * waybillId : 568f16a04ed54cbf95b7b9c83e1c23df
+     * orderStatus : 3
+     * truckOwnerid : cc9202e676884f15ad8ba640d97be189
+     * driverId : eaadfc955a604770a8ab30002875b5c5
+     * truckId : 18ad54163f1a4f9a8d38285291f7313f
+     * createBy : eaadfc955a604770a8ab30002875b5c5
+     * createDate : 2018-06-26 22:48:28
+     * updateBy : eaadfc955a604770a8ab30002875b5c5
+     * updateDate : 2018-06-26 22:48:43
+     * delFlag : 0
+     * truckownername : 李晓飞
+     * truckownermobile : 15111111111
+     * drivername : 车主a_01
+     * drivermobile : 15111111110
+     * trucknumber : 京A321
+     * truckcode : zx
+     * confirmflag : 0
+     */
+
+    private String waybillId;
+    private String orderStatus;
+    private String truckOwnerid;
+    private String driverId;
+    private String truckId;
+    private String createBy;
+    private String createDate;
+    private String updateBy;
+    private String updateDate;
+    private String delFlag;
+    private String truckownername;
+    private String truckownermobile;
+    private String drivername;
+    private String drivermobile;
+    private String trucknumber;
+    private String truckcode;
+    private String confirmflag;
+
     public String getRemarks() {
         return remarks;
+    }
+
+    public String getTruckName() {
+        return truckName;
+    }
+
+    public void setTruckName(String truckName) {
+        this.truckName = truckName;
     }
 
     public void setRemarks(String remarks) {
@@ -363,5 +412,141 @@ public class OrderDetail {
 
     public void setLeft_number(int left_number) {
         this.left_number = left_number;
+    }
+
+    public String getWaybillId() {
+        return waybillId;
+    }
+
+    public void setWaybillId(String waybillId) {
+        this.waybillId = waybillId;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public String getTruckOwnerid() {
+        return truckOwnerid;
+    }
+
+    public void setTruckOwnerid(String truckOwnerid) {
+        this.truckOwnerid = truckOwnerid;
+    }
+
+    public String getDriverId() {
+        return driverId;
+    }
+
+    public void setDriverId(String driverId) {
+        this.driverId = driverId;
+    }
+
+    public String getTruckId() {
+        return truckId;
+    }
+
+    public void setTruckId(String truckId) {
+        this.truckId = truckId;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
+    }
+
+    public String getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(String updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public String getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
+    }
+
+    public String getTruckownername() {
+        return truckownername;
+    }
+
+    public void setTruckownername(String truckownername) {
+        this.truckownername = truckownername;
+    }
+
+    public String getTruckownermobile() {
+        return truckownermobile;
+    }
+
+    public void setTruckownermobile(String truckownermobile) {
+        this.truckownermobile = truckownermobile;
+    }
+
+    public String getDrivername() {
+        return drivername;
+    }
+
+    public void setDrivername(String drivername) {
+        this.drivername = drivername;
+    }
+
+    public String getDrivermobile() {
+        return drivermobile;
+    }
+
+    public void setDrivermobile(String drivermobile) {
+        this.drivermobile = drivermobile;
+    }
+
+    public String getTrucknumber() {
+        return trucknumber;
+    }
+
+    public void setTrucknumber(String trucknumber) {
+        this.trucknumber = trucknumber;
+    }
+
+    public String getTruckcode() {
+        return truckcode;
+    }
+
+    public void setTruckcode(String truckcode) {
+        this.truckcode = truckcode;
+    }
+
+    public String getConfirmflag() {
+        return confirmflag;
+    }
+
+    public void setConfirmflag(String confirmflag) {
+        this.confirmflag = confirmflag;
     }
 }

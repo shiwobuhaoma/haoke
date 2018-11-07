@@ -1,5 +1,6 @@
 package com.xinze.haoke.module.about.view;
 
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
@@ -83,7 +84,7 @@ public class AboutUsActivity extends BaseActivity implements IAboutUsView {
 
     public void setData(AboutUs data) {
         if (data != null){
-            aboutUsContent.setText(data.getContent());
+            aboutUsContent.setText(Html.fromHtml(data.getContent()));
             mToolbar.setMainTitle(data.getTitle());
         }
     }
@@ -98,7 +99,7 @@ public class AboutUsActivity extends BaseActivity implements IAboutUsView {
 
     public void setProtocolData(Protocol data) {
         if (data != null){
-            aboutUsContent.setText(data.getContent());
+            aboutUsContent.setText(Html.fromHtml(data.getContent()));
             mToolbar.setMainTitle(data.getProtocolName());
         }
     }

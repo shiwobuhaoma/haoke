@@ -7,20 +7,20 @@ import com.xinze.haoke.http.config.HeaderConfig;
 import com.xinze.haoke.http.entity.BaseEntity;
 import com.xinze.haoke.http.observer.BaseObserver;
 import com.xinze.haoke.module.receive.modle.ReceiverBill;
-import com.xinze.haoke.module.receive.view.IReceiverBillDetailsView;
-import com.xinze.haoke.module.receive.view.ReceiverBillDetailsActivity;
+import com.xinze.haoke.module.receive.view.IReceiverBillDetailsListView;
+import com.xinze.haoke.module.receive.view.ReceiverBillDetailsListActivity;
 import com.xinze.haoke.mvpbase.BasePresenterImpl;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class ReceiverBillDetailsPresenterImp extends BasePresenterImpl<IReceiverBillDetailsView> implements IReceiverBillDetailsPresenter {
+public class ReceiverBillDetailsListListPresenterImp extends BasePresenterImpl<IReceiverBillDetailsListView> implements IReceiverBillDetailsListPresenter {
 
-    private ReceiverBillDetailsActivity mActivity;
+    private ReceiverBillDetailsListActivity mActivity;
 
-    public ReceiverBillDetailsPresenterImp(IReceiverBillDetailsView mPresenterView, Context mContext) {
+    public ReceiverBillDetailsListListPresenterImp(IReceiverBillDetailsListView mPresenterView, Context mContext) {
         super(mPresenterView, mContext);
-        mActivity = (ReceiverBillDetailsActivity) mPresenterView;
+        mActivity = (ReceiverBillDetailsListActivity) mPresenterView;
     }
 
     @Override

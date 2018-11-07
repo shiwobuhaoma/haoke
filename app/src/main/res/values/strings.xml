@@ -67,6 +67,8 @@
     <string name="order_wait_confirm">等待确认中&#8230;</string>
     <string name="order_revoke">撤销订单</string>
     <string name="order_detail">订单详情</string>
+    <string name="reject_order">拒绝接单</string>
+    <string name="agree_order">同意接单</string>
     <string name="order_next">取&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;货</string>
     <string name="order_pick_up_goods">取货中</string>
     <string name="order_send_goods">送货</string>
@@ -266,6 +268,9 @@
     <string name="receiver_people">接收人：%1$s</string>
     <string name="carNumber">车牌号：%1$s</string>
     <string name="relay_des">您周围有%1$d司机等待您发货</string>
+    <string name="receiver_order">接单人：%1$s</string>
+    <string name="driver">司机：%1$s</string>
+    <string name="carType">车型：%1$s</string>
     <string-array name="custom_myweekdays">
         <item>日</item>
         <item>一</item>
