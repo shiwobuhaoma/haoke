@@ -1,6 +1,7 @@
 package com.xinze.haoke.module.order.modle;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 public class OrderDetail {
 
@@ -40,6 +41,7 @@ public class OrderDetail {
      * backflag_desc : 未退单
      * confirmflag_desc : 无需确认
      * left_number : 315
+     * "files":上传的图片
      */
 
     private String id;
@@ -59,7 +61,7 @@ public class OrderDetail {
     private String dateTo;
     private int truckNumber;
     private String truckCode;
-    private String truckName;
+    private String truckname;
     private BigDecimal journeyLoss;
     private int wlBilltype;
     private BigDecimal msgPrice;
@@ -119,16 +121,26 @@ public class OrderDetail {
     private String truckcode;
     private String confirmflag;
 
+    public ArrayList<String> getFiles() {
+        return files;
+    }
+
+    public void setFiles(ArrayList<String> files) {
+        this.files = files;
+    }
+
+    private ArrayList<String> files;
+
     public String getRemarks() {
         return remarks;
     }
 
     public String getTruckName() {
-        return truckName;
+        return truckname;
     }
 
     public void setTruckName(String truckName) {
-        this.truckName = truckName;
+        this.truckname = truckName;
     }
 
     public void setRemarks(String remarks) {

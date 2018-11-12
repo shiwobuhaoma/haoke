@@ -271,6 +271,7 @@
     <string name="receiver_order">接单人：%1$s</string>
     <string name="driver">司机：%1$s</string>
     <string name="carType">车型：%1$s</string>
+    <string name="upload_voucher">上传凭证</string>
     <string-array name="custom_myweekdays">
         <item>日</item>
         <item>一</item>

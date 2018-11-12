@@ -13,7 +13,11 @@ import com.xinze.haoke.module.order.view.OrderDetailActivity;
 import com.xinze.haoke.module.receive.modle.ReceiverBill;
 import com.xinze.haoke.module.receive.adapter.ReceiverBillAdapter;
 import com.xinze.haoke.module.receive.presenter.ReceiverBillDetailsListListPresenterImp;
+import com.xinze.haoke.utils.MessageEvent;
 import com.xinze.haoke.widget.SimpleToolbar;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -39,6 +43,7 @@ public class ReceiverBillDetailsListActivity extends BaseActivity implements IRe
     private String wayBillId;
     private ReceiverBillAdapter adapter;
     private List<ReceiverBill.WaybillOrderEntitiesBean> data;
+    private ReceiverBillDetailsListListPresenterImp mPresenter;
 
 
     @Override
@@ -79,7 +84,7 @@ public class ReceiverBillDetailsListActivity extends BaseActivity implements IRe
                 if (data != null){
                     ReceiverBill.WaybillOrderEntitiesBean waybillOrderEntitiesBean = data.get(position);
                     Intent intent = new Intent(ReceiverBillDetailsListActivity.this, OrderDetailActivity.class);
-
+                    intent.putExtra("remarks",waybillOrderEntitiesBean.getRemarks());
                     intent.putExtra("orderId",waybillOrderEntitiesBean.getIdX());
                     startActivity(intent);
                 }
@@ -89,7 +94,9 @@ public class ReceiverBillDetailsListActivity extends BaseActivity implements IRe
 
     @Override
     protected void initData() {
-        ReceiverBillDetailsListListPresenterImp mPresenter = new ReceiverBillDetailsListListPresenterImp(this, this);
+        if (mPresenter == null){
+            mPresenter = new ReceiverBillDetailsListListPresenterImp(this, this);
+        }
         mPresenter.getBillOrderListForOwner(pageNo, pageSize, wayBillId);
     }
 
@@ -108,5 +115,13 @@ public class ReceiverBillDetailsListActivity extends BaseActivity implements IRe
             this.data = data;
             adapter.setData(data);
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+    public void clear(MessageEvent messageEvent) {
+        if (AppConfig.UPDATE_ORDER.equals(messageEvent.getMessage())){
+            initData();
+        }
+
     }
 }

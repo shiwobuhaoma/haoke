@@ -20,16 +20,17 @@ import android.widget.RelativeLayout;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.xinze.haoke.R;
+import com.xinze.haoke.http.config.HttpConfig;
 import com.xinze.haoke.utils.GlideRoundTransform;
 
 /**
  * 新建动态页横向的图片列表适配器
- * 
+ *
  * @author anjihang
  */
 public class PostImgAdapter extends RecyclerView.Adapter<PostImgAdapter.ViewHolder> {
 
-    private  Context mContext;
+    private Context mContext;
     private ArrayList<String> mData;
 
 
@@ -62,22 +63,18 @@ public class PostImgAdapter extends RecyclerView.Adapter<PostImgAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, final int i) {
-//        viewHolder.mImage.getSource().setImageFilePath(null);
         RequestOptions myOptions = new RequestOptions()
                 .fitCenter()
                 .transform(new GlideRoundTransform(mContext, 5));
 
-
         viewHolder.mImage.setImageResource(R.drawable.transparent);
-        if(i == getItemCount() - 1) {
-            viewHolder.mImage.setBackgroundResource(R.mipmap.ico_add_img);
-            viewHolder.mDel.setVisibility(View.GONE);
-        } else {
-            viewHolder.mImage.setBackgroundResource(R.mipmap.default_img);
-//            viewHolder.mImage.setImageBitmap(bitmap);
-            Glide.with(mContext).load(mData.get(i)).apply(myOptions).into(viewHolder.mImage);
-            viewHolder.mDel.setVisibility(View.VISIBLE);
+
+        viewHolder.mImage.setBackgroundResource(R.mipmap.default_img);
+        if (mData != null && mData.size() > 0) {
+            Glide.with(mContext).load(HttpConfig.IMAGE_BASE_URL + mData.get(i)).apply(myOptions).into(viewHolder.mImage);
         }
+
+        viewHolder.mDel.setVisibility(View.GONE);
     }
 
     @Override
@@ -86,11 +83,11 @@ public class PostImgAdapter extends RecyclerView.Adapter<PostImgAdapter.ViewHold
         if (mData != null) {
             count = mData.size();
         }
-        return count+1;
+        return count;
     }
 
     public void removeItem(int position) {
-        if(mData == null || mData.size() <= position) {
+        if (mData == null || mData.size() <= position) {
             return;
         }
         mData.remove(position);
@@ -98,37 +95,37 @@ public class PostImgAdapter extends RecyclerView.Adapter<PostImgAdapter.ViewHold
     }
 
     public void addItem(String path, int position) {
-        if(mData == null) mData = new ArrayList<String>();
+        if (mData == null) mData = new ArrayList<String>();
         mData.add(path);
         notifyItemInserted(position);
     }
-    
+
     public ArrayList<String> getData() {
         return mData;
     }
 
     /**
      * 更新数据
-     * 
+     *
      * @param data user数组
      */
     public void updateData(ArrayList<String> data) {
-        if (data == null){
+        if (data == null) {
             return;
         }
         mData = data;
         notifyDataSetChanged();
     }
 
-     class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mImage;
         private ImageView mDel;
 
         public ViewHolder(View view, final Callback callback) {
             super(view);
-            mImage = (ImageView)view.findViewById(R.id.view_post_image_iv);
-            mDel = (ImageView)view.findViewById(R.id.view_post_image_del);
+            mImage = (ImageView) view.findViewById(R.id.view_post_image_iv);
+            mDel = (ImageView) view.findViewById(R.id.view_post_image_del);
             mImage.setLayoutParams(new RelativeLayout.LayoutParams(mImageWidth, mImageWidth));
             mDel.setOnClickListener(new OnClickListener() {
                 @Override
@@ -141,15 +138,11 @@ public class PostImgAdapter extends RecyclerView.Adapter<PostImgAdapter.ViewHold
             });
 
             mImage.setOnClickListener(new OnClickListener() {
-                
+
                 @Override
                 public void onClick(View v) {
                     int position = getPosition();
-                    if (position == getItemCount() - 1) {
-                        if(mCallback != null) {
-                            mCallback.onAddImage();
-                        }
-                    }
+                    callback.jumpShowImagePage(mData.get(position));
                 }
             });
         }
@@ -157,8 +150,10 @@ public class PostImgAdapter extends RecyclerView.Adapter<PostImgAdapter.ViewHold
 
     public interface Callback {
         void onDeleteImage(int position);
-        void onAddImage();
+
+
+        void jumpShowImagePage(String path);
     }
-    
+
 
 }

@@ -33,6 +33,7 @@ import com.xinze.haoke.module.certification.modle.CertificationRespones;
 import com.xinze.haoke.module.order.adapter.PostImgAdapter;
 import com.xinze.haoke.module.order.modle.OrderDetail;
 import com.xinze.haoke.module.order.presenter.OrderDetailPresenterImp;
+import com.xinze.haoke.module.preview.PhotoPreviewActivity;
 import com.xinze.haoke.utils.BitmapUtils;
 import com.xinze.haoke.utils.MessageEvent;
 import com.xinze.haoke.utils.UIUtils;
@@ -91,15 +92,15 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
      */
     public final String TAKE_ORDER = "0";
     /**
-     * 取货中，送货中
+     * 取货中
      */
     public final String PICK_UP = "1";
     /**
-     * 发货中
+     * 送货中
      */
     public final String DELIVER_GOODS = "2";
     /**
-     * 已到货
+     * 已到货,已送达
      */
     public final String GOODS_ARRIVE = "3";
     /**
@@ -151,6 +152,7 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
     private ArrayList<String> filePaths = new ArrayList<>();
     private ArrayList<String> imgPaths = new ArrayList<>();
     private PostImgAdapter mAdapter;
+    private String confirmFlag;
 
 
     @Override
@@ -162,6 +164,7 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
     protected void initView() {
         Intent intent = getIntent();
         orderId = intent.getStringExtra("orderId");
+        remarks = intent.getStringExtra("remarks");
         findGoodsContacts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -185,7 +188,12 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
         agreeOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + fromPhone)));
+                if (TAKE_ORDER.equals(orderStatus)) {
+                    mPresenter.changeBillOrderStatus(orderId, GOODS_CONFIRM, "");
+                } else {
+                    showBottomMenu("签收后该订单结束，确认要签收？", GOODS_SIGNED_IN);
+                }
+
             }
         });
         initTitleBar();
@@ -210,13 +218,10 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
             }
 
             @Override
-            public void onAddImage() {
-                if (mAdapter.getItemCount() >= 10) {
-                    shotToast("最多只能上传9张图片!");
-                    return;
-                }
-                checkPermissions();
+            public void jumpShowImagePage(String path) {
+                openActivity(PhotoPreviewActivity.class,"path",path);
             }
+
         });
         uploadEvidenceList.setAdapter(mAdapter);
         mAdapter.updateData(imgPaths);
@@ -277,8 +282,10 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
                         if (mPresenter == null) {
                             mPresenter = new OrderDetailPresenterImp(OrderDetailActivity.this, OrderDetailActivity.this);
                         }
-                        if (filePaths.size() == 0) {
+                        if (filePaths.size() == 0 && GOODS_REVOKE.equals(orderStatus)) {
                             mPresenter.revoke(orderId, imgPaths, remarks, orderStatus);
+                        } else if (filePaths.size() == 0 && GOODS_SIGNED_IN.equals(orderStatus)) {
+                            mPresenter.changeBillOrderStatus(orderId, GOODS_SIGNED_IN, remarks);
                         } else {
                             //filePath 图片地址集合
                             for (String path : filePaths) {
@@ -352,7 +359,12 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
 
     @Override
     public void uploadImagesSuccess(String msg) {
-        mPresenter.revoke(orderId, imgPaths, remarks, orderStatus);
+        if (GOODS_REVOKE.equals(orderStatus)) {
+            mPresenter.revoke(orderId, imgPaths, remarks, orderStatus);
+        } else {
+            mPresenter.changeBillOrderStatus(orderId, GOODS_SIGNED_IN, "");
+        }
+
     }
 
     @Override
@@ -362,7 +374,7 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
 
     public void setData(OrderDetail data) {
         //订单号
-        String id = data.getWaybillId();
+        String id = data.getId();
         //接单人姓名
         String truckOwnerName = data.getTruckownername();
         //联系人电话
@@ -378,7 +390,7 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
         //订单状态
         orderStatus = data.getOrderStatus();
 
-
+        confirmFlag = data.getConfirmflag();
         String orderId = getString(R.string.order_id);
         findGoodsId.setText(String.format(orderId, id));
 
@@ -398,6 +410,8 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
         String carType1 = getString(R.string.carType);
         carType.setText(String.format(carType1, truckName));
 
+        ArrayList<String> files = data.getFiles();
+        mAdapter.updateData(files);
         changeState(orderStatus);
 
 
@@ -427,66 +441,86 @@ public class OrderDetailActivity extends BaseActivity implements IOrderDetailVie
     }
 
     private void changeState(String orderStatus) {
-        if (TAKE_ORDER.equals(orderStatus)) {
+        if (TAKE_ORDER.equals(orderStatus) && "1".equals(confirmFlag)) {
             Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_robbing);
             setDrawable(drawable);
             orderUploadEvidence.setVisibility(View.GONE);
             uploadEvidenceList.setVisibility(View.GONE);
             agreeOrder.setVisibility(View.VISIBLE);
             rejectOrder.setVisibility(View.VISIBLE);
-        } else if (PICK_UP.equals(orderStatus)) {
-            Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_picking);
+        }else if(TAKE_ORDER.equals(orderStatus) && "0".equals(confirmFlag)){
+            Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_robbing);
             setDrawable(drawable);
             orderUploadEvidence.setVisibility(View.GONE);
             uploadEvidenceList.setVisibility(View.GONE);
+            agreeOrder.setVisibility(View.GONE);
+            rejectOrder.setVisibility(View.GONE);
+        } else if (PICK_UP.equals(orderStatus)) {
+            Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_picking);
+            setDrawable(drawable);
+            orderUploadEvidence.setVisibility(View.VISIBLE);
+            uploadEvidenceList.setVisibility(View.VISIBLE);
+            rejectOrder.setVisibility(View.GONE);
             agreeOrder.setVisibility(View.GONE);
         } else if (DELIVER_GOODS.equals(orderStatus)) {
             Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_deliver);
             setDrawable(drawable);
-
+            rejectOrder.setVisibility(View.GONE);
             orderUploadEvidence.setVisibility(View.GONE);
             uploadEvidenceList.setVisibility(View.GONE);
             agreeOrder.setVisibility(View.GONE);
+
         } else if (GOODS_ARRIVE.equals(orderStatus)) {
             Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_arrived);
             setDrawable(drawable);
-
+            agreeOrder.setText(getResources().getString(R.string.order_confirm_arrive));
             orderUploadEvidence.setVisibility(View.VISIBLE);
+            orderUploadEvidence.setText(getResources().getString(R.string.upload_voucher));
             uploadEvidenceList.setVisibility(View.VISIBLE);
             agreeOrder.setVisibility(View.VISIBLE);
+            rejectOrder.setVisibility(View.GONE);
         } else if (GOODS_SIGNED_IN.equals(orderStatus)) {
             Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_signed);
             setDrawable(drawable);
-
             orderUploadEvidence.setVisibility(View.GONE);
             uploadEvidenceList.setVisibility(View.GONE);
+            rejectOrder.setVisibility(View.GONE);
             agreeOrder.setVisibility(View.GONE);
         } else if (GOODS_REFUSE.equals(orderStatus)) {
             Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_refuse);
             setDrawable(drawable);
+            rejectOrder.setVisibility(View.GONE);
+            agreeOrder.setVisibility(View.GONE);
             orderUploadEvidence.setVisibility(View.GONE);
             uploadEvidenceList.setVisibility(View.GONE);
         } else if (GOODS_CONFIRM.equals(orderStatus)) {
             Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_picking);
             setDrawable(drawable);
-
-            agreeOrder.setText(getString(R.string.order_pick_up_goods));
-
+            orderUploadEvidence.setVisibility(View.GONE);
+            uploadEvidenceList.setVisibility(View.GONE);
+            rejectOrder.setVisibility(View.GONE);
+            agreeOrder.setVisibility(View.GONE);
+        } else if (GOODS_REVOKE.equals(orderStatus)) {
+            Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_cancle);
+            setDrawable(drawable);
+            rejectOrder.setVisibility(View.GONE);
+            agreeOrder.setVisibility(View.GONE);
+            orderUploadEvidence.setVisibility(View.GONE);
+            uploadEvidenceList.setVisibility(View.GONE);
         } else if (GOODS_OVERDUE.equals(orderStatus)) {
             Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_picking);
             setDrawable(drawable);
             orderUploadEvidence.setVisibility(View.GONE);
             uploadEvidenceList.setVisibility(View.GONE);
-
         } else {
-            Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_refuse);
+            Drawable drawable = getResources().getDrawable(R.mipmap.goods_detail_cancle);
             setDrawable(drawable);
             orderUploadEvidence.setVisibility(View.GONE);
             uploadEvidenceList.setVisibility(View.GONE);
             agreeOrder.setVisibility(View.GONE);
+            rejectOrder.setVisibility(View.GONE);
         }
     }
-
 
 
     private void setDrawable(Drawable drawable) {

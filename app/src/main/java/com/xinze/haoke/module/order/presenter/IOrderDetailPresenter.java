@@ -10,6 +10,10 @@ import okhttp3.MultipartBody;
 
 public interface IOrderDetailPresenter extends BasePresenter<IOrderDetailView> {
     void getOrderDetail(String orderId);
+
     void revoke(String id, List<String> files, String remarks, String orderStatus);
+
     void uploadImages(List<MultipartBody.Part> partList);
+
+    void changeBillOrderStatus(String id, String orderStatus, String remarks);
 }

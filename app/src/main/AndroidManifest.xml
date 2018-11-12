@@ -126,6 +126,7 @@
         <activity android:name=".module.select.goodstype.view.SelectGoodsTypeActivity" />
         <activity android:name=".module.receive.view.ReceiverBillDetailsListActivity" />
         <activity android:name=".module.relay.view.RelayActivity" />
+        <activity android:name=".module.preview.PhotoPreviewActivity" />
     </application>
 
 </manifest>

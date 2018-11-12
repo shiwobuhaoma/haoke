@@ -134,4 +134,50 @@ public class OrderDetailPresenterImp extends BasePresenterImpl<IOrderDetailView>
                     }
                 });
     }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void changeBillOrderStatus(String id, String orderStatus, String remarks) {
+        UpdateOrderState uos = new UpdateOrderState();
+        uos.setId(id);
+        if (!TextUtils.isEmpty(remarks)){
+            uos.setRemarks(remarks);
+        }
+        uos.setOrderStatus(orderStatus);
+        Gson gson = new Gson();
+        String json = gson.toJson(uos);
+        RequestBody body= RequestBody.create(MediaType.parse("application/json"),json);
+        HashMap<String, String> headers = HeaderConfig.getHeaders();
+        RetrofitFactory.getInstence().Api().changeBillOrderStatus(headers,body)
+                .compose(this.<BaseEntity>setThread()).subscribe(new BaseObserver(mContext) {
+            @Override
+            protected void onSuccess(BaseEntity t) throws Exception {
+                if (t != null){
+                    if (t.isSuccess()){
+                        if (fga.GOODS_REVOKE.equals(orderStatus)){
+                            fga.revokeSuccess("撤销订单成功",fga.GOODS_REVOKE);
+                        }else if(fga.PICK_UP.equals(orderStatus)){
+                            fga.revokeSuccess("确认取货成功",fga.DELIVER_GOODS);
+                        }else if(fga.DELIVER_GOODS.equals(orderStatus)){
+                            fga.revokeSuccess("确认送货成功",fga.DELIVER_GOODS);
+                        }else if(fga.GOODS_ARRIVE.equals(orderStatus)){
+                            fga.revokeSuccess("确认送达",fga.GOODS_ARRIVE);
+                        }else if(fga.GOODS_SIGNED_IN.equals(orderStatus)){
+                            fga.revokeSuccess("确认签收成功",fga.GOODS_SIGNED_IN);
+                        }else{
+                            fga.revokeSuccess("接单成功",fga.DELIVER_GOODS);
+                        }
+
+                    }else{
+                        fga.revokeFailed(t.getMsg());
+                    }
+                }
+            }
+
+            @Override
+            protected void onFailure(String msg) throws Exception {
+                fga.revokeFailed(msg);
+            }
+        });
+    }
 }

@@ -118,7 +118,7 @@ public class MainActivity extends BaseActivity implements IMainView, DownloadLis
         mBottomNavigationBar
                 .setActiveColor(R.color.main_ic_orange);
         mBottomNavigationBar.addItem(new BottomNavigationItem(R.mipmap.main_ic_home_select, "首页"))
-                .addItem(new BottomNavigationItem(R.mipmap.main_ic_order, "订单"))
+                .addItem(new BottomNavigationItem(R.mipmap.main_ic_order, "货单"))
                 .addItem(new BottomNavigationItem(R.mipmap.main_ic_my, "我的"))
                 .setFirstSelectedPosition(0)
                 .initialise();

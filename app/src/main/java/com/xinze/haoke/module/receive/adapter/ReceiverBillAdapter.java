@@ -89,16 +89,25 @@ public class ReceiverBillAdapter extends RecyclerView.Adapter<ReceiverBillAdapte
             Drawable drawable = mContext.getResources().getDrawable(R.mipmap.goods_robbing_order);
             holder.receiveBillState.setBackground(drawable);
         }else if(DELIVER_GOODS.equals(waybillOrderEntitiesBean.getOrderStatusX())){
-            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.goods_sending);
+            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.goods_deliver);
             holder.receiveBillState.setBackground(drawable);
         }else if(PICK_UP.equals(waybillOrderEntitiesBean.getOrderStatusX())){
-            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.goods_deliver);
+            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.goods_pick_up);
             holder.receiveBillState.setBackground(drawable);
         }else if(GOODS_ARRIVE.equals(waybillOrderEntitiesBean.getOrderStatusX())){
             Drawable drawable = mContext.getResources().getDrawable(R.mipmap.goods_arrive);
             holder.receiveBillState.setBackground(drawable);
         }else if(GOODS_SIGNED_IN.equals(waybillOrderEntitiesBean.getOrderStatusX())){
             Drawable drawable = mContext.getResources().getDrawable(R.mipmap.goods_signed_in);
+            holder.receiveBillState.setBackground(drawable);
+        }else if(GOODS_REVOKE.equals(waybillOrderEntitiesBean.getOrderStatusX())){
+            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.goods_revoke);
+            holder.receiveBillState.setBackground(drawable);
+        }else if(GOODS_REFUSE.equals(waybillOrderEntitiesBean.getOrderStatusX())){
+            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.goods_refuse);
+            holder.receiveBillState.setBackground(drawable);
+        }else if(GOODS_OVERDUE.equals(waybillOrderEntitiesBean.getOrderStatusX())){
+            Drawable drawable = mContext.getResources().getDrawable(R.mipmap.goods_overdue);
             holder.receiveBillState.setBackground(drawable);
         }
 
