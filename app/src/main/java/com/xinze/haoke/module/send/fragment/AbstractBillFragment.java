@@ -54,6 +54,7 @@ public abstract class AbstractBillFragment extends BaseFragment implements IBill
             } else {
                 this.data.addAll(data);
             }
+            billRecycleViewAdapter.clearData();
             billRecycleViewAdapter.setData(this.data);
         }
     }
