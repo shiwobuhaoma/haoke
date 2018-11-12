@@ -10,7 +10,7 @@ import android.widget.RadioGroup;
 import com.xinze.haoke.App;
 import com.xinze.haoke.R;
 import com.xinze.haoke.base.BaseFragment;
-import com.xinze.haoke.module.regular.view.RegularRunActivity;
+import com.xinze.haoke.module.ordinary.view.OrdinarySendGoodsActivity;
 import com.xinze.haoke.module.send.adapter.SelectPageAdapter;
 import com.xinze.haoke.module.send.fragment.DirectionalBillFragment;
 import com.xinze.haoke.module.send.fragment.OrdinaryBillFragment;
@@ -67,7 +67,7 @@ public class GoodsBillFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 if (App.mUser.isLogin()) {
-                    openActivity(RegularRunActivity.class);
+                    openActivity(OrdinarySendGoodsActivity.class);
                 } else {
                     DialogUtil.showUnloginDialog(mActivity);
                 }
