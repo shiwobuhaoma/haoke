@@ -13,10 +13,11 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
-//import com.squareup.leakcanary.LeakCanary;
 import com.vondear.rxtools.RxTool;
 import com.xinze.haoke.module.login.modle.UserEntity;
 import com.xinze.haoke.utils.ACache;
+
+//import com.squareup.leakcanary.LeakCanary;
 
 /**
  * @author lxf

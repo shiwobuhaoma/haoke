@@ -259,9 +259,9 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
                 //在这个方法中处理选中事件。
                 imcvTemMaterCalendarWeek.setVisibility(View.GONE);
                 if (who == R.id.ordinary_delivery_from_date_et) {
-                    ordinaryDeliveryFromDateEt.setText(date.getYear() + ":" + date.getMonth() + ":" + date.getDay()+" 00:00:00");
+                    ordinaryDeliveryFromDateEt.setText(date.getYear() + ":" + date.getMonth() + ":" + date.getDay());
                 } else {
-                    ordinaryDeliveryToDateEt.setText(date.getYear() + ":" + date.getMonth() + ":" + date.getDay()+" 00:00:00");
+                    ordinaryDeliveryToDateEt.setText(date.getYear() + ":" + date.getMonth() + ":" + date.getDay());
                 }
             }
         });
@@ -389,8 +389,8 @@ public class OrdinarySendGoodsActivity extends BaseActivity implements IOrdinary
             bill.setPrice(ordinaryInfoPayEt.getText().toString());
             bill.setDistance(ordinaryDistanceEt.getText().toString());
             bill.setPrice(ordinaryFreightEt.getText().toString());
-            bill.setDateFrom(ordinaryDeliveryFromDateEt.getText().toString());
-            bill.setDateTo(ordinaryDeliveryToDateEt.getText().toString());
+            bill.setDateFrom(ordinaryDeliveryFromDateEt.getText().toString()+" 00:00:00");
+            bill.setDateTo(ordinaryDeliveryToDateEt.getText().toString()+" 00:00:00");
             bill.setTruckNumber(ordinaryCarNumberEt.getText().toString());
             if (carType == null) {
                 return null;

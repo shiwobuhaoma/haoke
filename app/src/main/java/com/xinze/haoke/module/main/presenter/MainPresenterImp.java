@@ -202,7 +202,7 @@ public class MainPresenterImp extends BasePresenterImpl<IMainView> implements IM
 
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             // "net.csdn.blog.ruancoder.fileprovider"即是在清单文件中配置的authorities
-            data = FileProvider.getUriForFile(mContext, "com.xinze.xinze.fileprovider", file);
+            data = FileProvider.getUriForFile(mContext, "com.xinze.haoke.fileprovider", file);
             //兼容8.0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 boolean hasInstallPermission = mContext.getPackageManager().canRequestPackageInstalls();

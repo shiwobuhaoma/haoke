@@ -23,25 +23,29 @@
 
 
 #---------------------------------1.实体类---------------------------------
--keep class com.xinze.xinze.module.about.modle.** { *; }
--keep class com.xinze.xinze.module.add.modle.** { *; }
--keep class com.xinze.xinze.module.certification.modle.** { *; }
--keep class com.xinze.xinze.module.invite.model.** { *; }
--keep class com.xinze.xinze.module.login.modle.** { *; }
--keep class com.xinze.xinze.module.main.modle.** { *; }
--keep class com.xinze.xinze.module.message.model.** { *; }
--keep class com.xinze.xinze.module.order.modle.** { *; }
--keep class com.xinze.xinze.module.register.modle.** { *; }
--keep class com.xinze.xinze.module.regular.module.** { *; }
--keep class com.xinze.xinze.module.select.module.** { *; }
--keep class com.xinze.xinze.module.transport.module.** { *; }
--keep class com.xinze.xinze.module.trucks.model.** { *; }
--keep class com.xinze.xinze.widget.bean.** { *; }
--keep class com.xinze.xinze.config.** { *; }
--keep class com.xinze.xinze.http.** { *; }
--keep class com.xinze.xinze.utils{ *; }
--keep class com.xinze.xinze.utils.ReturnResult{*;}
--keep class com.xinze.xinze.utils.JsonMapper{*;}
+-keep class com.xinze.haoke.module.about.modle.** { *; }
+-keep class com.xinze.haoke.module.add.modle.** { *; }
+-keep class com.xinze.haoke.module.certification.modle.** { *; }
+-keep class com.xinze.haoke.module.goods.model.** { *; }
+-keep class com.xinze.haoke.module.invite.model.** { *; }
+-keep class com.xinze.haoke.module.login.modle.** { *; }
+-keep class com.xinze.haoke.module.main.modle.** { *; }
+-keep class com.xinze.haoke.module.message.model.** { *; }
+-keep class com.xinze.haoke.module.order.modle.** { *; }
+-keep class com.xinze.haoke.module.ordinary.modle.** { *; }
+-keep class com.xinze.haoke.module.receive.modle.** { *; }
+-keep class com.xinze.haoke.module.register.modle.** { *; }
+-keep class com.xinze.haoke.module.regular.module.** { *; }
+-keep class com.xinze.haoke.module.select.cartype.module.** { *; }
+-keep class com.xinze.haoke.module.select.module.** { *; }
+-keep class com.xinze.haoke.module.transport.module.** { *; }
+-keep class com.xinze.haoke.module.trucks.model.** { *; }
+-keep class com.xinze.haoke.widget.bean.** { *; }
+-keep class com.xinze.haoke.config.** { *; }
+-keep class com.xinze.haoke.http.** { *; }
+-keep class com.xinze.haoke.utils{ *; }
+-keep class com.xinze.haoke.utils.ReturnResult{*;}
+-keep class com.xinze.haoke.utils.JsonMapper{*;}
 
 
 #-------------------------------------------------------------------------
@@ -175,6 +179,12 @@
 -keep class com.fasterxml.jackson.** { *; }
 -dontwarn com.fasterxml.jackson.databind.**
 
+# 预览图片控件
+-keep class com.github.chrisbanes.** {*;}
+# 日历控件
+-keep class com.prolificinteractive.** {*;}
+# web控件
+-keep class com.just.agentweb.** {*;}
  #比如我们要向activity传递对象使用了Serializable接口的时候，这时候这个类及类里面#的所有内容都不能混淆
 -keepnames class * implements java.io.Serializable
 -keepclassmembers class * implements java.io.Serializable {

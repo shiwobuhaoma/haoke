@@ -20,8 +20,6 @@ import com.xinze.haoke.module.main.presenter.HomePresenterImp;
 import com.xinze.haoke.module.main.view.IHomeView;
 import com.xinze.haoke.module.message.view.SystemMsgActivity;
 import com.xinze.haoke.module.ordinary.view.OrdinarySendGoodsActivity;
-import com.xinze.haoke.module.regular.view.RegularRunActivity;
-import com.xinze.haoke.module.send.view.SendGoodsActivity;
 import com.xinze.haoke.module.web.WebViewActivity;
 import com.xinze.haoke.utils.DialogUtil;
 import com.xinze.haoke.utils.GlideImageLoader;
@@ -182,7 +180,6 @@ public class HomeFragment extends BaseFragment implements IHomeView {
                     @Override
                     public void OnBannerClick(int position) {
                         String url = linksUrl.get(position);
-                        url = UrlUtils.appendHttp(url);
                         openActivity(WebViewActivity.class, "URL", url);
                     }
                 }).start();
@@ -209,7 +206,7 @@ public class HomeFragment extends BaseFragment implements IHomeView {
 
     public void setBannerList(List<com.xinze.haoke.module.main.modle.Banner> banners) {
         for (com.xinze.haoke.module.main.modle.Banner banner : banners) {
-            String imgUrl = HttpConfig.IMAGE_BASE_URL + banner.getImgUrl();
+            String imgUrl = HttpConfig.IMAGE_BASE_URL.substring(0,HttpConfig.IMAGE_BASE_URL.length()-1) + banner.getImgUrl();
             String bannerName = banner.getBannerName();
             String linkUrl = banner.getLinkUrl();
             linksUrl.add(linkUrl);

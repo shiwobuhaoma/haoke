@@ -7,6 +7,10 @@ import java.util.HashMap;
  */
 public class AppConfig {
     /**
+     * 是否是测试环境.
+     */
+    public static final boolean DEBUG = false;
+    /**
      * 请求成功响应状态码
      */
     public static final int REQUEST_STATUS_SUCESS = 200;

@@ -71,7 +71,10 @@ public class DirectionalBillFragment extends AbstractBillFragment implements Vie
             }
         });
     }
-
+    @Override
+    protected void initData() {
+        super.initData();
+    }
     @Override
     public void onClick(View v) {
 

@@ -515,7 +515,7 @@
         <com.xinze.haoke.widget.SelectAddressView2
             android:id="@+id/ordinary_select_address"
             android:layout_width="match_parent"
-            android:layout_height="240dp"
+            android:layout_height="match_parent"
             android:visibility="gone" />
 
         <View

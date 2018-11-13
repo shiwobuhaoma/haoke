@@ -119,6 +119,10 @@ public class OrdinaryBillFragment extends AbstractBillFragment implements IBillV
         });
     }
 
+    @Override
+    protected void initData() {
+        super.initData();
+    }
 
     @OnClick({R.id.send_goods_from, R.id.send_goods_to})
     public void onClick(View view) {
